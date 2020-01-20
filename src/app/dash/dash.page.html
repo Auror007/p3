@@ -1,0 +1,110 @@
+<ion-header>
+        <ion-toolbar>
+          <ion-title>Home</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+ <ion-slides [options]="slideOptsOne">
+   <!-- <ion-slide>
+     <img src="http://placehold.it/300x300/ff0000/ffffff" alt="">
+   </ion-slide>
+   <ion-slide>
+    <img src="http://placehold.it/300x300/ffcc33/ffffff" alt="">
+  </ion-slide>
+  <ion-slide>
+    <img src="http://placehold.it/300x300/33ccff/ffffff" alt="">
+  </ion-slide> -->
+  <ion-slide *ngFor="let slide of slideData">
+    <img src="{{slide.image}}" />
+  </ion-slide>
+ </ion-slides>
+<ion-item>
+ <ion-label position="fixed">
+  Four-Wheeler
+</ion-label>
+</ion-item>
+<ion-slides>
+  
+ <ion-slide>
+  <ion-card style="border-radius: 25px;">
+      <ion-card-header>
+        <ion-card-title>Service1</ion-card-title>
+        <ion-card-subtitle>1 month</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          External Wash Weekly + 1 Extra interior wash
+        </ion-card-content>
+  </ion-card>
+</ion-slide>
+<ion-slide>
+<ion-card style="border-radius: 25px;">
+  <ion-card-header>
+    <ion-card-title>Service2</ion-card-title>
+    <ion-card-subtitle>3 months</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      External Wash weekly + 2 Extra interior wash
+    </ion-card-content>
+</ion-card>
+</ion-slide>
+<ion-slide>
+<ion-card style="border-radius: 25px;">
+  <ion-card-header>
+    <ion-card-title>Service3</ion-card-title>
+    <ion-card-subtitle>3 months</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      External Wash daily + 2 Extra interior wash
+    </ion-card-content>
+</ion-card>
+</ion-slide>
+
+</ion-slides>
+<ion-item>
+  <ion-label position="fixed">
+   Two-Wheeler
+ </ion-label>
+ </ion-item>
+<ion-slides>
+<ion-slide>
+  <ion-card style="border-radius: 25px;">
+      <ion-card-header>
+        <ion-card-title>Service1</ion-card-title>
+        <ion-card-subtitle>1 month</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+          External Wash Weekly + 1 Extra interior wash
+        </ion-card-content>
+  </ion-card>
+</ion-slide>
+<ion-slide>
+<ion-card style="border-radius: 25px;">
+  <ion-card-header>
+    <ion-card-title>Service2</ion-card-title>
+    <ion-card-subtitle>3 months</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      External Wash weekly + 2 Extra interior wash
+    </ion-card-content>
+</ion-card>
+</ion-slide>
+<ion-slide>
+<ion-card style="border-radius: 25px;">
+  <ion-card-header>
+    <ion-card-title>Service3</ion-card-title>
+    <ion-card-subtitle>3 months</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      External Wash daily + 2 Extra interior wash
+    </ion-card-content>
+</ion-card>
+</ion-slide>
+
+</ion-slides>
+      </ion-content>

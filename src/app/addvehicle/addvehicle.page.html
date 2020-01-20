@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title align-title="center">Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+    <br>
+    <br>
+    <ion-item>
+        <ion-label >Vehicle type </ion-label>
+        <ion-select interface="popover" [(ngModel)]="type" (ionChange)="onChange1(type)">
+            <ion-select-option value="Two wheeler">Two-wheeler</ion-select-option>
+            <ion-select-option value="Car">Car</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item [hidden]="!car">
+                  
+        <ion-label>Car type</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="sedan">Sedan</ion-select-option>
+          <ion-select-option value="hatchback">Hatchback</ion-select-option>
+          <ion-select-option value="suv">SUV</ion-select-option>
+          </ion-select>
+      </ion-item>
+      <ion-item [hidden]="!bike">
+                  
+        <ion-label>Bike type</ion-label>
+        <ion-select interface="popover">
+          <ion-select-option value="sports">sports bike</ion-select-option>
+          <ion-select-option value="moped">moped</ion-select-option>
+          <ion-select-option value="bike">bike</ion-select-option>
+          </ion-select>      
+        </ion-item>
+      
+      <br>
+      <br>
+      <ion-item>
+          <ion-label >Select Brand</ion-label>
+          <ion-select interface="popover" [hidden]="!car">
+            <ion-select-option value="hyundai">Hyundai</ion-select-option>
+            <ion-select-option value="ms">Maruti Suzuki</ion-select-option>
+            <ion-select-option value="honda">Honda</ion-select-option>
+            </ion-select>
+            <ion-select interface="popover" [hidden]="!bike">
+                <ion-select-option value="Honda">Honda</ion-select-option>
+                <ion-select-option value="Bajaj">bajaj</ion-select-option>
+                <ion-select-option value="Hero">hero</ion-select-option>
+                </ion-select>
+        </ion-item>
+        <br>
+      <br>
+      <ion-item>
+            <ion-label>Select Model</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <br>
+      <br>
+      <ion-item  >
+              <ion-label >Vehicle Number</ion-label>
+              <ion-input placeholder="Eg: GJ-13-CC-710"></ion-input>
+            </ion-item>
+            <br>
+      <br>
+      <ion-item>
+                <ion-label >Parking location</ion-label><br>
+                <ion-select  interface="popover" [(ngModel)]="loc" (ionChange)="onChange(loc)">
+                    <ion-select-option value="1">Basement 1</ion-select-option>
+                    <ion-select-option value="2">Basement 2</ion-select-option>
+                    <ion-select-option value="3">Ground Floor</ion-select-option>
+                    <ion-select-option value="4">Other</ion-select-option>
+                </ion-select>
+           </ion-item>
+        <ion-item [hidden]="!value">
+                  
+            <ion-label>Specify location</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+              <br>
+      <br>
+      <ion-item>
+                  <ion-label>Preferred time</ion-label>
+                  <ion-select interface="popover">
+                      <ion-select-option value="1">5:00-6:00 AM</ion-select-option>
+                      <ion-select-option value="2">6:00-7:00 AM</ion-select-option>
+                      <ion-select-option value="3">7:00-8:00 AM</ion-select-option>
+                      <ion-select-option value="4">8:00-9:00 AM</ion-select-option>
+                      <ion-select-option value="5">Any</ion-select-option>
+
+                  </ion-select>
+                </ion-item>
+                <br>
+                <br>
+                <br>
+                
+<ion-button  shape=round class="buttons" size=large  fill="solid" expand="block" color="dark" (click)=dash()  style="width: 50%;margin-right:25%;margin-left:25%" >Add</ion-button>
+
+</ion-content>

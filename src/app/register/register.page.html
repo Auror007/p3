@@ -1,0 +1,59 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title align-title="center">Register</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+  
+  
+    <div class="ion-list">
+  
+  
+      <ion-item>
+        <br>
+        <br>
+  
+        <ion-label position="floating">
+          Name
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="username"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+  
+      <ion-item>
+        <ion-label position="floating">
+          Email
+        </ion-label>
+        <ion-input type="email" [(ngModel)]="email"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+  
+      <ion-item>
+        <ion-label position="floating">
+          Phonenumber
+        </ion-label>
+        <ion-input type="number" [(ngModel)]="phonenumber"></ion-input>
+      </ion-item>
+      <br>
+      <br>
+  
+      <ion-row>
+        <ion-button fill="solid" shape="round" color="dark" expand="block" class="buttons" size="large"
+           (click)=sendotp()>Register</ion-button>
+        <ion-button fill="solid" shape="round" color="danger" expand="block" class="buttons" size="large"
+          (click)=gotoLogin()>Login</ion-button>
+      </ion-row>
+      <br>
+      <!-- <ion-title>Or Sign Up using</ion-title>
+      <br>
+      <ion-button fill="solid" color="primary" expand="full" class="buttons1" size="large">Facebook</ion-button>
+      <br>
+      
+      <ion-button fill="solid" color="danger" expand="block" class="buttons1" size="large">Google</ion-button> -->
+    </div>
+    
+  
+  </ion-content>

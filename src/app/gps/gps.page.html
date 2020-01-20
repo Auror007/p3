@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Home</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+    
+
+ 
+
+  <ion-button (click)=startTracking() *ngIf="!isTracking">
+    <ion-icon name="locate"></ion-icon>
+    Start Tracking
+  </ion-button>
+
+  <ion-button (click)=stopTracking() *ngIf="isTracking">
+    <ion-icon name="hand"></ion-icon>
+    Stop Tracking
+  </ion-button>
+  <div class="map" #map  style=" width: 100%;
+  height: 300px"></div>
+
+<ion-list>
+  <ion-list-header>Previous Tracks</ion-list-header>
+  <ion-item *ngFor="let route of previousTracks">
+    {{ route.finished | date }}, {{ route.path.length }} Waypoints
+    <ion-button  (click)="showHistoryRoute(route.path)">View Route</ion-button>
+  </ion-item>
+</ion-list>
+
+</ion-content>
