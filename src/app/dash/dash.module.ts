@@ -3,15 +3,15 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { DashPage } from './dash.page';
+// import { DashPage } from './dash.page';
 
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: DashPage
-  }
+  // {
+  //   path: '',
+  //   component: DashPage
+  // }
 ];
 
 @NgModule({
@@ -21,7 +21,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DashPage]
+  // declarations: [DashPage]
 })
 export class DashPageModule 
 {

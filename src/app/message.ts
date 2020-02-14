@@ -1,4 +1,8 @@
 interface UserResponse{
-    message: Boolean,
+    message: any,
   }
+
+interface Cardetails{
+  list: Array<any>,
+}
 export default UserResponse;

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IonSlides } from '@ionic/angular';
+import { IonSlides, ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-services',
@@ -8,11 +8,44 @@ import { IonSlides } from '@ionic/angular';
 })
 export class ServicesPage implements OnInit {
   @ViewChild(IonSlides,{static: false}) slides: IonSlides;
-  constructor() { }
+  constructor(public actionSheetController: ActionSheetController) { }
 
   ngOnInit() {
-    this.slides.startAutoplay();
-    this.slides.options({speed:400});
+  
   }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Select Time Slot',
+      buttons: [{
+        text: '5:00 - 6:00 AM',
+        handler: () => {
+          console.log('first clicked');
+        }
+      }, {
+        text: '6:00 - 7:00 AM',
+        handler: () => {
+          console.log('second clicked');
+        }
+      }, {
+        text: '7:00 - 8:00 AM',
+        handler: () => {
+          console.log('third clicked');
+        }
+      }, {
+        text: '8:00 - 9:00 AM',
+        handler: () => {
+          console.log('fourth clicked');
+        }
+      }, {
+        text: 'Cancel',
+        handler: () => {
+          console.log('Cancel clicked');
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
+
  
 }

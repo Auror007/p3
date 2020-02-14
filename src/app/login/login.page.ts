@@ -4,6 +4,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { AlertController } from '@ionic/angular';
 import { RegserviceService } from '../register/regservice.service';
 import UserResponse from '../message';
+import {Storage} from '@ionic/storage';
 
 
 @Component({
@@ -15,14 +16,16 @@ import UserResponse from '../message';
 
 export class LoginPage implements OnInit, UserResponse {
 
-  phonenumber = '';
+  email = '';
   message: any;
 
   constructor(
     private router: Router,
     private http: HttpClient,
     public alerCtrl: AlertController,
-    private regServ: RegserviceService) { }
+    private regServ: RegserviceService,
+    private storage:Storage
+    ) { }
 
   ngOnInit() {
 
@@ -32,24 +35,29 @@ export class LoginPage implements OnInit, UserResponse {
   }
   login() {
 
-    const phone = '91' + this.phonenumber;
-    if (phone.length < 12 || phone.length > 12) {
-      this.doAlert('Enter Valid Phonenumber!', 'Okay');
+    const email =  this.email;
+    if (email.length == 0) {
+      this.doAlert('Enter Valid Email!', 'Okay');
     } else {
-      this.regServ.setPhone(phone);
+      this.regServ.setEmail(email);
       const data = {
-        phone: this.regServ.getPhone()
+        email: this.regServ.getEmail()
       };
 
 
       //check is user already logged in then route directly to dash else to registration pages
       console.log(data);
-      this.http.post('http://192.168.25.230:3000/loginotp', data).subscribe(
+      this.http.post('https://mywash.herokuapp.com/loginotp', data).subscribe(
         ( result: UserResponse) => 
           {
           console.log(result);
           if (result.message == true) {
             this.router.navigateByUrl('/registernew');
+            this.storage.set('activity','loggedin').then((data)=>{
+            console.log(data);
+
+            });
+            
           } else {
             this.doAlert('Not Registered', 'Register Now');
             this.router.navigateByUrl('/register');
@@ -94,11 +102,14 @@ export class LoginPage implements OnInit, UserResponse {
       message: msg,
       buttons: [btn],
     });
+
+
     await alert.present();
     if (alert.message == 'Enter valid Number') {
-      this.phonenumber = '';
+      this.email = '';
     }
 
   }
+  
 
 }

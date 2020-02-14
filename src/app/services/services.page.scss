@@ -1,12 +1,17 @@
-ion-slide{
-  
- 
+ion-card{
+    border-radius: 10px;
+    margin-top: 5% !important;
+    width:90% !important;
+    height:90% !important;
 }
-ion-slide.img{
+ion-card-title{
+    background-color: #979a9b !important;
+}
+ion-slide{
     max-width: 100% !important;
     max-height: 100% !important;
+    
 }
 ion-title{
-    
     text-align: center;
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 @Component({
   selector: 'app-main',
   templateUrl: './main.page.html',
@@ -7,11 +8,17 @@ import {Router} from '@angular/router';
 })
 export class MainPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private splash:SplashScreen) { 
+    this.splash.show();
+    //this.splash.hide();
+  }
 
+  
   ngOnInit() {
+   
   }
-  proceed() {
+   proceed() {
      this.router.navigate(['/register']);
-  }
+   }
+
 }

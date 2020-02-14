@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-// import {AngularFireAuth} from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { RegserviceService } from './regservice.service';
 import UserResponse from '../message';
+import {Storage} from '@ionic/storage';
 
 
 
@@ -21,7 +21,7 @@ export class RegisterPage implements OnInit, UserResponse {
   message: any;
 
   constructor(
-    //  public afAuth: AngularFireAuth,
+    private storage: Storage,
     public alerCtrl: AlertController,
     private router: Router,
     private http: HttpClient,
@@ -29,6 +29,16 @@ export class RegisterPage implements OnInit, UserResponse {
   ) { }
 
   ngOnInit() {
+    this.storage.get('activity').then((data)=>{
+      console.log(data);
+      if(data=='loggedin'){
+       
+        this.router.navigateByUrl('/tabs')
+      }
+      else if(data=='registered'){
+        this.router.navigateByUrl('/login')
+      }
+    });
   }
   /* async register() {
      const {username, pass, cpassword} = this;
@@ -98,15 +108,36 @@ export class RegisterPage implements OnInit, UserResponse {
 
 
       };
+
+      console.log(data);
       // https://mywash.herokuapp.com/package
       //
       //
-      this.http.post<UserResponse>('http://192.168.25.230:3000/registerotp', data).subscribe(
+      this.http.post<UserResponse>('https://mywash.herokuapp.com/registerotp', data).subscribe(
         (result: UserResponse) => {
-          console.log(result);
-          if (result.message == true) {
+
+          console.log(result.message);
+           if (result.message == '2') {
+            this.storage.set('email',this.email).then((successData)=>{
+              console.log('email stored')});
+
+              this.storage.set('activity','registered').then((successData)=>{
+                console.log('activity :stored');
+            });
+           
+            
             this.router.navigateByUrl('/registernew');
-          } else {
+          }
+          else if (result.message == '1') {
+            this.doAlert('Phonenumber Already Registered!', 'Okay');
+            this.phonenumber = '';
+            
+          }
+          else if(result.message=='0'){
+            this.doAlert('Email Already Registered!', 'Okay');
+            this.email = '';
+          }
+          else{
             console.log('hello');
             this.doAlert('User exists', 'Okay');
             this.phonenumber = '';
