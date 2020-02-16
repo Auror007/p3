@@ -10,6 +10,7 @@ import { DashPage } from '../dash/dash.page';
 import { ServicesPage } from '../services/services.page';
 import { OfferPage } from '../offer/offer.page';
 import { ProfilePage } from '../profile/profile.page';
+import { DashmodPageModule } from '../dashmod/dashmod.module';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    DashmodPageModule,
     TabsPageRoutingModule,
     RouterModule.forChild(routes)
   ],

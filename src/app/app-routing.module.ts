@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
   { path: 'policy', loadChildren: './policy/policy.module#PolicyPageModule' },
   { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
+  { path: 'dashmod', loadChildren: './dashmod/dashmod.module#DashmodPageModule' },
  ];
 
 @NgModule({
