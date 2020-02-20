@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'policy', loadChildren: './policy/policy.module#PolicyPageModule' },
   { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
   { path: 'dashmod', loadChildren: './dashmod/dashmod.module#DashmodPageModule' },
+  { path: 'carpop', loadChildren: './carpop/carpop.module#CarpopPageModule' },
  ];
 
 @NgModule({

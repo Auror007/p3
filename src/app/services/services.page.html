@@ -51,13 +51,15 @@
           
         </ion-slides>
   </ion-item>
-        <ion-item>
+        <!-- <ion-item>
         <ion-label style="margin-left: 5%;">Boost Up (x1)</ion-label>
         <ion-toggle slot="end"> [value]="checked"  </ion-toggle> 
-        </ion-item>
+        </ion-item> -->
 
         <ion-item >
-          <ion-button style="margin:auto;" (click)="presentActionSheet()">Change Time</ion-button>
+          <ion-button style="margin:auto;" color="danger" size="medium" (click)="presentActionSheet()">View Cart</ion-button>
+
+          <ion-button style="margin:auto;" size="medium" (click)="presentActionSheet()">Change Time</ion-button>
           <!-- add cart and track job -->
         </ion-item >
 

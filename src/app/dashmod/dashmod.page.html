@@ -23,7 +23,7 @@
   <ion-toolbar style="font-size: medium;">
     <ion-label slot="start">Price:</ion-label>
     <ion-label>{{price}}</ion-label>
-    <ion-fab-button  size="small" slot="end">
+    <ion-fab-button (click)="presentPopover()"  color="danger" size="small" slot="end">
       <ion-icon name="add"></ion-icon>
 
     </ion-fab-button>
