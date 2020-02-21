@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController,NavParams,PopoverController} from '@ionic/angular';
+import { ModalController,NavParams,PopoverController, Events} from '@ionic/angular';
 import { CarpopPage } from '../carpop/carpop.page';
 import { HttpClient } from '@angular/common/http';
 import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
@@ -18,12 +18,16 @@ export class DashmodPage implements OnInit {
   constructor(
     private modalCtrl:ModalController,
     private navParams: NavParams,
+    public events:Events,
     public popoverController: PopoverController,
     public http:HttpClient
   ) {
     this.desp=navParams.get('description');
     this.title=navParams.get('details');
     this.price=navParams.get('price');
+    events.subscribe('added', () => {
+        this.dismiss();
+    });
 
    }
 
@@ -32,26 +36,35 @@ export class DashmodPage implements OnInit {
   }
 
   async presentPopover(ev: any) {
-    let cardet:any;
-    this.http.post('https://mywash.herokuapp.com/service/find', {email:'meetp6041@gmail.com',vehicleCatagory:'sedan'}).subscribe(
-      (result) => {
-        cardet={list:result};
+   
+   
+     this.http.post('https://mywash.herokuapp.com/service/find', {email:'parmar.parth97531@gmail.com',vehicleCatagory:'sedan'}).subscribe(
+     async (result) => {
+       console.log('GOT ANSWER')
+        const cardet={list:result};
+        const popover = await this.popoverController.create({
+          component: CarpopPage,
+         componentProps:cardet,
+          event: ev,
+          translucent: true
+        });
+        return await popover.present();
       }
       
       );
-      cardet={list:['item1','item2','item3']};
-    const popover = await this.popoverController.create({
-      component: CarpopPage,
-      componentProps:cardet,
-      event: ev,
-      translucent: true
-    });
-    return await popover.present();
+
+
+    // console.log(result1);
+    // const popover = await this.popoverController.create({
+    //   component: CarpopPage,
+    //  componentProps:result1,
+    //   event: ev,
+    //   translucent: true
+    // });
+    // return await popover.present();
   }
 
   dismiss() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
     this.modalCtrl.dismiss({
       'dismissed': true
     });
