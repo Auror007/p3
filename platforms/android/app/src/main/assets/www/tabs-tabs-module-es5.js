@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n        <ion-toolbar>\r\n          <ion-title>Home</ion-title>\r\n        </ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n <ion-slides [options]=\"slideOptsOne\">\r\n   <!-- <ion-slide>\r\n     <img src=\"http://placehold.it/300x300/ff0000/ffffff\" alt=\"\">\r\n   </ion-slide>\r\n   <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/ffcc33/ffffff\" alt=\"\">\r\n  </ion-slide>\r\n  <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/33ccff/ffffff\" alt=\"\">\r\n  </ion-slide> -->\r\n  <ion-slide *ngFor=\"let slide of slideData\">\r\n    <img src=\"{{slide.image}}\" />\r\n  </ion-slide>\r\n </ion-slides>\r\n<ion-item>\r\n <ion-label position=\"fixed\">\r\n  Four-Wheeler\r\n</ion-label>\r\n</ion-item>\r\n<ion-slides>\r\n  \r\n <ion-slide>\r\n  <ion-card style=\"border-radius: 25px;\" button (click)=\"addCart()\">\r\n      <ion-card-header>\r\n        <ion-card-title>Service1</ion-card-title>\r\n        <ion-card-subtitle>1 month</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>\r\n          External Wash Weekly + 1 Extra interior wash\r\n        </ion-card-content>\r\n  </ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service2</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash weekly + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service3</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash daily + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n\r\n</ion-slides>\r\n<ion-item>\r\n  <ion-label position=\"fixed\">\r\n   Two-Wheeler\r\n </ion-label>\r\n </ion-item>\r\n<ion-slides>\r\n<ion-slide>\r\n  <ion-card style=\"border-radius: 25px;\">\r\n      <ion-card-header>\r\n        <ion-card-title>Service1</ion-card-title>\r\n        <ion-card-subtitle>1 month</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>\r\n          External Wash Weekly + 1 Extra interior wash\r\n        </ion-card-content>\r\n  </ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service2</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash weekly + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service3</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash daily + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n\r\n</ion-slides>\r\n      </ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n        <ion-toolbar>\r\n          <ion-title>Home</ion-title>\r\n        </ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n <ion-slides [options]=\"slideOptsOne\">\r\n   <!-- <ion-slide>\r\n     <img src=\"http://placehold.it/300x300/ff0000/ffffff\" alt=\"\">\r\n   </ion-slide>\r\n   <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/ffcc33/ffffff\" alt=\"\">\r\n  </ion-slide>\r\n  <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/33ccff/ffffff\" alt=\"\">\r\n  </ion-slide> -->\r\n  <ion-slide *ngFor=\"let slide of slideData\">\r\n    <img src=\"{{slide.image}}\" />\r\n  </ion-slide>\r\n </ion-slides>\r\n<ion-item>\r\n <ion-label text-wrap position=\"fixed\">\r\n  Four-Wheeler\r\n</ion-label>\r\n</ion-item>\r\n<ion-slides>\r\n  <ion-slide  *ngFor='let det of array_serv'>\r\n    <ion-card button style=\"border-radius: 25px;\"  (click)=\"addCart(det.packageId)\">\r\n      <ion-card-header>\r\n        \r\n        <ion-card-title>{{det.name}}</ion-card-title>\r\n        <ion-card-subtitle>{{det.duration}} Months</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>{{det.description}}</ion-card-content>\r\n  </ion-card>\r\n  </ion-slide>\r\n <!-- <ion-slide>\r\n  <ion-card style=\"border-radius: 25px;\" button (click)=\"addCart()\">\r\n      <ion-card-header>\r\n        <ion-card-title>Service1</ion-card-title>\r\n        <ion-card-subtitle>1 month</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>\r\n          External Wash Weekly + 1 Extra interior wash\r\n        </ion-card-content>\r\n  </ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service2</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash weekly + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service3</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash daily + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide> -->\r\n\r\n</ion-slides>\r\n<ion-item>\r\n  <ion-label text-wrap position=\"fixed\">\r\n   Two-Wheeler\r\n </ion-label>\r\n </ion-item>\r\n<ion-slides>\r\n<ion-slide>\r\n  <ion-card style=\"border-radius: 25px;\">\r\n      <ion-card-header>\r\n        <ion-card-title>Service1</ion-card-title>\r\n        <ion-card-subtitle>1 month</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>\r\n          External Wash Weekly + 1 Extra interior wash\r\n        </ion-card-content>\r\n  </ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service2</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash weekly + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service3</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash daily + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n\r\n</ion-slides>\r\n      </ion-content>\r\n";
     /***/
   },
 
@@ -81,7 +81,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-title>Dashboard</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  <ion-content>\n    <ion-item>\n        <ion-slides>\n          <ion-slide>\n              <ion-card style=\"height:200px !important;\">\n                  <ion-card-header>\n                    <ion-card-title>Vehicle 1</ion-card-title>\n                    <ion-card-subtitle>1 month</ion-card-subtitle>\n                    </ion-card-header>\n                  \n                    <ion-card-content style=\"text-align: left;\">\n                      Vehicle type<br>\n                      Vehicle Number<br>\n                      Package Selected<br>\n                    </ion-card-content>\n                    <ion-label>Start - End Date</ion-label>\n                   \n              </ion-card>\n          </ion-slide>\n          <ion-slide>\n            <ion-card style=\"height:200px !important;\">\n              <ion-card-header >\n                <ion-card-title>Vehicle 2</ion-card-title>\n                <ion-card-subtitle>3 months</ion-card-subtitle>\n                </ion-card-header>\n              \n                <ion-card-content>\n                  External Wash weekly + 2 Extra interior wash\n                </ion-card-content>\n          </ion-card>\n          </ion-slide>\n          <ion-slide>\n            <ion-card >\n              <ion-card-header>\n                <ion-card-title>Vehicle 3</ion-card-title>\n                <ion-card-subtitle>3 months</ion-card-subtitle>\n                </ion-card-header>\n              \n                <ion-card-content>\n                  External Wash daily + 2 Extra interior wash\n                </ion-card-content>\n          </ion-card>\n          </ion-slide>\n          \n        </ion-slides>\n  </ion-item>\n        <ion-item>\n        <ion-label style=\"margin-left: 5%;\">Boost Up (x1)</ion-label>\n        <ion-toggle slot=\"end\"> [value]=\"checked\"  </ion-toggle> \n        </ion-item>\n\n        <ion-item >\n          <ion-button style=\"margin:auto;\" (click)=\"presentActionSheet()\">Change Time</ion-button>\n          <!-- add cart and track job -->\n        </ion-item >\n\n\n        <ion-item >\n          <ion-label>\n            Recommended Combos\n          </ion-label>\n         \n        </ion-item >\n         <ion-slides>\n          <ion-slide>\n            <ion-card style=\"border-radius: 25px;\">\n                <ion-card-header>\n                  <ion-card-title>offer1</ion-card-title>\n                  <ion-card-subtitle>1 month</ion-card-subtitle>\n                  </ion-card-header>\n                \n                  <ion-card-content>\n                    External Wash Weekly + 1 Extra interior wash\n                  </ion-card-content>\n            </ion-card>\n        </ion-slide>\n        <ion-slide>\n          <ion-card style=\"border-radius: 25px;\">\n            <ion-card-header>\n              <ion-card-title>offer2</ion-card-title>\n              <ion-card-subtitle>3 months</ion-card-subtitle>\n              </ion-card-header>\n            \n              <ion-card-content>\n                External Wash weekly + 2 Extra interior wash\n              </ion-card-content>\n        </ion-card>\n        </ion-slide>\n        <ion-slide>\n          <ion-card style=\"border-radius: 25px;\">\n            <ion-card-header>\n              <ion-card-title>offer3</ion-card-title>\n              <ion-card-subtitle>3 months</ion-card-subtitle>\n              </ion-card-header>\n            \n              <ion-card-content>\n                External Wash daily + 2 Extra interior wash\n              </ion-card-content>\n        </ion-card>\n        </ion-slide>\n        \n      </ion-slides>\n  </ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-title>Dashboard</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  \n  <ion-content>\n    <ion-item>\n        <ion-slides>\n          <ion-slide>\n              <ion-card style=\"height:200px !important;\">\n                  <ion-card-header>\n                    <ion-card-title>Vehicle 1</ion-card-title>\n                    <ion-card-subtitle>1 month</ion-card-subtitle>\n                    </ion-card-header>\n                  \n                    <ion-card-content style=\"text-align: left;\">\n                      Vehicle type<br>\n                      Vehicle Number<br>\n                      Package Selected<br>\n                    </ion-card-content>\n                    <ion-label>Start - End Date</ion-label>\n                   \n              </ion-card>\n          </ion-slide>\n          <ion-slide>\n            <ion-card style=\"height:200px !important;\">\n              <ion-card-header >\n                <ion-card-title>Vehicle 2</ion-card-title>\n                <ion-card-subtitle>3 months</ion-card-subtitle>\n                </ion-card-header>\n              \n                <ion-card-content>\n                  External Wash weekly + 2 Extra interior wash\n                </ion-card-content>\n          </ion-card>\n          </ion-slide>\n          <ion-slide>\n            <ion-card >\n              <ion-card-header>\n                <ion-card-title>Vehicle 3</ion-card-title>\n                <ion-card-subtitle>3 months</ion-card-subtitle>\n                </ion-card-header>\n              \n                <ion-card-content>\n                  External Wash daily + 2 Extra interior wash\n                </ion-card-content>\n          </ion-card>\n          </ion-slide>\n          \n        </ion-slides>\n  </ion-item>\n        <!-- <ion-item>\n        <ion-label style=\"margin-left: 5%;\">Boost Up (x1)</ion-label>\n        <ion-toggle slot=\"end\"> [value]=\"checked\"  </ion-toggle> \n        </ion-item> -->\n\n        <ion-item >\n          <ion-button style=\"margin:auto;\" color=\"danger\" size=\"medium\" routerLink=\"/cart\" routerDirection=\"forward\" >View Cart</ion-button>\n\n          <ion-button style=\"margin:auto;\" size=\"medium\" (click)=\"presentActionSheet()\">Change Time</ion-button>\n          <!-- add cart and track job -->\n        </ion-item >\n\n\n        <ion-item >\n          <ion-label>\n            Recommended Combos\n          </ion-label>\n         \n        </ion-item >\n         <ion-slides>\n          <ion-slide>\n            <ion-card style=\"border-radius: 25px;\">\n                <ion-card-header>\n                  <ion-card-title>offer1</ion-card-title>\n                  <ion-card-subtitle>1 month</ion-card-subtitle>\n                  </ion-card-header>\n                \n                  <ion-card-content>\n                    External Wash Weekly + 1 Extra interior wash\n                  </ion-card-content>\n            </ion-card>\n        </ion-slide>\n        <ion-slide>\n          <ion-card style=\"border-radius: 25px;\">\n            <ion-card-header>\n              <ion-card-title>offer2</ion-card-title>\n              <ion-card-subtitle>3 months</ion-card-subtitle>\n              </ion-card-header>\n            \n              <ion-card-content>\n                External Wash weekly + 2 Extra interior wash\n              </ion-card-content>\n        </ion-card>\n        </ion-slide>\n        <ion-slide>\n          <ion-card style=\"border-radius: 25px;\">\n            <ion-card-header>\n              <ion-card-title>offer3</ion-card-title>\n              <ion-card-subtitle>3 months</ion-card-subtitle>\n              </ion-card-header>\n            \n              <ion-card-content>\n                External Wash daily + 2 Extra interior wash\n              </ion-card-content>\n        </ion-card>\n        </ion-slide>\n        \n      </ion-slides>\n  </ion-content>";
     /***/
   },
 
@@ -159,17 +159,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _items_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _items_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! ../items.service */
     "./src/app/items.service.ts");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _dashmod_dashmod_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../dashmod/dashmod.page */
+    "./src/app/dashmod/dashmod.page.ts");
+    /* harmony import */
+
+
+    var _det_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./det.model */
+    "./src/app/dash/det.model.ts");
 
     var DashPage =
     /*#__PURE__*/
     function () {
-      function DashPage(iserv) {
+      function DashPage(iserv, http, modal) {
         _classCallCheck(this, DashPage);
 
         this.iserv = iserv;
+        this.http = http;
+        this.modal = modal;
         this.slideData = [{
           image: "https://mywash.herokuapp.com/image/img.png"
         }, {
@@ -179,6 +205,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
           initialSlide: 0,
           speed: 2000
         };
+        this.array_serv = [];
       }
 
       _createClass(DashPage, [{
@@ -188,21 +215,57 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
         }
       }, {
         key: "ngOnInit",
-        value: function ngOnInit() {}
+        value: function ngOnInit() {
+          var _this = this;
+
+          this.http.get('https://mywash.herokuapp.com/package/show', {}).subscribe(function (result) {
+            console.log(result);
+
+            for (var key in result) {
+              if (result.hasOwnProperty(key)) {
+                _this.array_serv.push(new _det_model__WEBPACK_IMPORTED_MODULE_6__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration));
+              }
+            }
+
+            console.log(_this.array_serv);
+          });
+        }
       }, {
         key: "addCart",
-        value: function addCart() {
-          var dat = {
-            number: 5223,
-            serviceName: 'Premium1',
-            timeCost: '10min',
-            vehicleType: 'Sedan',
-            details: '1 Exterior wash + 2 Weekly Interior Wash',
-            price: 550,
-            validTime: '3 Months'
-          };
-          this.iserv.addtoCart(dat);
-          console.log(this.iserv.getCart());
+        value: function addCart(packageId) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
+          /*#__PURE__*/
+          regeneratorRuntime.mark(function _callee() {
+            var mod, modal;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    mod = this.array_serv.find(function (item) {
+                      return item.packageId == packageId;
+                    });
+                    console.log(mod);
+                    _context.next = 4;
+                    return this.modal.create({
+                      component: _dashmod_dashmod_page__WEBPACK_IMPORTED_MODULE_5__["DashmodPage"],
+                      componentProps: mod
+                    });
+
+                  case 4:
+                    modal = _context.sent;
+                    _context.next = 7;
+                    return modal.present();
+
+                  case 7:
+                    return _context.abrupt("return", _context.sent);
+
+                  case 9:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
         }
       }]);
 
@@ -211,7 +274,11 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
 
     DashPage.ctorParameters = function () {
       return [{
-        type: _items_service__WEBPACK_IMPORTED_MODULE_2__["ItemsService"]
+        type: _items_service__WEBPACK_IMPORTED_MODULE_3__["ItemsService"]
+      }, {
+        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
       }];
     };
 
@@ -223,8 +290,50 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./dash.page.scss */
       "./src/app/dash/dash.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_items_service__WEBPACK_IMPORTED_MODULE_2__["ItemsService"]])], DashPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_items_service__WEBPACK_IMPORTED_MODULE_3__["ItemsService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]])], DashPage);
     /***/
+  },
+
+  /***/
+  "./src/app/dash/det.model.ts":
+  /*!***********************************!*\
+    !*** ./src/app/dash/det.model.ts ***!
+    \***********************************/
+
+  /*! exports provided: det */
+
+  /***/
+  function srcAppDashDetModelTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "det", function () {
+      return det;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var det = function det(packageId, name, price, details, description, vehicleCatagory, vehicleType, duration) {
+      _classCallCheck(this, det);
+
+      this.packageId = packageId;
+      this.name = name;
+      this.price = price;
+      this.details = details;
+      this.description = description;
+      this.vehicleCatagory = vehicleCatagory;
+      this.vehicleType = vehicleType;
+      this.duration = duration;
+    };
+    /***/
+
   },
 
   /***/
@@ -568,31 +677,43 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
 
     var ServicesPage =
     /*#__PURE__*/
     function () {
-      function ServicesPage(actionSheetController) {
+      function ServicesPage(actionSheetController, router) {
         _classCallCheck(this, ServicesPage);
 
         this.actionSheetController = actionSheetController;
+        this.router = router;
       }
 
       _createClass(ServicesPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {}
       }, {
+        key: "gotoCart",
+        value: function gotoCart() {
+          this.router.navigateByUrl('/cart');
+        }
+      }, {
         key: "presentActionSheet",
         value: function presentActionSheet() {
           return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
           /*#__PURE__*/
-          regeneratorRuntime.mark(function _callee() {
+          regeneratorRuntime.mark(function _callee2() {
             var actionSheet;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
               while (1) {
-                switch (_context.prev = _context.next) {
+                switch (_context2.prev = _context2.next) {
                   case 0:
-                    _context.next = 2;
+                    _context2.next = 2;
                     return this.actionSheetController.create({
                       header: 'Select Time Slot',
                       buttons: [{
@@ -624,16 +745,16 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
                     });
 
                   case 2:
-                    actionSheet = _context.sent;
-                    _context.next = 5;
+                    actionSheet = _context2.sent;
+                    _context2.next = 5;
                     return actionSheet.present();
 
                   case 5:
                   case "end":
-                    return _context.stop();
+                    return _context2.stop();
                 }
               }
-            }, _callee, this);
+            }, _callee2, this);
           }));
         }
       }]);
@@ -644,6 +765,8 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     ServicesPage.ctorParameters = function () {
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ActionSheetController"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
       }];
     };
 
@@ -658,7 +781,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./services.page.scss */
       "./src/app/services/services.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ActionSheetController"]])], ServicesPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ActionSheetController"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]])], ServicesPage);
     /***/
   },
 
@@ -753,6 +876,12 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _profile_profile_page__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! ../profile/profile.page */
     "./src/app/profile/profile.page.ts");
+    /* harmony import */
+
+
+    var _dashmod_dashmod_module__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ../dashmod/dashmod.module */
+    "./src/app/dashmod/dashmod.module.ts");
 
     var routes = [{
       path: '',
@@ -764,7 +893,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     };
 
     TabsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
-      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"], _tabs_router_module__WEBPACK_IMPORTED_MODULE_5__["TabsPageRoutingModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"], _dashmod_dashmod_module__WEBPACK_IMPORTED_MODULE_12__["DashmodPageModule"], _tabs_router_module__WEBPACK_IMPORTED_MODULE_5__["TabsPageRoutingModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
       declarations: [_tabs_page__WEBPACK_IMPORTED_MODULE_7__["TabsPage"], _dash_dash_page__WEBPACK_IMPORTED_MODULE_8__["DashPage"], _services_services_page__WEBPACK_IMPORTED_MODULE_9__["ServicesPage"], _offer_offer_page__WEBPACK_IMPORTED_MODULE_10__["OfferPage"], _profile_profile_page__WEBPACK_IMPORTED_MODULE_11__["ProfilePage"]]
     })], TabsPageModule);
     /***/

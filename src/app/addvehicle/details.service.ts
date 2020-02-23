@@ -7,10 +7,10 @@ export class DetailsService {
 
   details={
     email: String,
-    type:String,
+    vechicleType:String,
     brand: String,
     model:String,
-    catagory:String,
+    vehicleCatagory:String,
     number:String,
     parkingarea:String,
     longitude:String,
@@ -24,7 +24,7 @@ export class DetailsService {
     this.details.email = data;
   }
   public setType(data){
-    this.details.type = data;
+    this.details.vechicleType = data;
   }
  
   public setBrand(data){
@@ -34,7 +34,7 @@ export class DetailsService {
     this.details.model=data;
   }
   public setCategory(data){
-    this.details.catagory=data;
+    this.details.vehicleCatagory=data;
   }
   public setParkingarea(data){
     this.details.parkingarea=data;
@@ -52,7 +52,7 @@ export class DetailsService {
   public getCardet(){
     const cardet={
       brand:this.details.brand,
-      catagory:this.details.catagory,
+      catagory:this.details.vehicleCatagory,
     }
    
     return cardet

@@ -3,6 +3,7 @@ import { ModalController,NavParams,PopoverController, Events} from '@ionic/angul
 import { CarpopPage } from '../carpop/carpop.page';
 import { HttpClient } from '@angular/common/http';
 import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
+import {Storage} from  '@ionic/storage';
 
 @Component({
   selector: 'app-dashmod',
@@ -14,20 +15,32 @@ export class DashmodPage implements OnInit {
   public desp:any;
   public title:any;
   public price:any;
+  public cat :any;
+  public email:any;
 
+  
   constructor(
     private modalCtrl:ModalController,
     private navParams: NavParams,
     public events:Events,
     public popoverController: PopoverController,
-    public http:HttpClient
+    public http:HttpClient,
+    public storage:Storage
+
   ) {
     this.desp=navParams.get('description');
     this.title=navParams.get('details');
     this.price=navParams.get('price');
+    this.cat=navParams.get('vehicleCatagory');
+    
     events.subscribe('added', () => {
         this.dismiss();
     });
+
+    this.storage.get('email').then((data)=>{
+       this.email=data;
+
+      });
 
    }
 
@@ -35,16 +48,20 @@ export class DashmodPage implements OnInit {
     
   }
 
-  async presentPopover(ev: any) {
-   
-   
-     this.http.post('https://mywash.herokuapp.com/service/find', {email:'parmar.parth97531@gmail.com',vehicleCatagory:'sedan'}).subscribe(
+  async presentPopover() {
+   let ev:any;
+    const req={
+                email:this.email,
+                vehicleCatagory:this.cat
+              }
+            console.log(req);
+     this.http.post('https://mywash.herokuapp.com/service/find',req ).subscribe(
      async (result) => {
        console.log('GOT ANSWER')
-        const cardet={list:result};
+        // const cardet={list:result};
         const popover = await this.popoverController.create({
           component: CarpopPage,
-         componentProps:cardet,
+         componentProps:{list:result},
           event: ev,
           translucent: true
         });

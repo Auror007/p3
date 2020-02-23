@@ -178,17 +178,24 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! ../register/regservice.service */
     "./src/app/register/regservice.service.ts");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
     var LoginPage =
     /*#__PURE__*/
     function () {
-      function LoginPage(router, http, alerCtrl, regServ) {
+      function LoginPage(router, http, alerCtrl, regServ, storage) {
         _classCallCheck(this, LoginPage);
 
         this.router = router;
         this.http = http;
         this.alerCtrl = alerCtrl;
         this.regServ = regServ;
+        this.storage = storage;
         this.email = '';
       }
 
@@ -211,6 +218,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.doAlert('Enter Valid Email!', 'Okay');
           } else {
             this.regServ.setEmail(email);
+            this.storage.set('email', this.email);
             var data = {
               email: this.regServ.getEmail()
             }; //check is user already logged in then route directly to dash else to registration pages
@@ -221,6 +229,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
               if (result.message == true) {
                 _this.router.navigateByUrl('/registernew');
+
+                _this.storage.set('activity', 'loggedin').then(function (data) {
+                  console.log(data);
+                });
               } else {
                 _this.doAlert('Not Registered', 'Register Now');
 
@@ -306,6 +318,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
       }, {
         type: _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
       }];
     };
 
@@ -317,7 +331,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./login.page.scss */
       "./src/app/login/login.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"]])], LoginPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"], _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])], LoginPage);
     /***/
   }
 }]);

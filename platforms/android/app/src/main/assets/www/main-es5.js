@@ -18,6 +18,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var map = {
       "./about/about.module": ["./src/app/about/about.module.ts", "about-about-module"],
       "./addvehicle/addvehicle.module": ["./src/app/addvehicle/addvehicle.module.ts", "common", "addvehicle-addvehicle-module"],
+      "./carpop/carpop.module": ["./src/app/carpop/carpop.module.ts", "common"],
+      "./cart/cart.module": ["./src/app/cart/cart.module.ts", "cart-cart-module"],
+      "./checkout/checkout.module": ["./src/app/checkout/checkout.module.ts", "checkout-checkout-module"],
+      "./dashmod/dashmod.module": ["./src/app/dashmod/dashmod.module.ts", "common"],
       "./login/login.module": ["./src/app/login/login.module.ts", "common", "login-login-module"],
       "./main/main.module": ["./src/app/main/main.module.ts", "main-main-module"],
       "./orders/orders.module": ["./src/app/orders/orders.module.ts", "orders-orders-module"],
@@ -25,7 +29,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./register/register.module": ["./src/app/register/register.module.ts", "common", "register-register-module"],
       "./registernew/registernew.module": ["./src/app/registernew/registernew.module.ts", "common", "registernew-registernew-module"],
       "./support/support.module": ["./src/app/support/support.module.ts", "support-support-module"],
-      "./tabs/tabs.module": ["./src/app/tabs/tabs.module.ts", "tabs-tabs-module"]
+      "./tabs/tabs.module": ["./src/app/tabs/tabs.module.ts", "common", "tabs-tabs-module"]
     };
 
     function webpackAsyncContext(req) {
@@ -831,6 +835,18 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'about',
       loadChildren: './about/about.module#AboutPageModule'
+    }, {
+      path: 'dashmod',
+      loadChildren: './dashmod/dashmod.module#DashmodPageModule'
+    }, {
+      path: 'carpop',
+      loadChildren: './carpop/carpop.module#CarpopPageModule'
+    }, {
+      path: 'cart',
+      loadChildren: './cart/cart.module#CartPageModule'
+    }, {
+      path: 'checkout',
+      loadChildren: './checkout/checkout.module#CheckoutPageModule'
     }];
 
     var AppRoutingModule = function AppRoutingModule() {

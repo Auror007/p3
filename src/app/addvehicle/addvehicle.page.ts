@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import {DetailsService} from './details.service';
 import { HttpClient } from '@angular/common/http';
@@ -6,7 +6,8 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {RegserviceService} from '../register/regservice.service';
 import {Storage} from '@ionic/storage';
 import UserResponse from '../message';
-
+import { ToastController } from '@ionic/angular';
+import {IonContent} from '@ionic/angular';
 interface Cardetails{
   list: [],
 }
@@ -19,11 +20,11 @@ interface Cardetails{
 
 
 export class AddvehiclePage implements OnInit {
+  @ViewChild('pageTop',{static:false}) pageTop: IonContent;
   public area: any;
   public type: any;
   public brand:any;
-  public vehform:any;
-
+  public email:any;
   public model:any;
   public number:any;
   public time:any;
@@ -48,22 +49,25 @@ export class AddvehiclePage implements OnInit {
     private detServ: DetailsService,
     private regServ: RegserviceService,
     private http: HttpClient,
-    private geolocation: Geolocation
+    private geolocation: Geolocation,
+    public toastController: ToastController
 
 
     ) { 
       this.vara=0;
+      this.storage.get('email').then((data)=>{
+        console.log(data);
+        //this.email=data; static because this page is hit only after registration
+        this.email='parmar.parth97531@gmail.com'
+      });
+      
     }
   
   ngOnInit() {
-    this.storage.get('email').then((data)=>{
-      console.log(data);
-      this.detServ.setEmail(data);
-
-    });
+    
   }
   dash(){
-    this.detServ.setEmail('parmar.parth97531@gmail.com');
+    this.detServ.setEmail(this.email);
     this.detServ.setModel(this.model);
     this.detServ.setNumber(this.number);
     this.detServ.setParkingarea(this.area);
@@ -76,8 +80,17 @@ export class AddvehiclePage implements OnInit {
         {
           console.log(result);
           if(result.message==true){
+            this.area='';
+            this.type='';
+            this.brand='';
+            this.model='';
+            this.number='';
+            this.time='';
+            this.catagory='';
+            this.lat='';
+            this.lng='';
+            this.pageTop.scrollToTop();
 
-            //clear inputs and scroll to top
           }
           else if(result.message==false){
             //alert and clear  relavent inputs
@@ -91,6 +104,7 @@ export class AddvehiclePage implements OnInit {
 
   
 finaldash(){
+  this.detServ.setEmail(this.email);
   this.detServ.setModel(this.model);
   this.detServ.setNumber(this.number);
   this.detServ.setParkingarea(this.area);
@@ -101,6 +115,7 @@ finaldash(){
     (result:UserResponse) => 
       {
 
+        console.log(result);
         if(result.message==true){
           this.router.navigateByUrl('/tabs');
 
@@ -144,6 +159,19 @@ finaldash(){
       this.car = 0;
     }
   }
+  onChange2(){
+    this.brand='';
+    this.model='';
+  }
+
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Your location has been saved!',
+      duration: 2000
+    });
+    toast.present();
+  }
 
   sendCardet()
   {
@@ -161,6 +189,23 @@ finaldash(){
         console.log(error);
       });
   }
+
+  // sendCardet()
+  // {
+  //   this.detServ.setCategory(this.catagory);
+  //   this.detServ.setBrand(this.brand);
+  //   const data=this.detServ.getCardet();
+  //   console.log(this.detServ.getCardet());
+  //   this.http.post<Cardetails>('https://mywash.herokuapp.com/uservehicle/findModel',data).subscribe(
+  //     (result) => 
+  //       {
+  //         console.log(result.list);
+  //         this.resp.list=result.list;
+  //       },
+  //     error => {
+  //       console.log(error);
+  //     });
+  // }
 
   getLoc(){
 
@@ -188,6 +233,7 @@ finaldash(){
             }
             console.log(loc);
             this.detServ.setLoc(loc);
+            this.presentToast();
            
   }
 }

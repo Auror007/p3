@@ -8,7 +8,6 @@ export class ItemsService {
   constructor() { }
   cart=[]
   servicename:any;
-  timecost:any;
   vehicleType:any;
   details:any;
   price:any;

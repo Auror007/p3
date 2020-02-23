@@ -17,6 +17,8 @@ const routes: Routes = [
   { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
   { path: 'dashmod', loadChildren: './dashmod/dashmod.module#DashmodPageModule' },
   { path: 'carpop', loadChildren: './carpop/carpop.module#CarpopPageModule' },
+  { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
+  { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
  ];
 
 @NgModule({

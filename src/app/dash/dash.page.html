@@ -19,13 +19,13 @@
   </ion-slide>
  </ion-slides>
 <ion-item>
- <ion-label position="fixed">
+ <ion-label text-wrap position="fixed">
   Four-Wheeler
 </ion-label>
 </ion-item>
 <ion-slides>
   <ion-slide  *ngFor='let det of array_serv'>
-    <ion-card button style="border-radius: 25px;" button (click)="addCart(det.id)">
+    <ion-card button style="border-radius: 25px;"  (click)="addCart(det.packageId)">
       <ion-card-header>
         
         <ion-card-title>{{det.name}}</ion-card-title>
@@ -74,7 +74,7 @@
 
 </ion-slides>
 <ion-item>
-  <ion-label position="fixed">
+  <ion-label text-wrap position="fixed">
    Two-Wheeler
  </ion-label>
  </ion-item>

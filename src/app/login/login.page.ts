@@ -40,6 +40,7 @@ export class LoginPage implements OnInit, UserResponse {
       this.doAlert('Enter Valid Email!', 'Okay');
     } else {
       this.regServ.setEmail(email);
+      this.storage.set('email',this.email);
       const data = {
         email: this.regServ.getEmail()
       };

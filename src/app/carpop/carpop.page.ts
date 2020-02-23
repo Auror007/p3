@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavParams,PopoverController, Events } from '@ionic/angular';
+import {Storage} from '@ionic/storage';
 @Component({
   selector: 'app-carpop',
   templateUrl: './carpop.page.html',
@@ -7,7 +8,7 @@ import { NavParams,PopoverController, Events } from '@ionic/angular';
 })
 export class CarpopPage implements OnInit {
   public array_serv :Array<string>=[];
-
+  list;
 
   constructor(
     public events:Events,
@@ -17,8 +18,9 @@ export class CarpopPage implements OnInit {
 
   ngOnInit() {
     
-    console.log(this.navParams.get('list'));
-   this.array_serv=this.navParams.get('list');
+    console.log(`$list`);
+  //  this.array_serv=this.navParams.get('list');
+   
 
     }
 
@@ -27,9 +29,6 @@ export class CarpopPage implements OnInit {
       console.log(val);
       this.popoverController.dismiss();
       this.events.publish('added');
-
-      
-
     }
     
 

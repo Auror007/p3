@@ -42,12 +42,13 @@ export class DashPage implements OnInit{
             if(result.hasOwnProperty(key)){
               this.array_serv.push(
                 new det(
-                  result[key].id,
+                  result[key].packageId,
                   result[key].name,
                   result[key].price,
                   result[key].details,
                   result[key].description,
-                  result[key].catagory,
+                  result[key].vehicleCatagory,
+                  result[key].vehicleType,
                   result[key].duration
                      )
               );
@@ -58,19 +59,10 @@ export class DashPage implements OnInit{
         }
     );
   }
-   async addCart(id){
-    const dat={
-      number:5223,
-      serviceName:'Premium1',
-      timeCost:'10min',
-      vehicleType:'Sedan',
-      details:'1 Exterior wash + 2 Weekly Interior Wash',
-      price:550,
-      validTime:'3 Months',
-    }
+   async addCart(packageId){
     
-    this.iserv.addtoCart(dat);
-    const mod=this.array_serv.find(item => item.id==id);
+    
+    const mod=this.array_serv.find(item => item.packageId==packageId);
     console.log(mod);
     const modal = await this.modal.create({
       component: DashmodPage,

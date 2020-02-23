@@ -681,6 +681,314 @@ const findCheckedOption = (el, tagName) => {
 
 /***/ }),
 
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/carpop/carpop.page.html":
+/*!*******************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/carpop/carpop.page.html ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar style=\"text-align: center;\">\n    Select Car\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-list style=\"margin-bottom: 0%;\" *ngFor=\"let item of array_serv\">\n<ion-item button (click)=\"onClick(item)\">\n<ion-label style=\"text-align: center;\">{{item}}</ion-label>\n</ion-item>\n</ion-list>\n</ion-content>\n");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/dashmod/dashmod.page.html":
+/*!*********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/dashmod/dashmod.page.html ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Details</ion-title>\n   \n    <ion-button color=\"danger\" slot=\"end\"  (click)=\"dismiss()\">Close\n     </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>{{title}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>{{desp}}</ion-label>\n    </ion-item>\n  </ion-list>\n  \n</ion-content>\n<ion-footer class=\"ion-no-border\">\n <ion-item>\n  <ion-toolbar style=\"font-size: medium;\">\n    <ion-label slot=\"start\">Price:</ion-label>\n    <ion-label>{{price}}</ion-label>\n    <ion-fab-button (click)=\"presentPopover()\"  color=\"danger\" size=\"small\" slot=\"end\">\n      <ion-icon name=\"add\"></ion-icon>\n\n    </ion-fab-button>\n  </ion-toolbar>\n</ion-item>\n</ion-footer>\n");
+
+/***/ }),
+
+/***/ "./src/app/carpop/carpop.module.ts":
+/*!*****************************************!*\
+  !*** ./src/app/carpop/carpop.module.ts ***!
+  \*****************************************/
+/*! exports provided: CarpopPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CarpopPageModule", function() { return CarpopPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _carpop_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./carpop.page */ "./src/app/carpop/carpop.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _carpop_page__WEBPACK_IMPORTED_MODULE_6__["CarpopPage"]
+    }
+];
+let CarpopPageModule = class CarpopPageModule {
+};
+CarpopPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_carpop_page__WEBPACK_IMPORTED_MODULE_6__["CarpopPage"]]
+    })
+], CarpopPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/carpop/carpop.page.scss":
+/*!*****************************************!*\
+  !*** ./src/app/carpop/carpop.page.scss ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("ion-item {\n  margin: auto;\n  padding: initial;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY2FycG9wL0Q6XFxTRU04XFxwMy9zcmNcXGFwcFxcY2FycG9wXFxjYXJwb3AucGFnZS5zY3NzIiwic3JjL2FwcC9jYXJwb3AvY2FycG9wLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFlBQUE7RUFDQSxnQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvY2FycG9wL2NhcnBvcC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJpb24taXRlbXtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIHBhZGRpbmc6IGluaXRpYWw7ICAgIFxyXG59IiwiaW9uLWl0ZW0ge1xuICBtYXJnaW46IGF1dG87XG4gIHBhZGRpbmc6IGluaXRpYWw7XG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/carpop/carpop.page.ts":
+/*!***************************************!*\
+  !*** ./src/app/carpop/carpop.page.ts ***!
+  \***************************************/
+/*! exports provided: CarpopPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CarpopPage", function() { return CarpopPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+let CarpopPage = class CarpopPage {
+    constructor(events, navParams, popoverController) {
+        this.events = events;
+        this.navParams = navParams;
+        this.popoverController = popoverController;
+        this.array_serv = [];
+    }
+    ngOnInit() {
+        console.log(this.list);
+        this.array_serv = this.navParams.get('list');
+    }
+    onClick(val) {
+        console.log(val);
+        this.popoverController.dismiss();
+        this.events.publish('added');
+    }
+};
+CarpopPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] }
+];
+CarpopPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-carpop',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./carpop.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/carpop/carpop.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./carpop.page.scss */ "./src/app/carpop/carpop.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"]])
+], CarpopPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashmod/dashmod.module.ts":
+/*!*******************************************!*\
+  !*** ./src/app/dashmod/dashmod.module.ts ***!
+  \*******************************************/
+/*! exports provided: DashmodPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashmodPageModule", function() { return DashmodPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _dashmod_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dashmod.page */ "./src/app/dashmod/dashmod.page.ts");
+/* harmony import */ var _carpop_carpop_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../carpop/carpop.module */ "./src/app/carpop/carpop.module.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _dashmod_page__WEBPACK_IMPORTED_MODULE_6__["DashmodPage"]
+    }
+];
+let DashmodPageModule = class DashmodPageModule {
+};
+DashmodPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _carpop_carpop_module__WEBPACK_IMPORTED_MODULE_7__["CarpopPageModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_dashmod_page__WEBPACK_IMPORTED_MODULE_6__["DashmodPage"]]
+    })
+], DashmodPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/dashmod/dashmod.page.scss":
+/*!*******************************************!*\
+  !*** ./src/app/dashmod/dashmod.page.scss ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL2Rhc2htb2QvZGFzaG1vZC5wYWdlLnNjc3MifQ== */");
+
+/***/ }),
+
+/***/ "./src/app/dashmod/dashmod.page.ts":
+/*!*****************************************!*\
+  !*** ./src/app/dashmod/dashmod.page.ts ***!
+  \*****************************************/
+/*! exports provided: DashmodPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DashmodPage", function() { return DashmodPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _carpop_carpop_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../carpop/carpop.page */ "./src/app/carpop/carpop.page.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
+
+
+
+
+
+let DashmodPage = class DashmodPage {
+    constructor(modalCtrl, navParams, events, popoverController, http, storage) {
+        this.modalCtrl = modalCtrl;
+        this.navParams = navParams;
+        this.events = events;
+        this.popoverController = popoverController;
+        this.http = http;
+        this.storage = storage;
+        this.desp = navParams.get('description');
+        this.title = navParams.get('details');
+        this.price = navParams.get('price');
+        this.cat = navParams.get('vehicleCatagory');
+        events.subscribe('added', () => {
+            this.dismiss();
+        });
+        this.storage.get('email').then((data) => {
+            this.email = data;
+        });
+    }
+    ngOnInit() {
+    }
+    presentPopover() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let ev;
+            const req = {
+                email: this.email,
+                vehicleCatagory: this.cat
+            };
+            console.log(req);
+            this.http.post('https://mywash.herokuapp.com/service/find', req).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+                console.log('GOT ANSWER');
+                const cardet = { list: result };
+                const popover = yield this.popoverController.create({
+                    component: _carpop_carpop_page__WEBPACK_IMPORTED_MODULE_3__["CarpopPage"],
+                    componentProps: cardet,
+                    event: ev,
+                    translucent: true
+                });
+                return yield popover.present();
+            }));
+            // console.log(result1);
+            // const popover = await this.popoverController.create({
+            //   component: CarpopPage,
+            //  componentProps:result1,
+            //   event: ev,
+            //   translucent: true
+            // });
+            // return await popover.present();
+        });
+    }
+    dismiss() {
+        this.modalCtrl.dismiss({
+            'dismissed': true
+        });
+    }
+};
+DashmodPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }
+];
+DashmodPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-dashmod',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./dashmod.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/dashmod/dashmod.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./dashmod.page.scss */ "./src/app/dashmod/dashmod.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"],
+        _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])
+], DashmodPage);
+
+
+
+/***/ }),
+
 /***/ "./src/app/register/regservice.service.ts":
 /*!************************************************!*\
   !*** ./src/app/register/regservice.service.ts ***!

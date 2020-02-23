@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title style=\"text-align:center;\">Details</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n    <br>\n    <br>\n    <ion-item>\n        <ion-label >Vehicle type </ion-label>\n        <ion-select interface=\"popover\" [(ngModel)]=\"type\" (ionChange)=\"onChange1(type)\">\n            <ion-select-option value=\"Two wheeler\">Two-wheeler</ion-select-option>\n            <ion-select-option value=\"Car\">Car</ion-select-option>\n          </ion-select>\n      </ion-item>\n      <ion-item [hidden]=\"!car\">\n                  \n        <ion-label>Car type</ion-label>\n        <ion-select interface=\"popover\" [(ngModel)]=\"catagory\">\n          <ion-select-option value=\"sedan\">Sedan</ion-select-option>\n          <ion-select-option value=\"hatchback\">Hatchback</ion-select-option>\n          <ion-select-option value=\"suv\">SUV</ion-select-option>\n          </ion-select>\n      </ion-item>\n      <ion-item [hidden]=\"!bike\">\n          \n          <ion-label>Bike type</ion-label>\n          <ion-select interface=\"popover\" [(ngModel)]=\"catagory\">\n          <ion-select-option value=\"sports\">sports bike</ion-select-option>\n          <ion-select-option value=\"moped\">moped</ion-select-option>\n          <ion-select-option value=\"bike\">bike</ion-select-option>\n          </ion-select> \n          <br>\n          <br>     \n      </ion-item>\n      \n     \n      <ion-item>\n          <ion-label >Select Brand</ion-label>\n            \n          <ion-select interface=\"popover\" [(ngModel)]=\"brand\" [hidden]=\"!car\" (ionChange)=\"sendCardet()\">\n            <ion-select-option value=\"hyundai\">Hyundai</ion-select-option>\n            <ion-select-option value=\"suzuki\">Maruti Suzuki</ion-select-option>\n            <ion-select-option value=\"honda\">Honda</ion-select-option>\n            </ion-select>\n\n            <ion-select interface=\"popover\" [(ngModel)]=\"brand\" [hidden]=\"!bike\" >\n                <ion-select-option value=\"Honda\">Honda</ion-select-option>\n                <ion-select-option value=\"Bajaj\">bajaj</ion-select-option>\n                <ion-select-option value=\"Hero\">hero</ion-select-option>\n                </ion-select>\n        </ion-item>\n        <br>\n      <br>\n      <ion-item>\n        <ion-label >Select Model</ion-label>\n        <ion-select interface=\"popover\" [(ngModel)]=\"model\">\n          <ion-select-option *ngFor=\"let model of resp.list\">{{model}}</ion-select-option>\n          </ion-select>\n          </ion-item>\n          <br>\n      <br>\n      <ion-item  >\n              <ion-label >Vehicle Number</ion-label>\n              <ion-input placeholder=\"Eg: GJ-13-CC-710\" [(ngModel)]=\"number\" ></ion-input>\n            </ion-item>\n            <br>\n      <br>\n      <ion-item>\n                <ion-label >Parking location</ion-label><br>\n                <ion-select  interface=\"popover\" [(ngModel)]=\"area\" (ionChange)=\"onChange()\">\n                    <ion-select-option value=\"Basement 1\">Basement 1</ion-select-option>\n                    <ion-select-option value=\"Basement 2\">Basement 2</ion-select-option>\n                    <ion-select-option value=\"Ground Floor\">Ground Floor</ion-select-option>\n                    <ion-select-option value=\"4\">Other</ion-select-option>\n                </ion-select>\n      </ion-item>\n        <ion-item *ngIf=\"vara==4\">\n            <ion-label>Specify location</ion-label>\n            <ion-input  type=\"text\" [(ngModel)]=\"area\"></ion-input>\n        </ion-item>\n              <br>\n      <br>\n      <ion-item>\n                  <ion-label>Preferred time</ion-label>\n                  <ion-select interface=\"popover\" [(ngModel)]=\"time\">\n                      <ion-select-option value=\"1\">5:00-6:00 AM</ion-select-option>\n                      <ion-select-option value=\"2\">6:00-7:00 AM</ion-select-option>\n                      <ion-select-option value=\"3\">7:00-8:00 AM</ion-select-option>\n                      <ion-select-option value=\"4\">8:00-9:00 AM</ion-select-option>\n                      <ion-select-option value=\"5\">Any</ion-select-option>\n\n                  </ion-select>\n                </ion-item>\n                <br>\n                <br>\n                <br>\n                <ion-item>\n                  <ion-button style=\"margin-left: auto;margin-right: auto;\" size=large (click)=\"getLoc()\" expand=\"block\">Get Location</ion-button>\n                </ion-item>\n                <br>\n                <br>\n                <br>\n                \n<ion-button  shape=round class=\"buttons\" size=large  fill=\"solid\" expand=\"block\" color=\"dark\"  (click)=dash()  style=\"width: 50%;margin-right:25%;margin-left:25%\" >Add More</ion-button>\n<br>\n<ion-button  shape=round class=\"buttons\" size=large  fill=\"solid\" expand=\"block\" color=\"dark\" (click)=dash()  style=\"width: 50%;margin-right:25%;margin-left:25%\" >Submit</ion-button>\n\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title style=\"text-align:center;\">Details</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content #pageTop>\n\n    <br>\n    <br>\n    <ion-item>\n        <ion-label >Vehicle type </ion-label>\n        <ion-select interface=\"popover\" [(ngModel)]=\"type\" (ionChange)=\"onChange1(type)\">\n            <ion-select-option value=\"Two wheeler\">Two-wheeler</ion-select-option>\n            <ion-select-option value=\"Car\">Car</ion-select-option>\n          </ion-select>\n      </ion-item>\n      <ion-item [hidden]=\"!car\">\n                  \n        <ion-label>Car type</ion-label>\n        <ion-select interface=\"popover\" [(ngModel)]=\"catagory\" (ionChange)=\"onChange2()\">\n          <ion-select-option value=\"sedan\">Sedan</ion-select-option>\n          <ion-select-option value=\"hatchback\">Hatchback</ion-select-option>\n          <ion-select-option value=\"suv\">SUV</ion-select-option>\n          </ion-select>\n      </ion-item>\n      <ion-item [hidden]=\"!bike\">\n          \n          <ion-label>Bike type</ion-label>\n          <ion-select interface=\"popover\" [(ngModel)]=\"catagory\">\n          <ion-select-option value=\"sports\">sports bike</ion-select-option>\n          <ion-select-option value=\"moped\">moped</ion-select-option>\n          <ion-select-option value=\"bike\">bike</ion-select-option>\n          </ion-select> \n          <br>\n          <br>     \n      </ion-item>\n      \n     \n      <ion-item>\n          <ion-label >Select Brand</ion-label>\n            \n          <ion-select interface=\"popover\" [(ngModel)]=\"brand\" [hidden]=\"!car\" (ionChange)=\"sendCardet()\">\n            <ion-select-option value=\"hyundai\">Hyundai</ion-select-option>\n            <ion-select-option value=\"suzuki\">Maruti Suzuki</ion-select-option>\n            <ion-select-option value=\"honda\">Honda</ion-select-option>\n            </ion-select>\n\n            <ion-select interface=\"popover\" [(ngModel)]=\"brand\" [hidden]=\"!bike\" >\n                <ion-select-option value=\"Honda\">Honda</ion-select-option>\n                <ion-select-option value=\"Bajaj\">bajaj</ion-select-option>\n                <ion-select-option value=\"Hero\">hero</ion-select-option>\n                </ion-select>\n        </ion-item>\n        <br>\n      <br>\n      <ion-item>\n        <ion-label >Select Model</ion-label>\n        <ion-select interface=\"popover\" [(ngModel)]=\"model\">\n          <ion-select-option *ngFor=\"let model of resp.list\">{{model}}</ion-select-option>\n          </ion-select>\n          </ion-item>\n          <br>\n      <br>\n      <ion-item  >\n              <ion-label >Vehicle Number</ion-label>\n              <ion-input placeholder=\"Eg: GJ-13-CC-710\" [(ngModel)]=\"number\" ></ion-input>\n            </ion-item>\n            <br>\n      <br>\n      <ion-item>\n                <ion-label >Parking location</ion-label><br>\n                <ion-select  interface=\"popover\" [(ngModel)]=\"area\" (ionChange)=\"onChange()\">\n                    <ion-select-option value=\"Basement 1\">Basement 1</ion-select-option>\n                    <ion-select-option value=\"Basement 2\">Basement 2</ion-select-option>\n                    <ion-select-option value=\"Ground Floor\">Ground Floor</ion-select-option>\n                    <ion-select-option value=\"4\">Other</ion-select-option>\n                </ion-select>\n      </ion-item>\n        <ion-item *ngIf=\"vara==4\">\n            <ion-label>Specify location</ion-label>\n            <ion-input  type=\"text\" [(ngModel)]=\"area\"></ion-input>\n        </ion-item>\n              <br>\n      <br>\n      <ion-item>\n                  <ion-label>Preferred time</ion-label>\n                  <ion-select interface=\"popover\" [(ngModel)]=\"time\">\n                      <ion-select-option value=\"1\">5:00-6:00 AM</ion-select-option>\n                      <ion-select-option value=\"2\">6:00-7:00 AM</ion-select-option>\n                      <ion-select-option value=\"3\">7:00-8:00 AM</ion-select-option>\n                      <ion-select-option value=\"4\">8:00-9:00 AM</ion-select-option>\n                      <ion-select-option value=\"5\">Any</ion-select-option>\n\n                  </ion-select>\n                </ion-item>\n                <br>\n                <br>\n                <br>\n                <ion-item>\n                  <ion-label>\n                    Address \n                  </ion-label>\n                  <!-- <ion-icon button slot=\"end\"  (click)=\"getLoc()\" ></ion-icon> -->\n                  <ion-button color=\"danger\" slot=\"end\" style=\"margin-left: auto;margin-right: auto;\" size=medium (click)=\"getLoc()\"  expand=\"block\">Get Location</ion-button>\n                </ion-item>\n                <br>\n                <br>\n                <br>\n                \n<ion-button  shape=round class=\"buttons\" size=medium  fill=\"solid\" expand=\"block\" color=\"dark\"  (click)=dash()  style=\"width: 50%;margin-right:25%;margin-left:25%\" >Add More</ion-button>\n<br>\n<ion-button  shape=round class=\"buttons\" size=medium  fill=\"solid\" expand=\"block\" color=\"dark\" (click)=finaldash()  style=\"width: 50%;margin-right:25%;margin-left:25%\" >Submit</ion-button>\n\n</ion-content>\n";
     /***/
   },
 
@@ -190,11 +190,19 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
 
     var AddvehiclePage =
     /*#__PURE__*/
     function () {
-      function AddvehiclePage(storage, router, detServ, regServ, http, geolocation) {
+      function AddvehiclePage(storage, router, detServ, regServ, http, geolocation, toastController) {
+        var _this = this;
+
         _classCallCheck(this, AddvehiclePage);
 
         this.storage = storage;
@@ -203,27 +211,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.regServ = regServ;
         this.http = http;
         this.geolocation = geolocation;
+        this.toastController = toastController;
         this.resp = {
           list: []
         };
         this.vara = 0;
+        this.storage.get('email').then(function (data) {
+          console.log(data); //this.email=data; static because this page is hit only after registration
+
+          _this.email = 'parmar.parth97531@gmail.com';
+        });
       }
 
       _createClass(AddvehiclePage, [{
         key: "ngOnInit",
-        value: function ngOnInit() {
-          var _this = this;
-
-          this.storage.get('email').then(function (data) {
-            console.log(data);
-
-            _this.detServ.setEmail(data);
-          });
-        }
+        value: function ngOnInit() {}
       }, {
         key: "dash",
         value: function dash() {
-          this.detServ.setEmail('parmar.parth97531@gmail.com');
+          var _this2 = this;
+
+          this.detServ.setEmail(this.email);
           this.detServ.setModel(this.model);
           this.detServ.setNumber(this.number);
           this.detServ.setParkingarea(this.area);
@@ -231,9 +239,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var data = this.detServ.getDet();
           console.log(data);
           this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(function (result) {
-            console.log(result.message);
+            console.log(result);
 
-            if (result.message == true) {//clear inputs and scroll to top
+            if (result.message == true) {
+              _this2.area = '';
+              _this2.type = '';
+              _this2.brand = '';
+              _this2.model = '';
+              _this2.number = '';
+              _this2.time = '';
+              _this2.catagory = '';
+              _this2.lat = '';
+              _this2.lng = '';
+
+              _this2.pageTop.scrollToTop();
             } else if (result.message == false) {//alert and clear  relavent inputs
             }
           }, function (error) {
@@ -243,8 +262,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "finaldash",
         value: function finaldash() {
-          var _this2 = this;
+          var _this3 = this;
 
+          this.detServ.setEmail(this.email);
           this.detServ.setModel(this.model);
           this.detServ.setNumber(this.number);
           this.detServ.setParkingarea(this.area);
@@ -252,10 +272,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var data = this.detServ.getDet();
           console.log(data);
           this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(function (result) {
-            console.log(result.message);
+            console.log(result);
 
             if (result.message == true) {
-              _this2.router.navigateByUrl('/tabs');
+              _this3.router.navigateByUrl('/tabs');
             } else if (result.message == false) {//alert and clear  relavent inputs
             }
           }, function (error) {
@@ -291,9 +311,44 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           }
         }
       }, {
+        key: "onChange2",
+        value: function onChange2() {
+          this.brand = '';
+          this.model = '';
+        }
+      }, {
+        key: "presentToast",
+        value: function presentToast() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0,
+          /*#__PURE__*/
+          regeneratorRuntime.mark(function _callee() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.toastController.create({
+                      message: 'Your location has been saved!',
+                      duration: 2000
+                    });
+
+                  case 2:
+                    toast = _context.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
         key: "sendCardet",
         value: function sendCardet() {
-          var _this3 = this;
+          var _this4 = this;
 
           this.detServ.setCategory(this.catagory);
           this.detServ.setBrand(this.brand);
@@ -301,15 +356,31 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           console.log(this.detServ.getCardet());
           this.http.post('https://mywash.herokuapp.com/uservehicle/findModel', data).subscribe(function (result) {
             console.log(result.list);
-            _this3.resp.list = result.list;
+            _this4.resp.list = result.list;
           }, function (error) {
             console.log(error);
           });
-        }
+        } // sendCardet()
+        // {
+        //   this.detServ.setCategory(this.catagory);
+        //   this.detServ.setBrand(this.brand);
+        //   const data=this.detServ.getCardet();
+        //   console.log(this.detServ.getCardet());
+        //   this.http.post<Cardetails>('https://mywash.herokuapp.com/uservehicle/findModel',data).subscribe(
+        //     (result) => 
+        //       {
+        //         console.log(result.list);
+        //         this.resp.list=result.list;
+        //       },
+        //     error => {
+        //       console.log(error);
+        //     });
+        // }
+
       }, {
         key: "getLoc",
         value: function getLoc() {
-          var _this4 = this;
+          var _this5 = this;
 
           var options = {
             maximumAge: 1000,
@@ -317,15 +388,15 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             enableHighAccuracy: true
           };
           this.geolocation.getCurrentPosition(options).then(function (resp) {
-            _this4.lat = resp.coords.latitude;
-            _this4.lng = resp.coords.longitude;
+            _this5.lat = resp.coords.latitude;
+            _this5.lng = resp.coords.longitude;
             var loc = {
-              lat: _this4.lat,
-              long: _this4.lng
+              lat: _this5.lat,
+              long: _this5.lng
             };
             console.log(loc);
 
-            _this4.detServ.setLoc(loc);
+            _this5.detServ.setLoc(loc);
           }, function (er) {
             console.log(er);
             alert('Can not retrieve Location');
@@ -338,6 +409,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           };
           console.log(loc);
           this.detServ.setLoc(loc);
+          this.presentToast();
         }
       }]);
 
@@ -357,9 +429,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
       }, {
         type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ToastController"]
       }];
     };
 
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('pageTop', {
+      static: false
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["IonContent"])], AddvehiclePage.prototype, "pageTop", void 0);
     AddvehiclePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-addvehicle',
       template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
@@ -368,7 +445,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./addvehicle.page.scss */
       "./src/app/addvehicle/addvehicle.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _details_service__WEBPACK_IMPORTED_MODULE_3__["DetailsService"], _register_regservice_service__WEBPACK_IMPORTED_MODULE_6__["RegserviceService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]])], AddvehiclePage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _details_service__WEBPACK_IMPORTED_MODULE_3__["DetailsService"], _register_regservice_service__WEBPACK_IMPORTED_MODULE_6__["RegserviceService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"], _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"], _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ToastController"]])], AddvehiclePage);
     /***/
   },
 
@@ -412,10 +489,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.details = {
           email: String,
-          type: String,
+          vechicleType: String,
           brand: String,
           model: String,
-          catagory: String,
+          vehicleCatagory: String,
           number: String,
           parkingarea: String,
           longitude: String,
@@ -432,7 +509,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setType",
         value: function setType(data) {
-          this.details.type = data;
+          this.details.vechicleType = data;
         }
       }, {
         key: "setBrand",
@@ -447,7 +524,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setCategory",
         value: function setCategory(data) {
-          this.details.catagory = data;
+          this.details.vehicleCatagory = data;
         }
       }, {
         key: "setParkingarea",
@@ -475,7 +552,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         value: function getCardet() {
           var cardet = {
             brand: this.details.brand,
-            catagory: this.details.catagory
+            catagory: this.details.vehicleCatagory
           };
           return cardet;
         }

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, ActionSheetController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-services',
@@ -8,10 +9,17 @@ import { IonSlides, ActionSheetController } from '@ionic/angular';
 })
 export class ServicesPage implements OnInit {
   @ViewChild(IonSlides,{static: false}) slides: IonSlides;
-  constructor(public actionSheetController: ActionSheetController) { }
+  constructor(
+    public actionSheetController: ActionSheetController,
+    public router:Router
+    ) { }
 
   ngOnInit() {
   
+  }
+
+  gotoCart(){
+    this.router.navigateByUrl('/cart');
   }
 
   async presentActionSheet() {

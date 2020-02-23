@@ -17,6 +17,22 @@ var map = {
 		"common",
 		"addvehicle-addvehicle-module"
 	],
+	"./carpop/carpop.module": [
+		"./src/app/carpop/carpop.module.ts",
+		"common"
+	],
+	"./cart/cart.module": [
+		"./src/app/cart/cart.module.ts",
+		"cart-cart-module"
+	],
+	"./checkout/checkout.module": [
+		"./src/app/checkout/checkout.module.ts",
+		"checkout-checkout-module"
+	],
+	"./dashmod/dashmod.module": [
+		"./src/app/dashmod/dashmod.module.ts",
+		"common"
+	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
 		"common",
@@ -50,6 +66,7 @@ var map = {
 	],
 	"./tabs/tabs.module": [
 		"./src/app/tabs/tabs.module.ts",
+		"common",
 		"tabs-tabs-module"
 	]
 };
@@ -758,6 +775,10 @@ const routes = [
     { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
     { path: 'policy', loadChildren: './policy/policy.module#PolicyPageModule' },
     { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
+    { path: 'dashmod', loadChildren: './dashmod/dashmod.module#DashmodPageModule' },
+    { path: 'carpop', loadChildren: './carpop/carpop.module#CarpopPageModule' },
+    { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
+    { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

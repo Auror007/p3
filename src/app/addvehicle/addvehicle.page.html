@@ -4,7 +4,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content #pageTop>
 
     <br>
     <br>
@@ -18,7 +18,7 @@
       <ion-item [hidden]="!car">
                   
         <ion-label>Car type</ion-label>
-        <ion-select interface="popover" [(ngModel)]="catagory">
+        <ion-select interface="popover" [(ngModel)]="catagory" (ionChange)="onChange2()">
           <ion-select-option value="sedan">Sedan</ion-select-option>
           <ion-select-option value="hatchback">Hatchback</ion-select-option>
           <ion-select-option value="suv">SUV</ion-select-option>
@@ -98,14 +98,18 @@
                 <br>
                 <br>
                 <ion-item>
-                  <ion-button style="margin-left: auto;margin-right: auto;" size=large (click)="getLoc()" expand="block">Get Location</ion-button>
+                  <ion-label>
+                    Address 
+                  </ion-label>
+                  <!-- <ion-icon button slot="end"  (click)="getLoc()" ></ion-icon> -->
+                  <ion-button color="danger" slot="end" style="margin-left: auto;margin-right: auto;" size=medium (click)="getLoc()"  expand="block">Get Location</ion-button>
                 </ion-item>
                 <br>
                 <br>
                 <br>
                 
-<ion-button  shape=round class="buttons" size=large  fill="solid" expand="block" color="dark"  (click)=dash()  style="width: 50%;margin-right:25%;margin-left:25%" >Add More</ion-button>
+<ion-button  shape=round class="buttons" size=medium  fill="solid" expand="block" color="dark"  (click)=dash()  style="width: 50%;margin-right:25%;margin-left:25%" >Add More</ion-button>
 <br>
-<ion-button  shape=round class="buttons" size=large  fill="solid" expand="block" color="dark" (click)=finaldash()  style="width: 50%;margin-right:25%;margin-left:25%" >Submit</ion-button>
+<ion-button  shape=round class="buttons" size=medium  fill="solid" expand="block" color="dark" (click)=finaldash()  style="width: 50%;margin-right:25%;margin-left:25%" >Submit</ion-button>
 
 </ion-content>

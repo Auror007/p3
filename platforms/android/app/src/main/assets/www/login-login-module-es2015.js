@@ -90,6 +90,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
 /* harmony import */ var _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../register/regservice.service */ "./src/app/register/regservice.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
 
 
 
@@ -97,11 +99,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let LoginPage = class LoginPage {
-    constructor(router, http, alerCtrl, regServ) {
+    constructor(router, http, alerCtrl, regServ, storage) {
         this.router = router;
         this.http = http;
         this.alerCtrl = alerCtrl;
         this.regServ = regServ;
+        this.storage = storage;
         this.email = '';
     }
     ngOnInit() {
@@ -116,6 +119,7 @@ let LoginPage = class LoginPage {
         }
         else {
             this.regServ.setEmail(email);
+            this.storage.set('email', this.email);
             const data = {
                 email: this.regServ.getEmail()
             };
@@ -125,6 +129,9 @@ let LoginPage = class LoginPage {
                 console.log(result);
                 if (result.message == true) {
                     this.router.navigateByUrl('/registernew');
+                    this.storage.set('activity', 'loggedin').then((data) => {
+                        console.log(data);
+                    });
                 }
                 else {
                     this.doAlert('Not Registered', 'Register Now');
@@ -181,7 +188,8 @@ LoginPage.ctorParameters = () => [
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
-    { type: _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"] }
+    { type: _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"] }
 ];
 LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -192,7 +200,8 @@ LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"],
-        _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"]])
+        _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])
 ], LoginPage);
 
 
