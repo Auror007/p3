@@ -2,9 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ModalController,NavParams,PopoverController, Events} from '@ionic/angular';
 import { CarpopPage } from '../carpop/carpop.page';
 import { HttpClient } from '@angular/common/http';
-import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 import {Storage} from  '@ionic/storage';
-
+import {CartService} from '../services/cart.service';
 @Component({
   selector: 'app-dashmod',
   templateUrl: './dashmod.page.html',
@@ -17,7 +16,11 @@ export class DashmodPage implements OnInit {
   public price:any;
   public cat :any;
   public email:any;
-
+  public selection:any;
+  public id:number;
+  public name:any;
+  public time:any;
+  public crt:Array<{vehicleModel:string,number:string}>;
   
   constructor(
     private modalCtrl:ModalController,
@@ -25,17 +28,18 @@ export class DashmodPage implements OnInit {
     public events:Events,
     public popoverController: PopoverController,
     public http:HttpClient,
-    public storage:Storage
+    public storage:Storage,
+    public cartService:CartService
 
   ) {
     this.desp=navParams.get('description');
     this.title=navParams.get('details');
     this.price=navParams.get('price');
     this.cat=navParams.get('vehicleCatagory');
+    this.id=navParams.get('packageId');
+    this.name=navParams.get('title');
+    this.time=navParams.get('duration');
     
-    events.subscribe('added', () => {
-        this.dismiss();
-    });
 
     this.storage.get('email').then((data)=>{
        this.email=data;
@@ -45,30 +49,56 @@ export class DashmodPage implements OnInit {
    }
 
   ngOnInit() {
-    
+    let em='parmar.parth97531@gmail.com'
+    const req={
+                email:em,
+                vehicleCatagory:this.cat
+              }
+            console.log(req);
+            
+    this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',req ).subscribe(
+     async (result) => {
+       this.crt=result;
+       
+       
+     });
   }
 
   async presentPopover() {
    let ev:any;
-    const req={
-                email:this.email,
-                vehicleCatagory:this.cat
-              }
-            console.log(req);
-     this.http.post('https://mywash.herokuapp.com/service/find',req ).subscribe(
-     async (result) => {
-       console.log('GOT ANSWER')
-        // const cardet={list:result};
+   
+    //  this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',req ).subscribe(
+    //  async (result) => {
+    //    console.log('GOT ANSWER',result)
+
+    //     this.crt=result;
+    //     let temp=this.cartService.getCart();
+    //   //  console.log(cardet);
+    //      this.crt.filter((item)=>{
+    //           if(cart's numbers != 
+    //      });
+
+    console.log(this.crt);
+
+      
         const popover = await this.popoverController.create({
           component: CarpopPage,
-         componentProps:{list:result},
+          componentProps:{
+            'list':this.crt,
+          }
+          ,
           event: ev,
           translucent: true
         });
+
+        popover.onDidDismiss().then((result) => {
+          this.selection=result.data;
+          this.dismiss();
+        });
         return await popover.present();
-      }
+     // }
       
-      );
+     // );
 
 
     // console.log(result1);
@@ -82,6 +112,24 @@ export class DashmodPage implements OnInit {
   }
 
   dismiss() {
+    const prod={
+      id:this.id,
+      name: this.name,
+      time:this.time,
+      vehnumber:this.selection,
+      price: this.price,
+    }
+    console.log(prod);
+    this.crt=this.crt.filter((item)=>{
+      return item.number!=this.selection
+
+    });
+    console.log(this.crt);
+    this.cartService.addProduct(prod);
+  }
+
+  fdismiss()
+  {
     this.modalCtrl.dismiss({
       'dismissed': true
     });

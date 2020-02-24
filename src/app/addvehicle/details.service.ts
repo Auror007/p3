@@ -7,15 +7,16 @@ export class DetailsService {
 
   details={
     email: String,
-    vechicleType:String,
-    brand: String,
-    model:String,
+    vehicleType:String,
+    brandName: String,
+    vehicleModel:String,
     vehicleCatagory:String,
     number:String,
     parkingarea:String,
     longitude:String,
     latitude:String,
-    prefferedTime:String
+    prefferedTime:String,
+    flag:0
 }
 
   
@@ -24,14 +25,14 @@ export class DetailsService {
     this.details.email = data;
   }
   public setType(data){
-    this.details.vechicleType = data;
+    this.details.vehicleType = data;
   }
  
   public setBrand(data){
-    this.details.brand = data;
+    this.details.brandName = data;
   }
   public setModel(data){
-    this.details.model=data;
+    this.details.vehicleModel=data;
   }
   public setCategory(data){
     this.details.vehicleCatagory=data;
@@ -51,7 +52,7 @@ export class DetailsService {
   }
   public getCardet(){
     const cardet={
-      brand:this.details.brand,
+      brand:this.details.brandName,
       catagory:this.details.vehicleCatagory,
     }
    

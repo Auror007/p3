@@ -72,6 +72,9 @@ export class AddvehiclePage implements OnInit {
     this.detServ.setNumber(this.number);
     this.detServ.setParkingarea(this.area);
     this.detServ.setprefferedTime(this.time);
+    this.detServ.setBrand(this.brand);
+    this.detServ.setCategory(this.catagory);
+    this.detServ.setType(this.type);
 
     const data=this.detServ.getDet();
     console.log(data);
@@ -109,6 +112,9 @@ finaldash(){
   this.detServ.setNumber(this.number);
   this.detServ.setParkingarea(this.area);
   this.detServ.setprefferedTime(this.time);
+  this.detServ.setBrand(this.brand);
+  this.detServ.setCategory(this.catagory);
+  this.detServ.setType(this.type);
   const data=this.detServ.getDet();
   console.log(data);
   this.http.post<UserResponse>('https://mywash.herokuapp.com/uservehicle/addvehicle',data).subscribe(

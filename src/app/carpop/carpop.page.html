@@ -5,9 +5,9 @@
 </ion-header>
 
 <ion-content>
-<ion-list style="margin-bottom: 0%;" *ngFor="let item of array_serv">
+<ion-list style="margin-bottom: 0%;" *ngFor="let item of list">
 <ion-item button (click)="onClick(item)">
-<ion-label style="text-align: center;">{{item}}</ion-label>
+<ion-label style="text-align: center;">{{item.vehicleModel}}</ion-label>
 </ion-item>
 </ion-list>
 </ion-content>

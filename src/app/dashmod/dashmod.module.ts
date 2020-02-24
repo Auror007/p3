@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, NavParams } from '@ionic/angular';
 
 import { DashmodPage } from './dashmod.page';
 import { CarpopPageModule } from '../carpop/carpop.module';
+import { CarpopPage } from '../carpop/carpop.page';
 
 const routes: Routes = [
   {

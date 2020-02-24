@@ -12,16 +12,42 @@
   <ion-label>Your Order Summary</ion-label>
 </ion-item>
 <ion-list>
-  <ion-item-sliding >
-    <!-- *ngFor="let pos of locations | async" -->
+  <ion-item-sliding  *ngFor="let item of cart" >
     <ion-item>
-      <ion-label text-wrap>
-        
+      <!-- <ion-label text-wrap>
+        {{item.name}}
       </ion-label>
+      <br>
+      <ion-label text-wrap>
+        Vehicle number:{{item.vehnumber}}
+      </ion-label>
+      <ion-label text-wrap>
+        Validity:{{item.duration}}
+      </ion-label>
+      <ion-label slot="end">
+        {{item.price}}
+      </ion-label> -->
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            {{item.name}}
+          </ion-col>
+          <ion-col>
+           Price: {{item.price}}
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+           Vehicle Number:{{item.vehnumber}}
+          </ion-col>
+          <ion-col>
+          Validity:  {{item.time}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-item>
 
-    <ion-item-options side="start">
-      <!-- (click)="deleteItem(pos)" -->
+    <ion-item-options side="start" (click)="deleteItem(item)">
       <ion-item-option color="danger" >
         <ion-icon name="trash" slot="icon-only"></ion-icon>
       </ion-item-option>
@@ -29,4 +55,22 @@
 
   </ion-item-sliding>
 </ion-list>
+
 </ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        
+          <ion-title>Total : {{tot}}</ion-title>
+         
+
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger"  (click)="subs()"  expand="block">Checkout</ion-button>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>
