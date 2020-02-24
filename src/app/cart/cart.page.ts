@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {CartService,Product} from '../services/cart.service';
 import { ItemsService } from '../items.service';
 import { HttpClient } from '@angular/common/http';
+import { NavController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +16,8 @@ export class CartPage implements OnInit {
   public tot:number;
   constructor(
     public cartserv:CartService,
-    public http:HttpClient
+    public http:HttpClient,
+    public router:Router
   ) { }
 
   ngOnInit() {
@@ -42,5 +45,5 @@ export class CartPage implements OnInit {
         console.log('added');
         
       });
-  }
+      this.router.navigateByUrl('/tabs/tabs/services');  }
 }
