@@ -236,6 +236,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.detServ.setNumber(this.number);
           this.detServ.setParkingarea(this.area);
           this.detServ.setprefferedTime(this.time);
+          this.detServ.setBrand(this.brand);
+          this.detServ.setCategory(this.catagory);
+          this.detServ.setType(this.type);
           var data = this.detServ.getDet();
           console.log(data);
           this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(function (result) {
@@ -269,6 +272,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.detServ.setNumber(this.number);
           this.detServ.setParkingarea(this.area);
           this.detServ.setprefferedTime(this.time);
+          this.detServ.setBrand(this.brand);
+          this.detServ.setCategory(this.catagory);
+          this.detServ.setType(this.type);
           var data = this.detServ.getDet();
           console.log(data);
           this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(function (result) {
@@ -489,15 +495,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         this.details = {
           email: String,
-          vechicleType: String,
-          brand: String,
-          model: String,
+          vehicleType: String,
+          brandName: String,
+          vehicleModel: String,
           vehicleCatagory: String,
           number: String,
           parkingarea: String,
           longitude: String,
           latitude: String,
-          prefferedTime: String
+          prefferedTime: String,
+          flag: 0
         };
       }
 
@@ -509,17 +516,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "setType",
         value: function setType(data) {
-          this.details.vechicleType = data;
+          this.details.vehicleType = data;
         }
       }, {
         key: "setBrand",
         value: function setBrand(data) {
-          this.details.brand = data;
+          this.details.brandName = data;
         }
       }, {
         key: "setModel",
         value: function setModel(data) {
-          this.details.model = data;
+          this.details.vehicleModel = data;
         }
       }, {
         key: "setCategory",
@@ -551,7 +558,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         key: "getCardet",
         value: function getCardet() {
           var cardet = {
-            brand: this.details.brand,
+            brand: this.details.brandName,
             catagory: this.details.vehicleCatagory
           };
           return cardet;

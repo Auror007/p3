@@ -1,0 +1,21 @@
+{
+  "appId": "com.example.app",
+  "appName": "p3",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {
+    "preferences": {
+      "ScrollEnabled": "false",
+      "android-minSdkVersion": "19",
+      "BackupWebStorage": "none",
+      "SplashMaintainAspectRatio": "true",
+      "FadeSplashScreenDuration": "300",
+      "SplashShowOnlyFirstTime": "false",
+      "SplashScreen": "src\\assets\\icon\\icon.png",
+      "SplashScreenBackgroundColor": "#000",
+      "AutoHideSplashScreen": "true",
+      "SplashScreenDelay": "3000"
+    }
+  }
+}

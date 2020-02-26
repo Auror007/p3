@@ -11,6 +11,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {IonicStorageModule} from '@ionic/storage';
+import {environment} from '../environments/environment';
+
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import { AngularFireModule } from '@angular/fire';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -18,6 +23,7 @@ import {IonicStorageModule} from '@ionic/storage';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(), 
     AppRoutingModule,
+    AngularFireModule.initializeApp(environment.firebase),AngularFireAuthModule,AngularFirestoreModule,
      HttpClientModule
     ],
   providers: [

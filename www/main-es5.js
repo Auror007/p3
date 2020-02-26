@@ -19,9 +19,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./about/about.module": ["./src/app/about/about.module.ts", "about-about-module"],
       "./addvehicle/addvehicle.module": ["./src/app/addvehicle/addvehicle.module.ts", "common", "addvehicle-addvehicle-module"],
       "./carpop/carpop.module": ["./src/app/carpop/carpop.module.ts", "common"],
-      "./cart/cart.module": ["./src/app/cart/cart.module.ts", "cart-cart-module"],
+      "./cart/cart.module": ["./src/app/cart/cart.module.ts", "common", "cart-cart-module"],
       "./checkout/checkout.module": ["./src/app/checkout/checkout.module.ts", "checkout-checkout-module"],
       "./dashmod/dashmod.module": ["./src/app/dashmod/dashmod.module.ts", "common"],
+      "./gps/gps.module": ["./src/app/gps/gps.module.ts", "gps-gps-module"],
       "./login/login.module": ["./src/app/login/login.module.ts", "common", "login-login-module"],
       "./main/main.module": ["./src/app/main/main.module.ts", "main-main-module"],
       "./orders/orders.module": ["./src/app/orders/orders.module.ts", "orders-orders-module"],
@@ -822,8 +823,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'addvehicle',
       loadChildren: './addvehicle/addvehicle.module#AddvehiclePageModule'
-    }, // { path: 'gps', loadChildren: './gps/gps.module#GpsPageModule' },
-    {
+    }, {
+      path: 'gps',
+      loadChildren: './gps/gps.module#GpsPageModule'
+    }, {
       path: 'orders',
       loadChildren: './orders/orders.module#OrdersPageModule'
     }, {
@@ -1073,6 +1076,30 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_storage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ../environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @angular/fire/firestore */
+    "./node_modules/@angular/fire/firestore/es2015/index.js");
+    /* harmony import */
+
+
+    var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! @angular/fire/auth */
+    "./node_modules/@angular/fire/auth/es2015/index.js");
+    /* harmony import */
+
+
+    var _angular_fire__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! @angular/fire */
+    "./node_modules/@angular/fire/es2015/index.js");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1081,7 +1108,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
       entryComponents: [],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["IonicStorageModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["IonicStorageModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_15__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]],
       providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
@@ -1121,7 +1148,16 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var environment = {
-      production: false
+      production: false,
+      firebase: {
+        apiKey: "AIzaSyDeseBZRKKtiGtQFy9vdzNXpro0YSSXbfE",
+        authDomain: "proto2-1776e.firebaseapp.com",
+        databaseURL: "https://proto2-1776e.firebaseio.com",
+        projectId: "proto2-1776e",
+        storageBucket: "proto2-1776e.appspot.com",
+        messagingSenderId: "135057415689",
+        appId: "1:135057415689:web:f9ae73871e3eb47e"
+      }
     };
     /*
      * For easier debugging in development mode, you can import the following file

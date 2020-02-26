@@ -1,126 +1,106 @@
-import { Component, OnInit,ViewChild, AfterViewInit} from '@angular/core';
-import { NavController, Platform } from '@ionic/angular';
-import { Subscription } from 'rxjs/Subscription';
-import { filter } from 'rxjs/operators';
-import { Storage } from '@ionic/storage';
-import { ElementRef } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Component, ViewChild, ElementRef } from '@angular/core';
+import {Plugins, GeolocationPluginWeb} from '@capacitor/core';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import {map} from 'rxjs/operators';
+import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
+const {Geolocation} =Plugins;
 
-declare var google;
+ declare var google;
 
 @Component({
   selector: 'app-gps',
-  templateUrl: './gps.page.html',
-  styleUrls: ['./gps.page.scss'],
+  templateUrl: 'gps.page.html',
+  styleUrls: ['gps.page.scss'],
 })
-export class GpsPage implements OnInit,AfterViewInit {
+export class GpsPage {
+  locations:Observable<any>;
+  locationsCollection: AngularFirestoreCollection<any>;
+  user=null;
 
- 
- 
-  @ViewChild('map',{static:false}) mapEle:ElementRef; 
-    map: any;
-  currentMapTrack = null;
- 
+  @ViewChild('map',{static:false}) mapElement:ElementRef;
+  map:any;
+  markers=[];
   isTracking = false;
-  trackedRoute = [];
-  previousTracks = [];
- 
-  positionSubscription: Subscription;
- 
-  constructor(
-    public navCtrl: NavController, 
-    private plt: Platform, 
-    public geolocation: Geolocation,
-    private storage: Storage) {}
+  watch: string;
+  constructor(private afAuth:AngularFireAuth,private afs:AngularFirestore) {
+    this.anonLogin();
+  }
+
+  ionViewWillEnter(){
+    this.loadMap();
+  }
+  loadMap(){
+    let latlng=new google.maps.LatLng(51.9090902,7,6673267);
+
+    let mapOptions={
+      center:latlng,
+      zoom:5,
+      mapTypeId:google.maps.MapTypeId.ROADMAP
+    };
+    this.map=new google.maps.Map(this.mapElement.nativeElement,mapOptions);
+  }
   
-    
-  
-    ngOnInit()
-  {
-    console.log("BYE");
-    this.plt.ready().then(() => {
-     // this.loadHistoricRoutes();
- 
-      let mapOptions = {
-        zoom: 13,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        mapTypeControl: false,
-        streetViewControl: false,
-        fullscreenControl: false,
-      };
-      this.map = new google.maps.Map(this.mapEle.nativeElement, mapOptions);
+  anonLogin(){
+    //email auth
+    this.afAuth.auth.signInAnonymously().then(user=>{
+      console.log(user);
+      this.user=user;
+    }).then(()=>{
+      this.findloc();
+    });
+  }
+
+
+  findloc(){
+      this.locationsCollection=this.afs.collection(
+        `locations/cleaner1/track`,
+        ref=>ref.orderBy('timestamp',"desc")
+      );
       
-     
-      this.geolocation.getCurrentPosition().then((pos) => {
-        let latLng = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-        this.map.setCenter(latLng);
-        this.map.setZoom(15);
-      })
-    
+      this.locations = this.locationsCollection.snapshotChanges().pipe(
+        map(actions =>
+          actions.map(a => {
+            const data = a.payload.doc.data();
+            const id = a.payload.doc.id;
+            return { id, ...data };
+          })
+        )
+      );
+ 
+      this.locations.subscribe(locations => {
+        this.updateMap(locations);
       });
+
   }
 
-  ngAfterViewInit() {
+  // Delete a location from Firebase
+  deleteLocation(pos) {
+    this.locationsCollection.doc(pos.id).delete();
+
+  }
+   
+  // Redraw all markers on the map
+  updateMap(locations) {
+    // Remove all current marker
+    console.log("update called",locations);
     
-   
+    this.markers.map(marker => marker.setMap(null));
+    this.markers = [];
+    // for (let loc of locations) {
+      let latLng = new google.maps.LatLng(locations[0].lat, locations[0].lng);
+      this.map.setCenter(latLng);
+      this.map.setZoom(14);
+
+      let marker = new google.maps.Marker({
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        position: latLng
+      });
+      this.markers.push(marker);
+
+      setTimeout(()=>{this.findloc();},10000);
+    // }
   }
-
-  
-  // startTracking()
-  //   {
-  //     this.isTracking = true;
-  //     this.trackedRoute = [];
-   
-  //     let watch = this.geolocation.watchPosition();
-  //     watch.subscribe((data) => {
-  //         setTimeout(() => {
-  //           this.trackedRoute.push({ lat: data.coords.latitude, lng: data.coords.longitude });
-  //           this.redrawPath(this.trackedRoute);
-  //         }, 0);
-  //       });
-   
-  //   }
-   
-  //   redrawPath(path) {
-  //     if (this.currentMapTrack) {
-  //       this.currentMapTrack.setMap(null);
-  //     }
-   
-  //     if (path.length > 1) {
-  //       this.currentMapTrack = new google.maps.Polyline({
-  //         path: path,
-  //         geodesic: true,
-  //         strokeColor: '#ff00ff',
-  //         strokeOpacity: 1.0,
-  //         strokeWeight: 3
-  //       });
-  //       this.currentMapTrack.setMap(this.map);
-  //     }
-  //   }
-
-  //   stopTracking() {
-  //     let newRoute = { finished: new Date().getTime(), path: this.trackedRoute };
-  //     this.previousTracks.push(newRoute);
-  //     this.storage.set('routes', this.previousTracks);
-     
-  //     this.isTracking = false;
-  //     this.positionSubscription.unsubscribe();
-  //     this.currentMapTrack.setMap(null);
-  //   }
-     
-  //   showHistoryRoute(route) {
-  //     this.redrawPath(route);
-  //   }
-  
-  
-  //   loadHistoricRoutes() {
-  //     this.storage.get('routes').then(data => {
-  //       if (data) {
-  //         this.previousTracks = data;
-  //       }
-  //     });
-  //   } 
-
-
 }

@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
   { path: 'main', loadChildren: './main/main.module#MainPageModule' },
   { path: 'addvehicle', loadChildren: './addvehicle/addvehicle.module#AddvehiclePageModule' },
- // { path: 'gps', loadChildren: './gps/gps.module#GpsPageModule' },
+  { path: 'gps', loadChildren: './gps/gps.module#GpsPageModule' },
   { path: 'orders', loadChildren: './orders/orders.module#OrdersPageModule' },
   { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
   { path: 'policy', loadChildren: './policy/policy.module#PolicyPageModule' },
