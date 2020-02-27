@@ -293,6 +293,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
+    implementation "androidx.core:core:1.1.0"
     // SUB-PROJECT DEPENDENCIES END
 }
 

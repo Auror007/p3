@@ -23,15 +23,24 @@ var map = {
 	],
 	"./cart/cart.module": [
 		"./src/app/cart/cart.module.ts",
+		"common",
 		"cart-cart-module"
 	],
 	"./checkout/checkout.module": [
 		"./src/app/checkout/checkout.module.ts",
 		"checkout-checkout-module"
 	],
+	"./chekout/chekout.module": [
+		"./src/app/chekout/chekout.module.ts",
+		"chekout-chekout-module"
+	],
 	"./dashmod/dashmod.module": [
 		"./src/app/dashmod/dashmod.module.ts",
 		"common"
+	],
+	"./gps/gps.module": [
+		"./src/app/gps/gps.module.ts",
+		"gps-gps-module"
 	],
 	"./login/login.module": [
 		"./src/app/login/login.module.ts",
@@ -770,7 +779,7 @@ const routes = [
     { path: 'tabs', loadChildren: './tabs/tabs.module#TabsPageModule' },
     { path: 'main', loadChildren: './main/main.module#MainPageModule' },
     { path: 'addvehicle', loadChildren: './addvehicle/addvehicle.module#AddvehiclePageModule' },
-    // { path: 'gps', loadChildren: './gps/gps.module#GpsPageModule' },
+    { path: 'gps', loadChildren: './gps/gps.module#GpsPageModule' },
     { path: 'orders', loadChildren: './orders/orders.module#OrdersPageModule' },
     { path: 'support', loadChildren: './support/support.module#SupportPageModule' },
     { path: 'policy', loadChildren: './policy/policy.module#PolicyPageModule' },
@@ -779,6 +788,7 @@ const routes = [
     { path: 'carpop', loadChildren: './carpop/carpop.module#CarpopPageModule' },
     { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
     { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
+    { path: 'chekout', loadChildren: './chekout/chekout.module#ChekoutPageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -884,6 +894,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
+/* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+/* harmony import */ var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/web-intent/ngx */ "./node_modules/@ionic-native/web-intent/ngx/index.js");
+
+
+
+
+
 
 
 
@@ -906,13 +926,15 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
             _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["IonicStorageModule"].forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
+            _angular_fire__WEBPACK_IMPORTED_MODULE_15__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]
         ],
         providers: [
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
-            _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"]
+            _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"],
+            _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_16__["WebIntent"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })
@@ -938,7 +960,16 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 
 const environment = {
-    production: false
+    production: false,
+    firebase: {
+        apiKey: "AIzaSyDeseBZRKKtiGtQFy9vdzNXpro0YSSXbfE",
+        authDomain: "proto2-1776e.firebaseapp.com",
+        databaseURL: "https://proto2-1776e.firebaseio.com",
+        projectId: "proto2-1776e",
+        storageBucket: "proto2-1776e.appspot.com",
+        messagingSenderId: "135057415689",
+        appId: "1:135057415689:web:f9ae73871e3eb47e"
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file

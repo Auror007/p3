@@ -55,7 +55,8 @@
 
   </ion-item-sliding>
 </ion-list>
-
+<div [innerHTML]=variable.html>
+</div>
 </ion-content>
 
 <ion-footer>
@@ -68,6 +69,8 @@
 
       </ion-col>
       <ion-col>
+
+        
         <ion-button color="danger"  (click)="subs()"  expand="block">Checkout</ion-button>
 
       </ion-col>

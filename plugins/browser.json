@@ -15,6 +15,12 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "com-darryncampbell-cordova-plugin-intent": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {}

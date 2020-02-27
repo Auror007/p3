@@ -29,11 +29,21 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "SQLitePlugin"
       ]
+    },
+    {
+      "id": "com-darryncampbell-cordova-plugin-intent.IntentShim",
+      "file": "plugins/com-darryncampbell-cordova-plugin-intent/www/IntentShim.js",
+      "pluginId": "com-darryncampbell-cordova-plugin-intent",
+      "clobbers": [
+        "intentShim"
+      ]
     }
   ];
   module.exports.metadata = {
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-sqlite-storage": "4.0.0"
+    "cordova-sqlite-storage": "4.0.0",
+    "cordova-plugin-androidx-adapter": "1.1.0",
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0"
   };
 });

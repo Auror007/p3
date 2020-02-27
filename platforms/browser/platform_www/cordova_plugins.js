@@ -21,6 +21,14 @@ module.exports = [
         "clobbers": [
             "SQLitePlugin"
         ]
+    },
+    {
+        "file": "plugins/com-darryncampbell-cordova-plugin-intent/www/IntentShim.js",
+        "id": "com-darryncampbell-cordova-plugin-intent.IntentShim",
+        "pluginId": "com-darryncampbell-cordova-plugin-intent",
+        "clobbers": [
+            "intentShim"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -28,7 +36,9 @@ module.exports.metadata =
 {
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-sqlite-storage": "4.0.0"
+    "cordova-sqlite-storage": "4.0.0",
+    "cordova-plugin-androidx-adapter": "1.1.0",
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0"
 }
 // BOTTOM OF METADATA
 });

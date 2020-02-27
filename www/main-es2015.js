@@ -30,6 +30,10 @@ var map = {
 		"./src/app/checkout/checkout.module.ts",
 		"checkout-checkout-module"
 	],
+	"./chekout/chekout.module": [
+		"./src/app/chekout/chekout.module.ts",
+		"chekout-chekout-module"
+	],
 	"./dashmod/dashmod.module": [
 		"./src/app/dashmod/dashmod.module.ts",
 		"common"
@@ -784,6 +788,7 @@ const routes = [
     { path: 'carpop', loadChildren: './carpop/carpop.module#CarpopPageModule' },
     { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
     { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
+    { path: 'chekout', loadChildren: './chekout/chekout.module#ChekoutPageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };
@@ -893,6 +898,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
 /* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+/* harmony import */ var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/web-intent/ngx */ "./node_modules/@ionic-native/web-intent/ngx/index.js");
+
 
 
 
@@ -926,7 +933,8 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"],
             _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"],
             { provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"], useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"] },
-            _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"]
+            _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"],
+            _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_16__["WebIntent"]
         ],
         bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })

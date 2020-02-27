@@ -123,7 +123,7 @@ let RegisternewPage = class RegisternewPage {
                             this.router.navigateByUrl('/addvehicle');
                         }
                         if (data == 'loggedin') {
-                            this.router.navigateByUrl('/tabs');
+                            this.router.navigateByUrl('/tabs/tabs/dash');
                         }
                     });
                 }

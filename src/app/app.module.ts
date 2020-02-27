@@ -16,6 +16,7 @@ import {environment} from '../environments/environment';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { AngularFireModule } from '@angular/fire';
+import {WebIntent} from '@ionic-native/web-intent/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -30,7 +31,8 @@ import { AngularFireModule } from '@angular/fire';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
-    Geolocation
+    Geolocation,
+    WebIntent
     
   ],
   bootstrap: [AppComponent]

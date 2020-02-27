@@ -4,6 +4,8 @@ import { ItemsService } from '../items.service';
 import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import {WebIntent} from '@ionic-native/web-intent/ngx';
+
 
 @Component({
   selector: 'app-cart',
@@ -14,10 +16,13 @@ export class CartPage implements OnInit {
 
   public cart:Array<Product>;
   public tot:number;
+  public variable = {"html": "<p>This is a paragraph</p>"};
+
   constructor(
     public cartserv:CartService,
     public http:HttpClient,
-    public router:Router
+    public router:Router,
+    private webIntent: WebIntent
   ) { }
 
   ngOnInit() {
@@ -31,7 +36,6 @@ export class CartPage implements OnInit {
   {
     this.cartserv.removeProduct(dat);
     this.tot=this.cartserv.getAmount();
-
   }
 
   subs(){
@@ -39,11 +43,29 @@ export class CartPage implements OnInit {
         return { id: item.id, number:item.vehnumber}
     })
     console.log(req);
-    
+   
     this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
       (result) => {
         console.log('added');
         
       });
-      this.router.navigateByUrl('/tabs/tabs/services');  }
+  //   this.router.navigateByUrl('/tabs/tabs/services'); 
+  
+  
+    
+      const options = {
+        action: this.webIntent.ACTION_VIEW,
+        url: 'upi://pay?pa=8141630915@paytm&pn=parth_car&tr=lolafkjjnaldjfn&am=1&cu=INR&tn=APP_PAYMENT',
+//        type: 'application/vnd.android.package-archive'
+      }
+      
+      this.webIntent.startActivity(options).then(
+        (success)=>{
+              console.log(success);
+              
+        },(error)=>
+      {
+        console.log(error);
+      });
+    }
 }

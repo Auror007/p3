@@ -690,7 +690,7 @@ const findCheckedOption = (el, tagName) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar style=\"text-align: center;\">\n    Select Car\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-list style=\"margin-bottom: 0%;\" *ngFor=\"let item of array_serv\">\n<ion-item button (click)=\"onClick(item)\">\n<ion-label style=\"text-align: center;\">{{item}}</ion-label>\n</ion-item>\n</ion-list>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar style=\"text-align: center;\">\n    Select Car\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-list style=\"margin-bottom: 0%;\" *ngFor=\"let item of list\">\n<ion-item button (click)=\"onClick(item)\">\n<ion-label style=\"text-align: center;\">{{item.vehicleModel}}</ion-label>\n</ion-item>\n</ion-list>\n</ion-content>\n");
 
 /***/ }),
 
@@ -703,7 +703,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Details</ion-title>\n   \n    <ion-button color=\"danger\" slot=\"end\"  (click)=\"dismiss()\">Close\n     </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>{{title}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>{{desp}}</ion-label>\n    </ion-item>\n  </ion-list>\n  \n</ion-content>\n<ion-footer class=\"ion-no-border\">\n <ion-item>\n  <ion-toolbar style=\"font-size: medium;\">\n    <ion-label slot=\"start\">Price:</ion-label>\n    <ion-label>{{price}}</ion-label>\n    <ion-fab-button (click)=\"presentPopover()\"  color=\"danger\" size=\"small\" slot=\"end\">\n      <ion-icon name=\"add\"></ion-icon>\n\n    </ion-fab-button>\n  </ion-toolbar>\n</ion-item>\n</ion-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-title>Details</ion-title>\n   \n    <ion-button color=\"danger\" slot=\"end\"  (click)=\"fdismiss()\">Close\n     </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>{{title}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>{{desp}}</ion-label>\n    </ion-item>\n  </ion-list>\n  \n</ion-content>\n<ion-footer class=\"ion-no-border\">\n <ion-item>\n  <ion-toolbar style=\"font-size: medium;\">\n    <ion-label slot=\"start\">Price:</ion-label>\n    <ion-label>{{price}}</ion-label>\n    <ion-fab-button (click)=\"presentPopover()\"  color=\"danger\" size=\"small\" slot=\"end\">\n      <ion-icon name=\"add\"></ion-icon>\n\n    </ion-fab-button>\n  </ion-toolbar>\n</ion-item>\n</ion-footer>\n");
 
 /***/ }),
 
@@ -785,27 +785,26 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let CarpopPage = class CarpopPage {
-    constructor(events, navParams, popoverController) {
+    constructor(events, popoverController) {
         this.events = events;
-        this.navParams = navParams;
         this.popoverController = popoverController;
-        this.array_serv = [];
+        this.list = [];
     }
     ngOnInit() {
-        console.log(this.list);
-        this.array_serv = this.navParams.get('list');
     }
     onClick(val) {
-        console.log(val);
-        this.popoverController.dismiss();
-        this.events.publish('added');
+        this.popoverController.dismiss(val.number);
+        console.log("dismissed");
     }
 };
 CarpopPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"] },
-    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] }
 ];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Array)
+], CarpopPage.prototype, "list", void 0);
 CarpopPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
         selector: 'app-carpop',
@@ -813,7 +812,6 @@ CarpopPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./carpop.page.scss */ "./src/app/carpop/carpop.page.scss")).default]
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
-        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavParams"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"]])
 ], CarpopPage);
 
@@ -901,6 +899,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _carpop_carpop_page__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../carpop/carpop.page */ "./src/app/carpop/carpop.page.ts");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _services_cart_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../services/cart.service */ "./src/app/services/cart.service.ts");
+
 
 
 
@@ -908,45 +908,64 @@ __webpack_require__.r(__webpack_exports__);
 
 
 let DashmodPage = class DashmodPage {
-    constructor(modalCtrl, navParams, events, popoverController, http, storage) {
+    constructor(modalCtrl, navParams, events, popoverController, http, storage, cartService) {
         this.modalCtrl = modalCtrl;
         this.navParams = navParams;
         this.events = events;
         this.popoverController = popoverController;
         this.http = http;
         this.storage = storage;
+        this.cartService = cartService;
         this.desp = navParams.get('description');
         this.title = navParams.get('details');
         this.price = navParams.get('price');
         this.cat = navParams.get('vehicleCatagory');
-        events.subscribe('added', () => {
-            this.dismiss();
-        });
+        this.id = navParams.get('packageId');
+        this.name = navParams.get('title');
+        this.time = navParams.get('duration');
         this.storage.get('email').then((data) => {
             this.email = data;
         });
     }
     ngOnInit() {
+        let em = 'parmar.parth97531@gmail.com';
+        const req = {
+            email: em,
+            vehicleCatagory: this.cat
+        };
+        console.log(req);
+        this.http.post('https://mywash.herokuapp.com/service/find', req).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.crt = result;
+        }));
     }
     presentPopover() {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             let ev;
-            const req = {
-                email: this.email,
-                vehicleCatagory: this.cat
-            };
-            console.log(req);
-            this.http.post('https://mywash.herokuapp.com/service/find', req).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
-                console.log('GOT ANSWER');
-                const cardet = { list: result };
-                const popover = yield this.popoverController.create({
-                    component: _carpop_carpop_page__WEBPACK_IMPORTED_MODULE_3__["CarpopPage"],
-                    componentProps: cardet,
-                    event: ev,
-                    translucent: true
-                });
-                return yield popover.present();
-            }));
+            //  this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',req ).subscribe(
+            //  async (result) => {
+            //    console.log('GOT ANSWER',result)
+            //     this.crt=result;
+            //     let temp=this.cartService.getCart();
+            //   //  console.log(cardet);
+            //      this.crt.filter((item)=>{
+            //           if(cart's numbers != 
+            //      });
+            console.log(this.crt);
+            const popover = yield this.popoverController.create({
+                component: _carpop_carpop_page__WEBPACK_IMPORTED_MODULE_3__["CarpopPage"],
+                componentProps: {
+                    'list': this.crt,
+                },
+                event: ev,
+                translucent: true
+            });
+            popover.onDidDismiss().then((result) => {
+                this.selection = result.data;
+                this.dismiss();
+            });
+            return yield popover.present();
+            // }
+            // );
             // console.log(result1);
             // const popover = await this.popoverController.create({
             //   component: CarpopPage,
@@ -958,6 +977,21 @@ let DashmodPage = class DashmodPage {
         });
     }
     dismiss() {
+        const prod = {
+            id: this.id,
+            name: this.name,
+            time: this.time,
+            vehnumber: this.selection,
+            price: this.price,
+        };
+        console.log(prod);
+        this.crt = this.crt.filter((item) => {
+            return item.number != this.selection;
+        });
+        console.log(this.crt);
+        this.cartService.addProduct(prod);
+    }
+    fdismiss() {
         this.modalCtrl.dismiss({
             'dismissed': true
         });
@@ -969,7 +1003,8 @@ DashmodPage.ctorParameters = () => [
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"] },
     { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"] },
     { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"] },
-    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] }
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"] },
+    { type: _services_cart_service__WEBPACK_IMPORTED_MODULE_6__["CartService"] }
 ];
 DashmodPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
@@ -982,7 +1017,8 @@ DashmodPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Events"],
         _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["PopoverController"],
         _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"],
-        _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"]])
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_5__["Storage"],
+        _services_cart_service__WEBPACK_IMPORTED_MODULE_6__["CartService"]])
 ], DashmodPage);
 
 
@@ -1046,6 +1082,58 @@ RegserviceService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     }),
     tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
 ], RegserviceService);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/cart.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/cart.service.ts ***!
+  \******************************************/
+/*! exports provided: CartService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartService", function() { return CartService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
+
+
+let CartService = class CartService {
+    constructor() {
+        this.cart = [];
+        this.amount = 0;
+        this.cartItemCount = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](0);
+    }
+    getCart() {
+        return this.cart;
+    }
+    getAmount() {
+        return this.amount;
+    }
+    addProduct(product) {
+        this.cart.push(product);
+        this.amount = this.amount + product.price;
+    }
+    removeProduct(product) {
+        for (let [index, p] of this.cart.entries()) {
+            if (p.vehnumber === product.vehnumber) {
+                this.amount = this.amount - p.price;
+                this.cart.splice(index, 1);
+            }
+        }
+    }
+};
+CartService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], CartService);
 
 
 

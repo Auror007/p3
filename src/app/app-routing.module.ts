@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'carpop', loadChildren: './carpop/carpop.module#CarpopPageModule' },
   { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
   { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
+  { path: 'chekout', loadChildren: './chekout/chekout.module#ChekoutPageModule' },
  ];
 
 @NgModule({

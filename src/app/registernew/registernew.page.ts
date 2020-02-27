@@ -50,7 +50,7 @@ export class RegisternewPage implements OnInit, UserResponse {
                 this.router.navigateByUrl('/addvehicle');
               }
               if(data=='loggedin'){
-                this.router.navigateByUrl('/tabs');
+                this.router.navigateByUrl('/tabs/tabs/dash');
               }
             });
           }

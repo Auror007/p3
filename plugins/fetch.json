@@ -24,5 +24,21 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "cordova-plugin-androidx-adapter": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-androidx-adapter"
+    },
+    "is_top_level": true,
+    "variables": {}
+  },
+  "com-darryncampbell-cordova-plugin-intent": {
+    "source": {
+      "type": "registry",
+      "id": "com-darryncampbell-cordova-plugin-intent@^2.0.0"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }

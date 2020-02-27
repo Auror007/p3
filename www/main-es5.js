@@ -21,6 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./carpop/carpop.module": ["./src/app/carpop/carpop.module.ts", "common"],
       "./cart/cart.module": ["./src/app/cart/cart.module.ts", "common", "cart-cart-module"],
       "./checkout/checkout.module": ["./src/app/checkout/checkout.module.ts", "checkout-checkout-module"],
+      "./chekout/chekout.module": ["./src/app/chekout/chekout.module.ts", "chekout-chekout-module"],
       "./dashmod/dashmod.module": ["./src/app/dashmod/dashmod.module.ts", "common"],
       "./gps/gps.module": ["./src/app/gps/gps.module.ts", "gps-gps-module"],
       "./login/login.module": ["./src/app/login/login.module.ts", "common", "login-login-module"],
@@ -850,6 +851,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       path: 'checkout',
       loadChildren: './checkout/checkout.module#CheckoutPageModule'
+    }, {
+      path: 'chekout',
+      loadChildren: './chekout/chekout.module#ChekoutPageModule'
     }];
 
     var AppRoutingModule = function AppRoutingModule() {
@@ -1100,6 +1104,12 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_fire__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
     /*! @angular/fire */
     "./node_modules/@angular/fire/es2015/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @ionic-native/web-intent/ngx */
+    "./node_modules/@ionic-native/web-intent/ngx/index.js");
 
     var AppModule = function AppModule() {
       _classCallCheck(this, AppModule);
@@ -1112,7 +1122,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
-      }, _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"]],
+      }, _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_16__["WebIntent"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })], AppModule);
     /***/

@@ -223,7 +223,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   }
 
                   if (data == 'loggedin') {
-                    _this.router.navigateByUrl('/tabs');
+                    _this.router.navigateByUrl('/tabs/tabs/dash');
                   }
                 });
               }

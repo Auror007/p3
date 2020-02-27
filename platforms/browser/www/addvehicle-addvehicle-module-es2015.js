@@ -130,6 +130,9 @@ let AddvehiclePage = class AddvehiclePage {
         this.detServ.setNumber(this.number);
         this.detServ.setParkingarea(this.area);
         this.detServ.setprefferedTime(this.time);
+        this.detServ.setBrand(this.brand);
+        this.detServ.setCategory(this.catagory);
+        this.detServ.setType(this.type);
         const data = this.detServ.getDet();
         console.log(data);
         this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe((result) => {
@@ -159,6 +162,9 @@ let AddvehiclePage = class AddvehiclePage {
         this.detServ.setNumber(this.number);
         this.detServ.setParkingarea(this.area);
         this.detServ.setprefferedTime(this.time);
+        this.detServ.setBrand(this.brand);
+        this.detServ.setCategory(this.catagory);
+        this.detServ.setType(this.type);
         const data = this.detServ.getDet();
         console.log(data);
         this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe((result) => {
@@ -315,28 +321,29 @@ let DetailsService = class DetailsService {
     constructor() {
         this.details = {
             email: String,
-            vechicleType: String,
-            brand: String,
-            model: String,
+            vehicleType: String,
+            brandName: String,
+            vehicleModel: String,
             vehicleCatagory: String,
             number: String,
             parkingarea: String,
             longitude: String,
             latitude: String,
-            prefferedTime: String
+            prefferedTime: String,
+            flag: 0
         };
     }
     setEmail(data) {
         this.details.email = data;
     }
     setType(data) {
-        this.details.vechicleType = data;
+        this.details.vehicleType = data;
     }
     setBrand(data) {
-        this.details.brand = data;
+        this.details.brandName = data;
     }
     setModel(data) {
-        this.details.model = data;
+        this.details.vehicleModel = data;
     }
     setCategory(data) {
         this.details.vehicleCatagory = data;
@@ -356,7 +363,7 @@ let DetailsService = class DetailsService {
     }
     getCardet() {
         const cardet = {
-            brand: this.details.brand,
+            brand: this.details.brandName,
             catagory: this.details.vehicleCatagory,
         };
         return cardet;

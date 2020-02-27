@@ -15,6 +15,12 @@
     },
     "cordova-sqlite-storage": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "com-darryncampbell-cordova-plugin-intent": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {},
@@ -40,11 +46,21 @@
       "clobbers": [
         "SQLitePlugin"
       ]
+    },
+    {
+      "file": "plugins/com-darryncampbell-cordova-plugin-intent/www/IntentShim.js",
+      "id": "com-darryncampbell-cordova-plugin-intent.IntentShim",
+      "pluginId": "com-darryncampbell-cordova-plugin-intent",
+      "clobbers": [
+        "intentShim"
+      ]
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-sqlite-storage": "4.0.0"
+    "cordova-sqlite-storage": "4.0.0",
+    "cordova-plugin-androidx-adapter": "1.1.0",
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0"
   }
 }

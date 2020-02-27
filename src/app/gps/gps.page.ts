@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
 
+
 const {Geolocation} =Plugins;
 
  declare var google;
@@ -24,7 +25,9 @@ export class GpsPage {
   markers=[];
   isTracking = false;
   watch: string;
-  constructor(private afAuth:AngularFireAuth,private afs:AngularFirestore) {
+  constructor(
+    private afAuth:AngularFireAuth,
+    private afs:AngularFirestore) {
     this.anonLogin();
   }
 
