@@ -12,7 +12,7 @@ import { ThrowStmt } from '@angular/compiler';
   styleUrls: ['./dash.page.scss'],
 })
 export class DashPage implements OnInit{
-  slideData = [{ image: "https://mywash.herokuapp.com/image/img.png" },{ image: "https://mywash.herokuapp.com/image/img1.png" }]  
+  public slideData:Array<object>;
   slideOptsOne = {
     initialSlide: 0,
     speed:2000
@@ -25,6 +25,13 @@ export class DashPage implements OnInit{
     private http:HttpClient,
     private modal:ModalController
     ){
+      this.http.post<Array<string>>('https://mywash.herokuapp.com/image/get',{}).subscribe((img)=>{
+      const str1="https://mywash.herokuapp.com/image/";
+      this.slideData=img.map((item)=>{
+        return {image:str1.concat(item)}
+      })
+      
+      })
 
     }
   slidesDidLoad(slides:IonSlides){

@@ -1568,9 +1568,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                 while (1) {
                   switch (_context10.prev = _context10.next) {
                     case 0:
+                      console.log(result);
                       this.crt = result;
 
-                    case 1:
+                    case 2:
                     case "end":
                       return _context10.stop();
                   }

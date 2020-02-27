@@ -58,6 +58,8 @@ export class DashmodPage implements OnInit {
             
     this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',req ).subscribe(
      async (result) => {
+       console.log(result);
+       
        this.crt=result;
        
        

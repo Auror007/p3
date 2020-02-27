@@ -929,24 +929,27 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @ionic-native/splash-screen/ngx */
-    "./node_modules/@ionic-native/splash-screen/ngx/index.js");
+    var _capacitor_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @capacitor/core */
+    "./node_modules/@capacitor/core/dist/esm/index.js");
     /* harmony import */
 
 
     var _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
     /*! @ionic-native/status-bar/ngx */
-    "./node_modules/@ionic-native/status-bar/ngx/index.js");
+    "./node_modules/@ionic-native/status-bar/ngx/index.js"); // import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+
+
+    var SplashScreen = _capacitor_core__WEBPACK_IMPORTED_MODULE_3__["Plugins"].SplashScreen;
 
     var AppComponent =
     /*#__PURE__*/
     function () {
-      function AppComponent(platform, splashScreen, statusBar) {
+      function AppComponent(platform, // private splashScreen: SplashScreen,
+      statusBar) {
         _classCallCheck(this, AppComponent);
 
         this.platform = platform;
-        this.splashScreen = splashScreen;
         this.statusBar = statusBar;
         this.initializeApp();
       }
@@ -959,7 +962,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.platform.ready().then(function () {
             _this.statusBar.styleDefault();
 
-            _this.splashScreen.show();
+            SplashScreen.show({
+              showDuration: 3000,
+              autoHide: true
+            });
           });
         }
       }]);
@@ -970,8 +976,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AppComponent.ctorParameters = function () {
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
-      }, {
-        type: _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"]
       }, {
         type: _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]
       }];
@@ -985,7 +989,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./app.component.scss */
       "./src/app/app.component.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_3__["SplashScreen"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])], AppComponent);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_4__["StatusBar"]])], AppComponent);
     /***/
   },
 

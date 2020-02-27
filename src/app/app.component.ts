@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { Plugins } from '@capacitor/core';
+const { SplashScreen } = Plugins;
+
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 @Component({
@@ -12,7 +15,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 export class AppComponent {
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
+    // private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
@@ -22,7 +25,10 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.show();
+      SplashScreen.show({
+        showDuration: 3000,
+        autoHide: true
+      });
         
     });
   }

@@ -13,7 +13,7 @@ export class OrdersPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.http.post('https://mywash.herokuapp.com/service/show',{}).subscribe(
+    this.http.post('https://mywash.herokuapp.com/profile/history',{email:'parmar.parth97531@gmail.com'}).subscribe(
         ( result) => 
           {
           console.log(result);

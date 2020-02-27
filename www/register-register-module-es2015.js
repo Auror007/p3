@@ -113,7 +113,7 @@ let RegisterPage = class RegisterPage {
         this.storage.get('activity').then((data) => {
             console.log(data);
             if (data == 'loggedin') {
-                this.router.navigateByUrl('/tabs');
+                this.router.navigateByUrl('/tabs/tabs/dash');
             }
             else if (data == 'registered') {
                 this.router.navigateByUrl('/login');

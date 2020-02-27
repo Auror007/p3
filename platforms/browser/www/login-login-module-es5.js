@@ -218,6 +218,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             this.doAlert('Enter Valid Email!', 'Okay');
           } else {
             this.regServ.setEmail(email);
+            this.http.post('https://mywash.herokuapp.com/profile/userdetails', {
+              email: email
+            }).subscribe(function (result) {
+              console.log(result.phone);
+
+              _this.storage.set('num', result.phone);
+            });
             this.storage.set('email', this.email);
             var data = {
               email: this.regServ.getEmail()

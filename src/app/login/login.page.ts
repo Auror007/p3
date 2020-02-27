@@ -40,8 +40,17 @@ export class LoginPage implements OnInit, UserResponse {
       this.doAlert('Enter Valid Email!', 'Okay');
     } else {
       this.regServ.setEmail(email);
-      this.storage.set('email',this.email);
-      const data = {
+      this.http.post<{name:string,phone:number}>('https://mywash.herokuapp.com/profile/userdetails',{email:email}).subscribe((result)=>{
+      console.log(result.phone);
+      console.log(result.name);
+      this.storage.set('num',result.phone);
+      this.storage.set('name',result.name);
+
+      });
+      
+     this.storage.set('email',this.email);
+     
+     const data = {
         email: this.regServ.getEmail()
       };
 

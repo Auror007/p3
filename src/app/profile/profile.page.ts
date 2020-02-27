@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
+import { HttpClient } from '@angular/common/http';
+import {Storage} from '@ionic/storage';
+
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
@@ -7,10 +10,34 @@ import {NavController} from '@ionic/angular';
 })
 export class ProfilePage implements OnInit {
   
+  private em:any;
+  private no:any;
+  private name:any;
+  constructor(
+    private navCtrl:NavController,
+    private storage:Storage
+    ) { 
+      this.storage.get('email').then((data)=>{
+        this.em=data;
+      });
+      this.storage.get('num').then((data)=>{
+        console.log(data);
+        
+        this.no=data;
+      });
+      this.storage.get('name').then((data)=>{
+        console.log(data);
+        
+        this.name=data;
+      });
+    
+    }
 
-  constructor(private navCtrl:NavController) { }
 
   ngOnInit() {
+   
+
+  
   }
 
   

@@ -32,8 +32,7 @@ export class RegisterPage implements OnInit, UserResponse {
     this.storage.get('activity').then((data)=>{
       console.log(data);
       if(data=='loggedin'){
-       
-        this.router.navigateByUrl('/tabs')
+        this.router.navigateByUrl('/tabs/tabs/dash')
       }
       else if(data=='registered'){
         this.router.navigateByUrl('/login')
@@ -120,6 +119,10 @@ export class RegisterPage implements OnInit, UserResponse {
            if (result.message == '2') {
             this.storage.set('email',this.email).then((successData)=>{
               console.log('email stored')});
+
+              this.storage.set('name',this.username).then((successData)=>{
+                console.log('name stored')});
+  
 
               this.storage.set('activity','registered').then((successData)=>{
                 console.log('activity :stored');

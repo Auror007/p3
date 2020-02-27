@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button routerLink=\"/tabs/tabs/services\" routerDirection=\"backward\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Cart</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-item>\n  <ion-label>Your Order Summary</ion-label>\n</ion-item>\n<ion-list>\n  <ion-item-sliding  *ngFor=\"let item of cart\" >\n    <ion-item>\n      <!-- <ion-label text-wrap>\n        {{item.name}}\n      </ion-label>\n      <br>\n      <ion-label text-wrap>\n        Vehicle number:{{item.vehnumber}}\n      </ion-label>\n      <ion-label text-wrap>\n        Validity:{{item.duration}}\n      </ion-label>\n      <ion-label slot=\"end\">\n        {{item.price}}\n      </ion-label> -->\n      <ion-grid>\n        <ion-row>\n          <ion-col>\n            {{item.name}}\n          </ion-col>\n          <ion-col>\n           Price: {{item.price}}\n          </ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col>\n           Vehicle Number:{{item.vehnumber}}\n          </ion-col>\n          <ion-col>\n          Validity:  {{item.time}}\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-item>\n\n    <ion-item-options side=\"start\" (click)=\"deleteItem(item)\">\n      <ion-item-option color=\"danger\" >\n        <ion-icon name=\"trash\" slot=\"icon-only\"></ion-icon>\n      </ion-item-option>\n    </ion-item-options>\n\n  </ion-item-sliding>\n</ion-list>\n<div [innerHTML]=variable.html>\n</div>\n</ion-content>\n\n<ion-footer>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n          <ion-title>Total : {{tot}}</ion-title>\n         \n\n      </ion-col>\n      <ion-col>\n\n        \n        <ion-button color=\"danger\"  (click)=\"subs()\"  expand=\"block\">Checkout</ion-button>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-footer>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button routerLink=\"/tabs/tabs/services\" routerDirection=\"backward\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Cart</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-item>\n  <ion-label>Your Order Summary</ion-label>\n</ion-item>\n<ion-list>\n  <ion-item-sliding  *ngFor=\"let item of cart\" >\n    <ion-item>\n      <!-- <ion-label text-wrap>\n        {{item.name}}\n      </ion-label>\n      <br>\n      <ion-label text-wrap>\n        Vehicle number:{{item.vehnumber}}\n      </ion-label>\n      <ion-label text-wrap>\n        Validity:{{item.duration}}\n      </ion-label>\n      <ion-label slot=\"end\">\n        {{item.price}}\n      </ion-label> -->\n      <ion-grid>\n        <ion-row>\n          <ion-col>\n            {{item.name}}\n          </ion-col>\n          <ion-col>\n           Price: {{item.price}}\n          </ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col>\n           Vehicle Number:{{item.vehnumber}}\n          </ion-col>\n          <ion-col>\n          Validity:  {{item.time}}\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-item>\n\n    <ion-item-options side=\"start\" (click)=\"deleteItem(item)\">\n      <ion-item-option color=\"danger\" >\n        <ion-icon name=\"trash\" slot=\"icon-only\"></ion-icon>\n      </ion-item-option>\n    </ion-item-options>\n\n  </ion-item-sliding>\n</ion-list>\n\n</ion-content>\n\n<ion-footer>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n          <ion-title>Total : {{tot}}</ion-title>\n         \n\n      </ion-col>\n      <ion-col>\n\n        \n        <ion-button color=\"danger\"  (click)=\"subs()\"  expand=\"block\">Checkout</ion-button>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-footer>\n";
     /***/
   },
 
@@ -178,20 +178,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
     /*! @ionic-native/web-intent/ngx */
     "./node_modules/@ionic-native/web-intent/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
     var CartPage =
     /*#__PURE__*/
     function () {
-      function CartPage(cartserv, http, router, webIntent) {
+      function CartPage(cartserv, http, router, webIntent, storage) {
+        var _this = this;
+
         _classCallCheck(this, CartPage);
 
         this.cartserv = cartserv;
         this.http = http;
         this.router = router;
         this.webIntent = webIntent;
-        this.variable = {
-          "html": "<p>This is a paragraph</p>"
-        };
+        this.storage = storage;
+        this.storage.get('email').then(function (data) {
+          _this.em = data;
+        });
       }
 
       _createClass(CartPage, [{
@@ -210,8 +219,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }, {
         key: "subs",
         value: function subs() {
+          var _this2 = this;
+
           var req = this.cart.map(function (item) {
             return {
+              email: _this2.em,
               id: item.id,
               number: item.vehnumber
             };
@@ -245,6 +257,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
       }, {
         type: _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_5__["WebIntent"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
       }];
     };
 
@@ -256,7 +270,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./cart.page.scss */
       "./src/app/cart/cart.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_cart_service__WEBPACK_IMPORTED_MODULE_2__["CartService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_5__["WebIntent"]])], CartPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_cart_service__WEBPACK_IMPORTED_MODULE_2__["CartService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_5__["WebIntent"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])], CartPage);
     /***/
   }
 }]);

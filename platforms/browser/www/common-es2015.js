@@ -935,6 +935,7 @@ let DashmodPage = class DashmodPage {
         };
         console.log(req);
         this.http.post('https://mywash.herokuapp.com/service/find', req).subscribe((result) => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log(result);
             this.crt = result;
         }));
     }

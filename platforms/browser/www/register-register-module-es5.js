@@ -210,7 +210,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             console.log(data);
 
             if (data == 'loggedin') {
-              _this.router.navigateByUrl('/tabs');
+              _this.router.navigateByUrl('/tabs/tabs/dash');
             } else if (data == 'registered') {
               _this.router.navigateByUrl('/login');
             }

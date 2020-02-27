@@ -61,7 +61,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Profile</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item >\n    <!-- <ion-avatar class=\"ion-margin-start\">\n    <img src=\"../../assets/icon/avatar.svg\"/>\n  </ion-avatar>-->\n    <img slot=\"start\" src=\"../../assets/icon/favicon.png\"> \n\n\n    <ion-label slot=\"end\" fixed>\n      Parth Parmar\n    </ion-label >\n  </ion-item> \n<br>\n  <ion-item  style=\"margin-top: 0%;\">\n <ion-list style=\"margin-top: 0%;\">\n  <ion-label fixed>\n  Phone: XXXXXXXXXX\n  </ion-label>\n  <ion-label fixed>\n    Email: XXXXXXXXXX\n    </ion-label>\n </ion-list>\n  </ion-item>    \n  <hr>\n\n  <ion-list>\n    \n    <ion-item button routerLink=\"/orders\" routerDirection=\"forward\">\n      <ion-icon name=\"basket\" slot=\"start\"></ion-icon>\n      <ion-label>Orders</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/support\" routerDirection=\"forward\">\n      <ion-icon name=\"call\" slot=\"start\"></ion-icon>\n      <ion-label>Help & Support</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/policy\" routerDirection=\"forward\">\n      <ion-icon name=\"clipboard\" slot=\"start\"></ion-icon>\n      <ion-label>Policy</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/about\" routerDirection=\"forward\">\n      <ion-icon name=\"car-sport\" slot=\"start\"></ion-icon>\n      <ion-label>About</ion-label>\n    </ion-item>\n    \n   </ion-list>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Profile</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item >\n    <!-- <ion-avatar class=\"ion-margin-start\">\n    <img src=\"../../assets/icon/avatar.svg\"/>\n  </ion-avatar>-->\n    <img slot=\"start\" src=\"../../assets/icon/favicon.png\"> \n\n\n    <ion-label slot=\"end\" fixed>\n      Parth Parmar\n    </ion-label >\n  </ion-item> \n<br>\n  <ion-item  style=\"margin-top: 0%;\">\n <ion-list style=\"margin-top: 0%;\">\n  <ion-label fixed>\n  Phone: {{no}}\n  </ion-label>\n  <ion-label fixed>\n    Email: {{em}}\n    </ion-label>\n </ion-list>\n  </ion-item>    \n  <hr>\n\n  <ion-list>\n    \n    <ion-item button routerLink=\"/orders\" routerDirection=\"forward\">\n      <ion-icon name=\"basket\" slot=\"start\"></ion-icon>\n      <ion-label>Orders</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/support\" routerDirection=\"forward\">\n      <ion-icon name=\"call\" slot=\"start\"></ion-icon>\n      <ion-label>Help & Support</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/policy\" routerDirection=\"forward\">\n      <ion-icon name=\"clipboard\" slot=\"start\"></ion-icon>\n      <ion-label>Policy</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/about\" routerDirection=\"forward\">\n      <ion-icon name=\"car-sport\" slot=\"start\"></ion-icon>\n      <ion-label>About</ion-label>\n    </ion-item>\n    \n   </ion-list>\n</ion-content>\n";
     /***/
   },
 
@@ -584,14 +584,37 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
     var ProfilePage =
     /*#__PURE__*/
     function () {
-      function ProfilePage(navCtrl) {
+      function ProfilePage(navCtrl, http, storage) {
+        var _this2 = this;
+
         _classCallCheck(this, ProfilePage);
 
         this.navCtrl = navCtrl;
+        this.http = http;
+        this.storage = storage;
+        this.storage.get('email').then(function (data) {
+          _this2.em = data;
+        });
+        this.storage.get('num').then(function (data) {
+          console.log(data);
+          _this2.no = data;
+        });
       }
 
       _createClass(ProfilePage, [{
@@ -605,6 +628,10 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     ProfilePage.ctorParameters = function () {
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]
+      }, {
+        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
       }];
     };
 
@@ -616,7 +643,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./profile.page.scss */
       "./src/app/profile/profile.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])], ProfilePage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]])], ProfilePage);
     /***/
   },
 

@@ -5,8 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {WebIntent} from '@ionic-native/web-intent/ngx';
-
-
+import {Storage} from '@ionic/storage';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
@@ -16,14 +15,20 @@ export class CartPage implements OnInit {
 
   public cart:Array<Product>;
   public tot:number;
-  public variable = {"html": "<p>This is a paragraph</p>"};
-
+  public em:string;
+  
   constructor(
     public cartserv:CartService,
     public http:HttpClient,
     public router:Router,
-    private webIntent: WebIntent
-  ) { }
+    private webIntent: WebIntent,
+    private storage:Storage
+  ) {
+    
+    this.storage.get('email').then((data)=>{
+      this.em=data;
+    });
+   }
 
   ngOnInit() {
     this.tot=this.cartserv.getAmount();
@@ -40,14 +45,15 @@ export class CartPage implements OnInit {
 
   subs(){
     const req=this.cart.map((item)=>{
-        return { id: item.id, number:item.vehnumber}
+
+      
+        return {email:this.em,id: item.id, number:item.vehnumber}
     })
     console.log(req);
    
     this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
       (result) => {
         console.log('added');
-        
       });
   //   this.router.navigateByUrl('/tabs/tabs/services'); 
   
