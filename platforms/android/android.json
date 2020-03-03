@@ -82,6 +82,10 @@
             {
               "xml": "<feature name=\"IntentShim\"><param name=\"android-package\" value=\"com.darryncampbell.cordova.plugin.intent.IntentShim\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
+            },
+            {
+              "xml": "<feature name=\"Checkout\"><param name=\"android-package\" value=\"com.razorpay.cordova.Main\" /></feature>",
+              "count": 1
             }
           ]
         }
@@ -102,6 +106,9 @@
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "com-darryncampbell-cordova-plugin-intent": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "com.razorpay.cordova": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },
@@ -144,6 +151,14 @@
       "clobbers": [
         "intentShim"
       ]
+    },
+    {
+      "id": "com.razorpay.cordova.RazorpayCheckout",
+      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+      "pluginId": "com.razorpay.cordova",
+      "clobbers": [
+        "RazorpayCheckout"
+      ]
     }
   ],
   "plugin_metadata": {
@@ -151,6 +166,7 @@
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-sqlite-storage": "4.0.0",
     "cordova-plugin-androidx-adapter": "1.1.0",
-    "com-darryncampbell-cordova-plugin-intent": "2.0.0"
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
+    "com.razorpay.cordova": "0.16.1"
   }
 }

@@ -19,11 +19,10 @@ var map = {
 	],
 	"./carpop/carpop.module": [
 		"./src/app/carpop/carpop.module.ts",
-		"common"
+		"carpop-carpop-module"
 	],
 	"./cart/cart.module": [
 		"./src/app/cart/cart.module.ts",
-		"common",
 		"cart-cart-module"
 	],
 	"./checkout/checkout.module": [
@@ -36,7 +35,7 @@ var map = {
 	],
 	"./dashmod/dashmod.module": [
 		"./src/app/dashmod/dashmod.module.ts",
-		"common"
+		"default~dashmod-dashmod-module~tabs-tabs-module"
 	],
 	"./gps/gps.module": [
 		"./src/app/gps/gps.module.ts",
@@ -75,7 +74,7 @@ var map = {
 	],
 	"./tabs/tabs.module": [
 		"./src/app/tabs/tabs.module.ts",
-		"common",
+		"default~dashmod-dashmod-module~tabs-tabs-module",
 		"tabs-tabs-module"
 	]
 };
@@ -898,7 +897,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
 /* harmony import */ var _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/geolocation/ngx */ "./node_modules/@ionic-native/geolocation/ngx/index.js");
 /* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../environments/environment.prod */ "./src/environments/environment.prod.ts");
 /* harmony import */ var _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/fire/firestore */ "./node_modules/@angular/fire/firestore/es2015/index.js");
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/fire/auth */ "./node_modules/@angular/fire/auth/es2015/index.js");
 /* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
@@ -930,7 +929,7 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(),
             _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["IonicStorageModule"].forRoot(),
             _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
-            _angular_fire__WEBPACK_IMPORTED_MODULE_15__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"],
+            _angular_fire__WEBPACK_IMPORTED_MODULE_15__["AngularFireModule"].initializeApp(_environments_environment_prod__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"],
             _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]
         ],
         providers: [
@@ -944,6 +943,34 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
     })
 ], AppModule);
 
+
+
+/***/ }),
+
+/***/ "./src/environments/environment.prod.ts":
+/*!**********************************************!*\
+  !*** ./src/environments/environment.prod.ts ***!
+  \**********************************************/
+/*! exports provided: environment */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+
+const environment = {
+    production: true,
+    firebase: {
+        apiKey: "AIzaSyDeseBZRKKtiGtQFy9vdzNXpro0YSSXbfE",
+        authDomain: "proto2-1776e.firebaseapp.com",
+        databaseURL: "https://proto2-1776e.firebaseio.com",
+        projectId: "proto2-1776e",
+        storageBucket: "proto2-1776e.appspot.com",
+        messagingSenderId: "135057415689",
+        appId: "1:135057415689:web:f9ae73871e3eb47e"
+    }
+};
 
 
 /***/ }),
@@ -964,7 +991,7 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 
 const environment = {
-    production: false,
+    production: true,
     firebase: {
         apiKey: "AIzaSyDeseBZRKKtiGtQFy9vdzNXpro0YSSXbfE",
         authDomain: "proto2-1776e.firebaseapp.com",

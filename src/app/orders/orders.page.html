@@ -10,4 +10,42 @@
 </ion-header>
 
 <ion-content>
+  <ion-list *ngFor="let item of resp">
+
+    <ion-item >
+      <ion-card color="dark">
+        
+        <ion-grid>
+       
+            <ion-row>
+              <ion-col>
+               Service {{item.name}}
+              </ion-col>
+              <ion-col>
+              PackageID:  {{item.packageId}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+               Duration: {{item.duration}}
+              </ion-col>
+              <ion-col>
+               Price : {{item.price}}
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col>
+               Vehicle: {{item.brandName}} {{item.vehicleModel}}
+              </ion-col>
+             
+              <ion-col>
+               Number: {{item.number}}
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-card>
+    </ion-item>
+    
+  </ion-list>
+
 </ion-content>

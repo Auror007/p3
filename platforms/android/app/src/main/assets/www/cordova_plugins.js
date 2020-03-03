@@ -37,6 +37,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "intentShim"
       ]
+    },
+    {
+      "id": "com.razorpay.cordova.RazorpayCheckout",
+      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+      "pluginId": "com.razorpay.cordova",
+      "clobbers": [
+        "RazorpayCheckout"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -44,6 +52,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-sqlite-storage": "4.0.0",
     "cordova-plugin-androidx-adapter": "1.1.0",
-    "com-darryncampbell-cordova-plugin-intent": "2.0.0"
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
+    "com.razorpay.cordova": "0.16.1"
   };
 });

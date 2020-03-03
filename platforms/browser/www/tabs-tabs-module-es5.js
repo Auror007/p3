@@ -21,7 +21,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\r\n        <ion-toolbar>\r\n          <ion-title>Home</ion-title>\r\n        </ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n <ion-slides [options]=\"slideOptsOne\">\r\n   <!-- <ion-slide>\r\n     <img src=\"http://placehold.it/300x300/ff0000/ffffff\" alt=\"\">\r\n   </ion-slide>\r\n   <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/ffcc33/ffffff\" alt=\"\">\r\n  </ion-slide>\r\n  <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/33ccff/ffffff\" alt=\"\">\r\n  </ion-slide> -->\r\n  <ion-slide *ngFor=\"let slide of slideData\">\r\n    <img src=\"{{slide.image}}\" />\r\n  </ion-slide>\r\n </ion-slides>\r\n<ion-item>\r\n <ion-label text-wrap position=\"fixed\">\r\n  Four-Wheeler\r\n</ion-label>\r\n</ion-item>\r\n<ion-slides>\r\n  <ion-slide  *ngFor='let det of array_serv'>\r\n    <ion-card button style=\"border-radius: 25px;\"  (click)=\"addCart(det.packageId)\">\r\n      <ion-card-header>\r\n        \r\n        <ion-card-title>{{det.name}}</ion-card-title>\r\n        <ion-card-subtitle>{{det.duration}} Months</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>{{det.description}}</ion-card-content>\r\n  </ion-card>\r\n  </ion-slide>\r\n <!-- <ion-slide>\r\n  <ion-card style=\"border-radius: 25px;\" button (click)=\"addCart()\">\r\n      <ion-card-header>\r\n        <ion-card-title>Service1</ion-card-title>\r\n        <ion-card-subtitle>1 month</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>\r\n          External Wash Weekly + 1 Extra interior wash\r\n        </ion-card-content>\r\n  </ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service2</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash weekly + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service3</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash daily + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide> -->\r\n\r\n</ion-slides>\r\n<ion-item>\r\n  <ion-label text-wrap position=\"fixed\">\r\n   Two-Wheeler\r\n </ion-label>\r\n </ion-item>\r\n<ion-slides>\r\n<ion-slide>\r\n  <ion-card style=\"border-radius: 25px;\">\r\n      <ion-card-header>\r\n        <ion-card-title>Service1</ion-card-title>\r\n        <ion-card-subtitle>1 month</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>\r\n          External Wash Weekly + 1 Extra interior wash\r\n        </ion-card-content>\r\n  </ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service2</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash weekly + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n<ion-slide>\r\n<ion-card style=\"border-radius: 25px;\">\r\n  <ion-card-header>\r\n    <ion-card-title>Service3</ion-card-title>\r\n    <ion-card-subtitle>3 months</ion-card-subtitle>\r\n    </ion-card-header>\r\n  \r\n    <ion-card-content>\r\n      External Wash daily + 2 Extra interior wash\r\n    </ion-card-content>\r\n</ion-card>\r\n</ion-slide>\r\n\r\n</ion-slides>\r\n      </ion-content>\r\n";
+    __webpack_exports__["default"] = "<ion-header>\r\n        <ion-toolbar>\r\n          <ion-title>Home</ion-title>\r\n        </ion-toolbar>\r\n      </ion-header>\r\n      <ion-content>\r\n <ion-slides [options]=\"slideOptsOne\">\r\n   <!-- <ion-slide>\r\n     <img src=\"http://placehold.it/300x300/ff0000/ffffff\" alt=\"\">\r\n   </ion-slide>\r\n   <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/ffcc33/ffffff\" alt=\"\">\r\n  </ion-slide>\r\n  <ion-slide>\r\n    <img src=\"http://placehold.it/300x300/33ccff/ffffff\" alt=\"\">\r\n  </ion-slide> -->\r\n  <ion-slide *ngFor=\"let slide of slideData\">\r\n    <img src=\"{{slide.image}}\" />\r\n  </ion-slide>\r\n </ion-slides>\r\n<ion-item>\r\n <ion-label text-wrap position=\"fixed\">\r\n  Four-Wheeler\r\n</ion-label>\r\n</ion-item>\r\n<ion-slides >\r\n  <ng-container *ngFor='let det of array_serv'>\r\n  <ion-slide  *ngIf='det.vehicleType === \"car\"'  >\r\n    <ion-card  button style=\"border-radius: 25px;\"  (click)=\"addCart(det.packageId)\">\r\n      <ion-card-header>\r\n        \r\n        <ion-card-title>{{det.name}}</ion-card-title>\r\n        <ion-card-subtitle>{{det.duration}} Months</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>{{det.description}}</ion-card-content>\r\n  </ion-card>\r\n  </ion-slide>\r\n</ng-container>\r\n\r\n\r\n</ion-slides>\r\n<ion-item>\r\n  <ion-label text-wrap position=\"fixed\">\r\n   Two-Wheeler\r\n </ion-label>\r\n </ion-item>\r\n <ion-slides >\r\n  <ng-container *ngFor='let det of array_serv'>\r\n  <ion-slide  *ngIf='det.vehicleType === \"bike\"'  >\r\n    <ion-card  button style=\"border-radius: 25px;\"  (click)=\"addCart(det.packageId)\">\r\n      <ion-card-header>\r\n        \r\n        <ion-card-title>{{det.name}}</ion-card-title>\r\n        <ion-card-subtitle>{{det.duration}} Months</ion-card-subtitle>\r\n        </ion-card-header>\r\n      \r\n        <ion-card-content>{{det.description}}</ion-card-content>\r\n  </ion-card>\r\n  </ion-slide>\r\n</ng-container>\r\n\r\n\r\n</ion-slides>\r\n      </ion-content>\r\n";
     /***/
   },
 
@@ -61,7 +61,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Profile</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item >\n    <!-- <ion-avatar class=\"ion-margin-start\">\n    <img src=\"../../assets/icon/avatar.svg\"/>\n  </ion-avatar>-->\n    <img slot=\"start\" src=\"../../assets/icon/favicon.png\"> \n\n\n    <ion-label slot=\"end\" fixed>\n      Parth Parmar\n    </ion-label >\n  </ion-item> \n<br>\n  <ion-item  style=\"margin-top: 0%;\">\n <ion-list style=\"margin-top: 0%;\">\n  <ion-label fixed>\n  Phone: {{no}}\n  </ion-label>\n  <ion-label fixed>\n    Email: {{em}}\n    </ion-label>\n </ion-list>\n  </ion-item>    \n  <hr>\n\n  <ion-list>\n    \n    <ion-item button routerLink=\"/orders\" routerDirection=\"forward\">\n      <ion-icon name=\"basket\" slot=\"start\"></ion-icon>\n      <ion-label>Orders</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/support\" routerDirection=\"forward\">\n      <ion-icon name=\"call\" slot=\"start\"></ion-icon>\n      <ion-label>Help & Support</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/policy\" routerDirection=\"forward\">\n      <ion-icon name=\"clipboard\" slot=\"start\"></ion-icon>\n      <ion-label>Policy</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/about\" routerDirection=\"forward\">\n      <ion-icon name=\"car-sport\" slot=\"start\"></ion-icon>\n      <ion-label>About</ion-label>\n    </ion-item>\n    \n   </ion-list>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Profile</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-item >\n    <!-- <ion-avatar class=\"ion-margin-start\">\n    <img src=\"../../assets/icon/avatar.svg\"/>\n  </ion-avatar>-->\n    <img slot=\"start\" src=\"../../assets/icon/favicon.png\"> \n\n\n    <ion-label slot=\"end\" fixed>\n      {{name}}\n    </ion-label >\n  </ion-item> \n<br>\n  <ion-item  style=\"margin-top: 0%;\">\n <ion-list style=\"margin-top: 0%;\">\n  <ion-label fixed>\n  Phone: {{no}}\n  </ion-label>\n  <ion-label fixed>\n    Email: {{em}}\n    </ion-label>\n </ion-list>\n  </ion-item>    \n  <hr>\n\n  <ion-list>\n    \n    <ion-item button routerLink=\"/orders\" routerDirection=\"forward\">\n      <ion-icon name=\"basket\" slot=\"start\"></ion-icon>\n      <ion-label>Orders</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/support\" routerDirection=\"forward\">\n      <ion-icon name=\"call\" slot=\"start\"></ion-icon>\n      <ion-label>Help & Support</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/policy\" routerDirection=\"forward\">\n      <ion-icon name=\"clipboard\" slot=\"start\"></ion-icon>\n      <ion-label>Policy</ion-label>\n    </ion-item>\n    <ion-item button routerLink=\"/about\" routerDirection=\"forward\">\n      <ion-icon name=\"car-sport\" slot=\"start\"></ion-icon>\n      <ion-label>About</ion-label>\n    </ion-item>\n    \n   </ion-list>\n</ion-content>\n";
     /***/
   },
 
@@ -121,7 +121,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-title {\n  text-align: center;\n}\n\nion-label {\n  width: 100%;\n  text-align: center;\n}\n\nion-slides {\n  height: 200px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaC9EOlxcU0VNOFxccDMvc3JjXFxhcHBcXGRhc2hcXGRhc2gucGFnZS5zY3NzIiwic3JjL2FwcC9kYXNoL2Rhc2gucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUksa0JBQUE7QUNBSjs7QURFQTtFQUNJLFdBQUE7RUFDQSxrQkFBQTtBQ0NKOztBREVBO0VBQ0ksYUFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvZGFzaC9kYXNoLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbImlvbi10aXRsZXtcclxuICAgIFxyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbmlvbi1sYWJlbHtcclxuICAgIHdpZHRoOjEwMCU7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbmlvbi1zbGlkZXN7XHJcbiAgICBoZWlnaHQ6MjAwcHg7XHJcbn0iLCJpb24tdGl0bGUge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbmlvbi1sYWJlbCB7XG4gIHdpZHRoOiAxMDAlO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbmlvbi1zbGlkZXMge1xuICBoZWlnaHQ6IDIwMHB4O1xufSJdfQ== */";
+    __webpack_exports__["default"] = "ion-title {\n  text-align: center;\n}\n\nion-label {\n  width: 100%;\n  text-align: center;\n}\n\nion-slides {\n  height: 200px;\n}\n\nion-card {\n  display: -webkit-box;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n          flex-direction: column;\n  background-color: lightblue;\n  width: 85%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvZGFzaC9EOlxcU0VNOFxccDMvc3JjXFxhcHBcXGRhc2hcXGRhc2gucGFnZS5zY3NzIiwic3JjL2FwcC9kYXNoL2Rhc2gucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBRUksa0JBQUE7QUNBSjs7QURFQTtFQUNJLFdBQUE7RUFDQSxrQkFBQTtBQ0NKOztBREVBO0VBQ0ksYUFBQTtBQ0NKOztBREVBO0VBQ0ksb0JBQUE7RUFBQSxhQUFBO0VBQ0EsNEJBQUE7RUFBQSw2QkFBQTtVQUFBLHNCQUFBO0VBQ0EsMkJBQUE7RUFDQSxVQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9kYXNoL2Rhc2gucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLXRpdGxle1xyXG4gICAgXHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuaW9uLWxhYmVse1xyXG4gICAgd2lkdGg6MTAwJTtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuaW9uLXNsaWRlc3tcclxuICAgIGhlaWdodDoyMDBweDtcclxufVxyXG5cclxuaW9uLWNhcmR7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGxpZ2h0Ymx1ZTtcclxuICAgIHdpZHRoOiA4NSU7XHJcbiAgfSIsImlvbi10aXRsZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuaW9uLWxhYmVsIHtcbiAgd2lkdGg6IDEwMCU7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuaW9uLXNsaWRlcyB7XG4gIGhlaWdodDogMjAwcHg7XG59XG5cbmlvbi1jYXJkIHtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxleC1kaXJlY3Rpb246IGNvbHVtbjtcbiAgYmFja2dyb3VuZC1jb2xvcjogbGlnaHRibHVlO1xuICB3aWR0aDogODUlO1xufSJdfQ== */";
     /***/
   },
 
@@ -191,21 +191,26 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /*#__PURE__*/
     function () {
       function DashPage(iserv, http, modal) {
+        var _this = this;
+
         _classCallCheck(this, DashPage);
 
         this.iserv = iserv;
         this.http = http;
         this.modal = modal;
-        this.slideData = [{
-          image: "https://mywash.herokuapp.com/image/img.png"
-        }, {
-          image: "https://mywash.herokuapp.com/image/img1.png"
-        }];
         this.slideOptsOne = {
           initialSlide: 0,
           speed: 2000
         };
         this.array_serv = [];
+        this.http.post('https://mywash.herokuapp.com/image/get', {}).subscribe(function (img) {
+          var str1 = "https://mywash.herokuapp.com/image/";
+          _this.slideData = img.map(function (item) {
+            return {
+              image: str1.concat(item)
+            };
+          });
+        });
       }
 
       _createClass(DashPage, [{
@@ -216,18 +221,18 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       }, {
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          var _this2 = this;
 
           this.http.get('https://mywash.herokuapp.com/package/show', {}).subscribe(function (result) {
             console.log(result);
 
             for (var key in result) {
               if (result.hasOwnProperty(key)) {
-                _this.array_serv.push(new _det_model__WEBPACK_IMPORTED_MODULE_6__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration));
+                _this2.array_serv.push(new _det_model__WEBPACK_IMPORTED_MODULE_6__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration));
               }
             }
 
-            console.log(_this.array_serv);
+            console.log(_this2.array_serv);
           });
         }
       }, {
@@ -587,33 +592,30 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
     /* harmony import */
 
 
-    var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
-    /*! @angular/common/http */
-    "./node_modules/@angular/common/fesm2015/http.js");
-    /* harmony import */
-
-
-    var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
     var ProfilePage =
     /*#__PURE__*/
     function () {
-      function ProfilePage(navCtrl, http, storage) {
-        var _this2 = this;
+      function ProfilePage(navCtrl, storage) {
+        var _this3 = this;
 
         _classCallCheck(this, ProfilePage);
 
         this.navCtrl = navCtrl;
-        this.http = http;
         this.storage = storage;
         this.storage.get('email').then(function (data) {
-          _this2.em = data;
+          _this3.em = data;
         });
         this.storage.get('num').then(function (data) {
           console.log(data);
-          _this2.no = data;
+          _this3.no = data;
+        });
+        this.storage.get('name').then(function (data) {
+          console.log(data);
+          _this3.name = data;
         });
       }
 
@@ -629,9 +631,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       return [{
         type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]
       }, {
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
-      }, {
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
       }];
     };
 
@@ -643,7 +643,7 @@ function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _d
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./profile.page.scss */
       "./src/app/profile/profile.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]])], ProfilePage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"], _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]])], ProfilePage);
     /***/
   },
 

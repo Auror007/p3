@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {CartService,Product} from '../services/cart.service';
 import { ItemsService } from '../items.service';
 import { HttpClient } from '@angular/common/http';
-import { NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import {WebIntent} from '@ionic-native/web-intent/ngx';
 import {Storage} from '@ionic/storage';
+
+declare var RazorpayCheckout:any;
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.page.html',
@@ -15,18 +15,21 @@ export class CartPage implements OnInit {
 
   public cart:Array<Product>;
   public tot:number;
+  public num:string;
   public em:string;
   
   constructor(
     public cartserv:CartService,
     public http:HttpClient,
     public router:Router,
-    private webIntent: WebIntent,
     private storage:Storage
   ) {
     
     this.storage.get('email').then((data)=>{
       this.em=data;
+    });
+    this.storage.get('num').then((data)=>{
+      this.num=data;
     });
    }
 
@@ -51,27 +54,52 @@ export class CartPage implements OnInit {
     })
     console.log(req);
    
-    this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
-      (result) => {
-        console.log('added');
-      });
+    // this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
+    //   (result) => {
+    //     console.log('added');
+    //   });
   //   this.router.navigateByUrl('/tabs/tabs/services'); 
   
   
+  this.http.post('https://mywash.herokuapp.com/payment',{amount:this.tot} ).subscribe(
+    (result) => {
+      console.log(result);
+    });
     
-      const options = {
-        action: this.webIntent.ACTION_VIEW,
-        url: 'upi://pay?pa=8141630915@paytm&pn=parth_car&tr=lolafkjjnaldjfn&am=1&cu=INR&tn=APP_PAYMENT',
-//        type: 'application/vnd.android.package-archive'
+
+    var options = {
+      description: 'Subscription fee',
+      image: 'https://i.imgur.com/3g7nmJC.png',
+      currency: "INR", // your 3 letter currency code
+      key:"rzp_test_8gpkmLwN2hocfu" , // your Key Id from Razorpay dashboard
+      amount: this.tot*100, // Payment amount in smallest denomiation e.g. cents for USD
+      name: 'Payment',
+      method:"upi",
+      prefill: {
+        email: this.em,
+        contact: this.num,
+        name: 'Carwash'
+      },
+      theme: {
+        color: '#2525f4'
+      },
+      modal: {
+        ondismiss: function () {
+          alert('dismissed')
+        }
       }
-      
-      this.webIntent.startActivity(options).then(
-        (success)=>{
-              console.log(success);
-              
-        },(error)=>
-      {
-        console.log(error);
-      });
-    }
+    };
+
+    var successCallback = function (payment_id) {
+      console.log(payment_id);
+    };
+
+    var cancelCallback = function (error) {
+      alert(error.description + ' (Error ' + error.code + ')');
+    };
+
+    RazorpayCheckout.open(options, successCallback, cancelCallback);
+    this.router.navigateByUrl('/tabs/tabs/services');
+
+   }
 }

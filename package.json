@@ -45,6 +45,7 @@
     "body-parser": "^1.19.0",
     "codelyzer": "^5.0.0",
     "com-darryncampbell-cordova-plugin-intent": "^2.0.0",
+    "com.razorpay.cordova": "1.4.8",
     "cordova-android": "8.1.0",
     "cordova-browser": "6.0.0",
     "cordova-plugin-androidx-adapter": "^1.1.0",
@@ -88,7 +89,8 @@
       },
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-androidx-adapter": {},
-      "com-darryncampbell-cordova-plugin-intent": {}
+      "com-darryncampbell-cordova-plugin-intent": {},
+      "com.razorpay.cordova": {}
     },
     "platforms": [
       "android",

@@ -21,6 +21,9 @@
     },
     "com-darryncampbell-cordova-plugin-intent": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "com.razorpay.cordova": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {}

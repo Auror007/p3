@@ -121,13 +121,20 @@ export class DashmodPage implements OnInit {
       vehnumber:this.selection,
       price: this.price,
     }
+    if(prod.vehnumber == undefined)
+    {
+      this.fdismiss();
+    }
+    else{
     console.log(prod);
     this.crt=this.crt.filter((item)=>{
       return item.number!=this.selection
 
     });
     console.log(this.crt);
+    
     this.cartService.addProduct(prod);
+  }
   }
 
   fdismiss()

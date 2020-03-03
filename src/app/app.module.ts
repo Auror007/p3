@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {IonicStorageModule} from '@ionic/storage';
-import {environment} from '../environments/environment';
+import {environment} from '../environments/environment.prod';
 
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';

@@ -38,26 +38,38 @@ export class RegisternewPage implements OnInit, UserResponse {
     try {
       
       
+      this.storage.get('activity').then((data)=>{
+        if(data=='registered'){
 
-      this.http.post('https://mywash.herokuapp.com/verify', data).subscribe(
+          this.http.post('https://mywash.herokuapp.com/verifyregister', data).subscribe(
         (result: UserResponse) => {
-
            console.log(result);
-
           if (result.message == true) {
-            this.storage.get('activity').then((data)=>{
-              if(data=='registered'){
-                this.router.navigateByUrl('/addvehicle');
-              }
-              if(data=='loggedin'){
-                this.router.navigateByUrl('/tabs/tabs/dash');
-              }
-            });
+            this.router.navigateByUrl('/addvehicle');
           }
         },
         error => {
           console.log(error);
         });
+
+        }
+        else if(data=='loggingin'){
+          this.http.post('https://mywash.herokuapp.com/verifylogin', data).subscribe(
+        (result: UserResponse) => {
+           console.log(result);
+          if (result.message == true) {
+            this.storage.set('activity','loggedin');
+            this.router.navigateByUrl('/tabs/tabs/dash');
+          }
+        },
+        error => {
+          console.log(error);
+        });
+         
+        }
+      });
+
+      
     } catch (err) {
       console.dir(err);
     }

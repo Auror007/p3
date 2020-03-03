@@ -21,7 +21,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-title align-title=\"center\">Register</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding>\n  \n  \n    <div class=\"ion-list\">\n        <ion-item>\n        <br>\n        <br>\n        <ion-label position=\"floating\">\n          Name\n        </ion-label>\n        <ion-input type=\"text\" [(ngModel)]=\"username\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-item>\n        <ion-label position=\"floating\">\n          Email\n        </ion-label>\n        <ion-input type=\"email\" [(ngModel)]=\"email\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-item>\n        <ion-label position=\"floating\">\n          Phonenumber\n        </ion-label>\n        <ion-input type=\"number\" [(ngModel)]=\"phonenumber\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-row>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"dark\" expand=\"block\" class=\"buttons\" size=\"large\"\n           (click)=sendotp()>Register</ion-button>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"danger\" expand=\"block\" class=\"buttons\" size=\"large\"\n          (click)=gotoLogin()>Login</ion-button>\n      </ion-row>\n      <br>\n      <!-- <ion-title>Or Sign Up using</ion-title>\n      <br>\n      <ion-button fill=\"solid\" color=\"primary\" expand=\"full\" class=\"buttons1\" size=\"large\">Facebook</ion-button>\n      <br>\n      \n      <ion-button fill=\"solid\" color=\"danger\" expand=\"block\" class=\"buttons1\" size=\"large\">Google</ion-button> -->\n    </div>\n    \n  \n  </ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-title align-title=\"center\">Register</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding>\n  \n  \n    <div class=\"ion-list\">\n        <ion-item>\n        <br>\n        <br>\n        <ion-label position=\"floating\">\n          Name\n        </ion-label>\n        <ion-input type=\"text\" [(ngModel)]=\"username\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-item class=\"input-cover\">\n        <ion-label position=\"floating\">\n          Email\n        </ion-label>\n        <ion-input  type=\"email\" [(ngModel)]=\"email\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-item>\n        <ion-label position=\"floating\">\n          Phonenumber\n        </ion-label>\n        <ion-input type=\"number\" [(ngModel)]=\"phonenumber\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-row>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"dark\" expand=\"block\" class=\"buttons\" size=\"large\"\n           (click)=sendotp()>Register</ion-button>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"danger\" expand=\"block\" class=\"buttons\" size=\"large\"\n          (click)=gotoLogin()>Login</ion-button>\n      </ion-row>\n      <br>\n      <!-- <ion-title>Or Sign Up using</ion-title>\n      <br>\n      <ion-button fill=\"solid\" color=\"primary\" expand=\"full\" class=\"buttons1\" size=\"large\">Facebook</ion-button>\n      <br>\n      \n      <ion-button fill=\"solid\" color=\"danger\" expand=\"block\" class=\"buttons1\" size=\"large\">Google</ion-button> -->\n    </div>\n    \n  \n  </ion-content>";
     /***/
   },
 
@@ -119,7 +119,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = ".buttons {\n  width: 40%;\n  margin-left: 6%;\n  font-size: 18px;\n}\n\nion-button.buttons1 {\n  margin-left: 6%;\n  font-size: 18px;\n  width: 88%;\n  border-radius: 50px;\n}\n\nion-title {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXIvRDpcXFNFTThcXHAzL3NyY1xcYXBwXFxyZWdpc3RlclxccmVnaXN0ZXIucGFnZS5zY3NzIiwic3JjL2FwcC9yZWdpc3Rlci9yZWdpc3Rlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxVQUFBO0VBQ0EsZUFBQTtFQUNBLGVBQUE7QUNBSjs7QURJQTtFQUVJLGVBQUE7RUFDQSxlQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0FDRko7O0FETUE7RUFFSSxrQkFBQTtBQ0pKIiwiZmlsZSI6InNyYy9hcHAvcmVnaXN0ZXIvcmVnaXN0ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvbnNcclxue1xyXG4gICAgd2lkdGg6IDQwJTtcclxuICAgIG1hcmdpbi1sZWZ0OjYlO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgXHJcbn1cclxuXHJcbmlvbi1idXR0b24uYnV0dG9uczFcclxue1xyXG4gICAgbWFyZ2luLWxlZnQ6NiU7XHJcbiAgICBmb250LXNpemU6IDE4cHg7IFxyXG4gICAgd2lkdGg6ODglO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNTBweDtcclxuXHJcbn1cclxuXHJcbmlvbi10aXRsZXtcclxuICAgIFxyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59IiwiLmJ1dHRvbnMge1xuICB3aWR0aDogNDAlO1xuICBtYXJnaW4tbGVmdDogNiU7XG4gIGZvbnQtc2l6ZTogMThweDtcbn1cblxuaW9uLWJ1dHRvbi5idXR0b25zMSB7XG4gIG1hcmdpbi1sZWZ0OiA2JTtcbiAgZm9udC1zaXplOiAxOHB4O1xuICB3aWR0aDogODglO1xuICBib3JkZXItcmFkaXVzOiA1MHB4O1xufVxuXG5pb24tdGl0bGUge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59Il19 */";
+    __webpack_exports__["default"] = ".buttons {\n  width: 40%;\n  margin-left: 6%;\n  font-size: 18px;\n}\n\nion-button.buttons1 {\n  margin-left: 6%;\n  font-size: 18px;\n  width: 88%;\n  border-radius: 50px;\n}\n\nion-title {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcmVnaXN0ZXIvRDpcXFNFTThcXHAzL3NyY1xcYXBwXFxyZWdpc3RlclxccmVnaXN0ZXIucGFnZS5zY3NzIiwic3JjL2FwcC9yZWdpc3Rlci9yZWdpc3Rlci5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFFSSxVQUFBO0VBQ0EsZUFBQTtFQUNBLGVBQUE7QUNBSjs7QURJQTtFQUVJLGVBQUE7RUFDQSxlQUFBO0VBQ0EsVUFBQTtFQUNBLG1CQUFBO0FDRko7O0FETUE7RUFFSSxrQkFBQTtBQ0pKIiwiZmlsZSI6InNyYy9hcHAvcmVnaXN0ZXIvcmVnaXN0ZXIucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJ1dHRvbnNcclxue1xyXG4gICAgd2lkdGg6IDQwJTtcclxuICAgIG1hcmdpbi1sZWZ0OjYlO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgXHJcbn1cclxuXHJcbmlvbi1idXR0b24uYnV0dG9uczFcclxue1xyXG4gICAgbWFyZ2luLWxlZnQ6NiU7XHJcbiAgICBmb250LXNpemU6IDE4cHg7IFxyXG4gICAgd2lkdGg6ODglO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNTBweDtcclxuXHJcbn1cclxuXHJcbmlvbi10aXRsZXtcclxuICAgIFxyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG59XHJcbiIsIi5idXR0b25zIHtcbiAgd2lkdGg6IDQwJTtcbiAgbWFyZ2luLWxlZnQ6IDYlO1xuICBmb250LXNpemU6IDE4cHg7XG59XG5cbmlvbi1idXR0b24uYnV0dG9uczEge1xuICBtYXJnaW4tbGVmdDogNiU7XG4gIGZvbnQtc2l6ZTogMThweDtcbiAgd2lkdGg6IDg4JTtcbiAgYm9yZGVyLXJhZGl1czogNTBweDtcbn1cblxuaW9uLXRpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufSJdfQ== */";
     /***/
   },
 
@@ -316,8 +316,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               phone: this.regServ.getPhone()
             };
             console.log(data); // https://mywash.herokuapp.com/package
-            //
-            //
 
             this.http.post('https://mywash.herokuapp.com/registerotp', data).subscribe(function (result) {
               console.log(result.message);
@@ -325,6 +323,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (result.message == '2') {
                 _this2.storage.set('email', _this2.email).then(function (successData) {
                   console.log('email stored');
+                });
+
+                _this2.storage.set('name', _this2.username).then(function (successData) {
+                  console.log('name stored');
                 });
 
                 _this2.storage.set('activity', 'registered').then(function (successData) {

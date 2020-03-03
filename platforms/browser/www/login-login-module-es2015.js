@@ -121,7 +121,9 @@ let LoginPage = class LoginPage {
             this.regServ.setEmail(email);
             this.http.post('https://mywash.herokuapp.com/profile/userdetails', { email: email }).subscribe((result) => {
                 console.log(result.phone);
+                console.log(result.name);
                 this.storage.set('num', result.phone);
+                this.storage.set('name', result.name);
             });
             this.storage.set('email', this.email);
             const data = {

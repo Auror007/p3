@@ -4,7 +4,18 @@
     "uninstalled": []
   },
   "config_munge": {
-    "files": {}
+    "files": {
+      "config.xml": {
+        "parents": {
+          "/*": [
+            {
+              "xml": "<feature name=\"Checkout\"><param name=\"browser-package\" value=\"Checkout\" /></feature>",
+              "count": 1
+            }
+          ]
+        }
+      }
+    }
   },
   "installed_plugins": {
     "cordova-plugin-geolocation": {
@@ -20,6 +31,9 @@
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "com-darryncampbell-cordova-plugin-intent": {
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "com.razorpay.cordova": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },
@@ -54,6 +68,20 @@
       "clobbers": [
         "intentShim"
       ]
+    },
+    {
+      "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+      "id": "com.razorpay.cordova.RazorpayCheckout",
+      "pluginId": "com.razorpay.cordova",
+      "clobbers": [
+        "RazorpayCheckout"
+      ]
+    },
+    {
+      "file": "plugins/com.razorpay.cordova/src/browser/CheckoutProxy.js",
+      "id": "com.razorpay.cordova.CheckoutProxy",
+      "pluginId": "com.razorpay.cordova",
+      "runs": true
     }
   ],
   "plugin_metadata": {
@@ -61,6 +89,7 @@
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-sqlite-storage": "4.0.0",
     "cordova-plugin-androidx-adapter": "1.1.0",
-    "com-darryncampbell-cordova-plugin-intent": "2.0.0"
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
+    "com.razorpay.cordova": "0.16.1"
   }
 }

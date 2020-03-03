@@ -222,8 +222,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               email: email
             }).subscribe(function (result) {
               console.log(result.phone);
+              console.log(result.name);
 
               _this.storage.set('num', result.phone);
+
+              _this.storage.set('name', result.name);
             });
             this.storage.set('email', this.email);
             var data = {

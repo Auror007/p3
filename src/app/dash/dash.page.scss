@@ -10,3 +10,10 @@ ion-label{
 ion-slides{
     height:200px;
 }
+
+ion-card{
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    width: 85%;
+  }

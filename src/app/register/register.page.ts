@@ -34,37 +34,15 @@ export class RegisterPage implements OnInit, UserResponse {
       if(data=='loggedin'){
         this.router.navigateByUrl('/tabs/tabs/dash')
       }
+      else if(data=='loggingin'){
+        this.router.navigateByUrl('/login')
+      }
       else if(data=='registered'){
         this.router.navigateByUrl('/login')
       }
     });
   }
-  /* async register() {
-     const {username, pass, cpassword} = this;
-     const options = {
-       email: username,
-       password: pass,
-     };
-
-     try {
-
-       this.http.post('https://mywash.herokuapp.com/add', options).subscribe(
-         result => {
-         console.log(result);
-         this.router.navigate(['/login']);
-       },
-       error => {
-         console.log(error);
-       });
-
-
-     } catch (err) {
-       console.dir(err);
-     }
-
-   }*/
-
-
+ 
   async doAlert(msg: string, btn: string) {
     const alert = await this.alerCtrl.create({
       header: 'Error',
@@ -102,16 +80,12 @@ export class RegisterPage implements OnInit, UserResponse {
       this.regServ.setEmail(email);
       const data = {
         userName: this.regServ.getName(),
-        email: this.regServ.getEmail(),
+        email: this.regServ.getEmail(), 
         phone: this.regServ.getPhone(),
-
-
       };
 
       console.log(data);
-      // https://mywash.herokuapp.com/package
-      //
-      //
+      
       this.http.post<UserResponse>('https://mywash.herokuapp.com/registerotp', data).subscribe(
         (result: UserResponse) => {
 

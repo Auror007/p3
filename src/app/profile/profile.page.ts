@@ -10,9 +10,9 @@ import {Storage} from '@ionic/storage';
 })
 export class ProfilePage implements OnInit {
   
-  private em:any;
-  private no:any;
-  private name:any;
+  public em:any;
+  public no:any;
+  public name:any;
   constructor(
     private navCtrl:NavController,
     private storage:Storage

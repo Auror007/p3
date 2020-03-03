@@ -57,8 +57,8 @@ export class AddvehiclePage implements OnInit {
       this.vara=0;
       this.storage.get('email').then((data)=>{
         console.log(data);
-        //this.email=data; static because this page is hit only after registration
-        this.email='parmar.parth97531@gmail.com'
+        this.email=data; //static because this page is hit only after registration
+        //this.email='parmar.parth97531@gmail.com'
       });
       
     }
@@ -123,7 +123,7 @@ finaldash(){
 
         console.log(result);
         if(result.message==true){
-          this.router.navigateByUrl('/tabs');
+          this.router.navigateByUrl('/tabs/tabs/dash');
 
        }
        else if(result.message==false){

@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-header translucent>\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-back-button routerLink=\"/tabs/tabs/profile\" routerDirection=\"backward\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>Orders</ion-title>\n    </ion-toolbar>\n  </ion-header>\n</ion-header>\n\n<ion-content>\n</ion-content>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-header translucent>\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-back-button routerLink=\"/tabs/tabs/profile\" routerDirection=\"backward\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>Orders</ion-title>\n    </ion-toolbar>\n  </ion-header>\n</ion-header>\n\n<ion-content>\n  <ion-list *ngFor=\"let item of resp\">\n\n    <ion-item >\n      <ion-card color=\"dark\">\n        \n        <ion-grid>\n       \n            <ion-row>\n              <ion-col>\n               Service {{item.name}}\n              </ion-col>\n              <ion-col>\n              PackageID:  {{item.packageId}}\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n               Duration: {{item.duration}}\n              </ion-col>\n              <ion-col>\n               Price : {{item.price}}\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n               Vehicle: {{item.brandName}} {{item.vehicleModel}}\n              </ion-col>\n             \n              <ion-col>\n               Number: {{item.number}}\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n      </ion-card>\n    </ion-item>\n    \n  </ion-list>\n\n</ion-content>\n");
 
 /***/ }),
 
@@ -70,7 +70,7 @@ OrdersPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL29yZGVycy9vcmRlcnMucGFnZS5zY3NzIn0= */");
+/* harmony default export */ __webpack_exports__["default"] = ("ion-card {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3JkZXJzL0Q6XFxTRU04XFxwMy9zcmNcXGFwcFxcb3JkZXJzXFxvcmRlcnMucGFnZS5zY3NzIiwic3JjL2FwcC9vcmRlcnMvb3JkZXJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL29yZGVycy9vcmRlcnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNhcmR7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufSIsImlvbi1jYXJkIHtcbiAgd2lkdGg6IDEwMCU7XG59Il19 */");
 
 /***/ }),
 
@@ -93,10 +93,30 @@ __webpack_require__.r(__webpack_exports__);
 let OrdersPage = class OrdersPage {
     constructor(http) {
         this.http = http;
+        this.resp = [];
     }
     ngOnInit() {
-        this.http.post('https://mywash.herokuapp.com/service/show', {}).subscribe((result) => {
-            console.log(result);
+        this.http.post('https://mywash.herokuapp.com/profile/history', { email: 'parmar.parth97531@gmail.com' }).subscribe((result) => {
+            for (const arr of result) {
+                var packageId = arr.package[0].packageId;
+                var name = arr.package[0].name;
+                var price = arr.package[0].price;
+                var duration = arr.package[0].duration;
+                var brandName = arr.customer[0].brandName;
+                var vehicleModel = arr.customer[0].vehicleModel;
+                var number = arr.customer[0].number;
+                const it = {
+                    packageId: packageId,
+                    name: name,
+                    price: price,
+                    duration: duration,
+                    brandName: brandName,
+                    vehicleModel: vehicleModel,
+                    number: number
+                };
+                this.resp.push(it);
+            }
+            console.log(this.resp);
         }, error => {
             console.log(error);
         });

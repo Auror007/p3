@@ -29,6 +29,20 @@ module.exports = [
         "clobbers": [
             "intentShim"
         ]
+    },
+    {
+        "file": "plugins/com.razorpay.cordova/www/RazorpayCheckout.js",
+        "id": "com.razorpay.cordova.RazorpayCheckout",
+        "pluginId": "com.razorpay.cordova",
+        "clobbers": [
+            "RazorpayCheckout"
+        ]
+    },
+    {
+        "file": "plugins/com.razorpay.cordova/src/browser/CheckoutProxy.js",
+        "id": "com.razorpay.cordova.CheckoutProxy",
+        "pluginId": "com.razorpay.cordova",
+        "runs": true
     }
 ];
 module.exports.metadata = 
@@ -38,7 +52,8 @@ module.exports.metadata =
     "cordova-plugin-splashscreen": "5.0.2",
     "cordova-sqlite-storage": "4.0.0",
     "cordova-plugin-androidx-adapter": "1.1.0",
-    "com-darryncampbell-cordova-plugin-intent": "2.0.0"
+    "com-darryncampbell-cordova-plugin-intent": "2.0.0",
+    "com.razorpay.cordova": "0.16.1"
 }
 // BOTTOM OF METADATA
 });

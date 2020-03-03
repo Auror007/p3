@@ -18,11 +18,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var map = {
       "./about/about.module": ["./src/app/about/about.module.ts", "about-about-module"],
       "./addvehicle/addvehicle.module": ["./src/app/addvehicle/addvehicle.module.ts", "common", "addvehicle-addvehicle-module"],
-      "./carpop/carpop.module": ["./src/app/carpop/carpop.module.ts", "common"],
-      "./cart/cart.module": ["./src/app/cart/cart.module.ts", "common", "cart-cart-module"],
+      "./carpop/carpop.module": ["./src/app/carpop/carpop.module.ts", "carpop-carpop-module"],
+      "./cart/cart.module": ["./src/app/cart/cart.module.ts", "cart-cart-module"],
       "./checkout/checkout.module": ["./src/app/checkout/checkout.module.ts", "checkout-checkout-module"],
       "./chekout/chekout.module": ["./src/app/chekout/chekout.module.ts", "chekout-chekout-module"],
-      "./dashmod/dashmod.module": ["./src/app/dashmod/dashmod.module.ts", "common"],
+      "./dashmod/dashmod.module": ["./src/app/dashmod/dashmod.module.ts", "default~dashmod-dashmod-module~tabs-tabs-module"],
       "./gps/gps.module": ["./src/app/gps/gps.module.ts", "gps-gps-module"],
       "./login/login.module": ["./src/app/login/login.module.ts", "common", "login-login-module"],
       "./main/main.module": ["./src/app/main/main.module.ts", "main-main-module"],
@@ -31,7 +31,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       "./register/register.module": ["./src/app/register/register.module.ts", "common", "register-register-module"],
       "./registernew/registernew.module": ["./src/app/registernew/registernew.module.ts", "common", "registernew-registernew-module"],
       "./support/support.module": ["./src/app/support/support.module.ts", "support-support-module"],
-      "./tabs/tabs.module": ["./src/app/tabs/tabs.module.ts", "common", "tabs-tabs-module"]
+      "./tabs/tabs.module": ["./src/app/tabs/tabs.module.ts", "default~dashmod-dashmod-module~tabs-tabs-module", "tabs-tabs-module"]
     };
 
     function webpackAsyncContext(req) {
@@ -1087,9 +1087,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony import */
 
 
-    var _environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
-    /*! ../environments/environment */
-    "./src/environments/environment.ts");
+    var _environments_environment_prod__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ../environments/environment.prod */
+    "./src/environments/environment.prod.ts");
     /* harmony import */
 
 
@@ -1122,13 +1122,54 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       declarations: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
       entryComponents: [],
-      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["IonicStorageModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_15__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]],
+      imports: [_angular_platform_browser__WEBPACK_IMPORTED_MODULE_2__["BrowserModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"].forRoot(), _ionic_storage__WEBPACK_IMPORTED_MODULE_11__["IonicStorageModule"].forRoot(), _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"], _angular_fire__WEBPACK_IMPORTED_MODULE_15__["AngularFireModule"].initializeApp(_environments_environment_prod__WEBPACK_IMPORTED_MODULE_12__["environment"].firebase), _angular_fire_auth__WEBPACK_IMPORTED_MODULE_14__["AngularFireAuthModule"], _angular_fire_firestore__WEBPACK_IMPORTED_MODULE_13__["AngularFirestoreModule"], _angular_common_http__WEBPACK_IMPORTED_MODULE_9__["HttpClientModule"]],
       providers: [_ionic_native_status_bar_ngx__WEBPACK_IMPORTED_MODULE_6__["StatusBar"], _ionic_native_splash_screen_ngx__WEBPACK_IMPORTED_MODULE_5__["SplashScreen"], {
         provide: _angular_router__WEBPACK_IMPORTED_MODULE_3__["RouteReuseStrategy"],
         useClass: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicRouteStrategy"]
       }, _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_10__["Geolocation"], _ionic_native_web_intent_ngx__WEBPACK_IMPORTED_MODULE_16__["WebIntent"]],
       bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]]
     })], AppModule);
+    /***/
+  },
+
+  /***/
+  "./src/environments/environment.prod.ts":
+  /*!**********************************************!*\
+    !*** ./src/environments/environment.prod.ts ***!
+    \**********************************************/
+
+  /*! exports provided: environment */
+
+  /***/
+  function srcEnvironmentsEnvironmentProdTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "environment", function () {
+      return environment;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+
+    var environment = {
+      production: true,
+      firebase: {
+        apiKey: "AIzaSyDeseBZRKKtiGtQFy9vdzNXpro0YSSXbfE",
+        authDomain: "proto2-1776e.firebaseapp.com",
+        databaseURL: "https://proto2-1776e.firebaseio.com",
+        projectId: "proto2-1776e",
+        storageBucket: "proto2-1776e.appspot.com",
+        messagingSenderId: "135057415689",
+        appId: "1:135057415689:web:f9ae73871e3eb47e"
+      }
+    };
     /***/
   },
 
@@ -1162,7 +1203,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 
     var environment = {
-      production: false,
+      production: true,
       firebase: {
         apiKey: "AIzaSyDeseBZRKKtiGtQFy9vdzNXpro0YSSXbfE",
         authDomain: "proto2-1776e.firebaseapp.com",
