@@ -183,58 +183,6 @@ CartPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 
 
-/***/ }),
-
-/***/ "./src/app/services/cart.service.ts":
-/*!******************************************!*\
-  !*** ./src/app/services/cart.service.ts ***!
-  \******************************************/
-/*! exports provided: CartService */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CartService", function() { return CartService; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-
-
-
-let CartService = class CartService {
-    constructor() {
-        this.cart = [];
-        this.amount = 0;
-        this.cartItemCount = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](0);
-    }
-    getCart() {
-        return this.cart;
-    }
-    getAmount() {
-        return this.amount;
-    }
-    addProduct(product) {
-        this.cart.push(product);
-        this.amount = this.amount + product.price;
-    }
-    removeProduct(product) {
-        for (let [index, p] of this.cart.entries()) {
-            if (p.vehnumber === product.vehnumber) {
-                this.amount = this.amount - p.price;
-                this.cart.splice(index, 1);
-            }
-        }
-    }
-};
-CartService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
-        providedIn: 'root'
-    }),
-    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
-], CartService);
-
-
-
 /***/ })
 
 }]);

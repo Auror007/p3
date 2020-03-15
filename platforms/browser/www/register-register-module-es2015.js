@@ -115,35 +115,14 @@ let RegisterPage = class RegisterPage {
             if (data == 'loggedin') {
                 this.router.navigateByUrl('/tabs/tabs/dash');
             }
+            else if (data == 'loggingin') {
+                this.router.navigateByUrl('/login');
+            }
             else if (data == 'registered') {
                 this.router.navigateByUrl('/login');
             }
         });
     }
-    /* async register() {
-       const {username, pass, cpassword} = this;
-       const options = {
-         email: username,
-         password: pass,
-       };
-  
-       try {
-  
-         this.http.post('https://mywash.herokuapp.com/add', options).subscribe(
-           result => {
-           console.log(result);
-           this.router.navigate(['/login']);
-         },
-         error => {
-           console.log(error);
-         });
-  
-  
-       } catch (err) {
-         console.dir(err);
-       }
-  
-     }*/
     doAlert(msg, btn) {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
             const alert = yield this.alerCtrl.create({
@@ -185,7 +164,6 @@ let RegisterPage = class RegisterPage {
                 phone: this.regServ.getPhone(),
             };
             console.log(data);
-            // https://mywash.herokuapp.com/package
             this.http.post('https://mywash.herokuapp.com/registerotp', data).subscribe((result) => {
                 console.log(result.message);
                 if (result.message == '2') {

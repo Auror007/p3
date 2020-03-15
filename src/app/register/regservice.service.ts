@@ -40,6 +40,7 @@ export class RegserviceService {
     return this.phn.email;
   }
   
+  
   public getJson()
   {
     return this.phn;

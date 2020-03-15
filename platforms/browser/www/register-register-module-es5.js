@@ -211,32 +211,13 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
             if (data == 'loggedin') {
               _this.router.navigateByUrl('/tabs/tabs/dash');
+            } else if (data == 'loggingin') {
+              _this.router.navigateByUrl('/login');
             } else if (data == 'registered') {
               _this.router.navigateByUrl('/login');
             }
           });
         }
-        /* async register() {
-           const {username, pass, cpassword} = this;
-           const options = {
-             email: username,
-             password: pass,
-           };
-               try {
-                 this.http.post('https://mywash.herokuapp.com/add', options).subscribe(
-               result => {
-               console.log(result);
-               this.router.navigate(['/login']);
-             },
-             error => {
-               console.log(error);
-             });
-          
-           } catch (err) {
-             console.dir(err);
-           }
-             }*/
-
       }, {
         key: "doAlert",
         value: function doAlert(msg, btn) {
@@ -315,8 +296,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               email: this.regServ.getEmail(),
               phone: this.regServ.getPhone()
             };
-            console.log(data); // https://mywash.herokuapp.com/package
-
+            console.log(data);
             this.http.post('https://mywash.herokuapp.com/registerotp', data).subscribe(function (result) {
               console.log(result.message);
 

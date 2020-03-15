@@ -57,6 +57,9 @@ export class GpsPage {
 
 
   findloc(){
+
+    console.log("loc called");
+    
       this.locationsCollection=this.afs.collection(
         `locations/cleaner1/track`,
         ref=>ref.orderBy('timestamp',"desc")
@@ -73,7 +76,25 @@ export class GpsPage {
       );
  
       this.locations.subscribe(locations => {
-        this.updateMap(locations);
+        console.log("paused",locations);
+
+        setTimeout(()=>{
+          console.log("update called");
+    
+          this.markers.map(marker => marker.setMap(null));
+          this.markers = [];
+          // for (let loc of locations) {
+            let latLng = new google.maps.LatLng(locations[0].lat, locations[0].lng);
+            this.map.setCenter(latLng);
+            this.map.setZoom(14);
+            
+            let marker = new google.maps.Marker({
+              map: this.map,
+             // animation: google.maps.Animation.DROP,
+              position: latLng
+            });
+            this.markers.push(marker);
+        },2000);
       });
 
   }
@@ -85,25 +106,25 @@ export class GpsPage {
   }
    
   // Redraw all markers on the map
-  updateMap(locations) {
-    // Remove all current marker
-    console.log("update called",locations);
+  // updateMap(locations) {
+  //   // Remove all current marker
+  //   console.log("update called");
     
-    this.markers.map(marker => marker.setMap(null));
-    this.markers = [];
-    // for (let loc of locations) {
-      let latLng = new google.maps.LatLng(locations[0].lat, locations[0].lng);
-      this.map.setCenter(latLng);
-      this.map.setZoom(14);
-
-      let marker = new google.maps.Marker({
-        map: this.map,
-        animation: google.maps.Animation.DROP,
-        position: latLng
-      });
-      this.markers.push(marker);
-
-      setTimeout(()=>{this.findloc();},10000);
-    // }
-  }
+  //   this.markers.map(marker => marker.setMap(null));
+  //   this.markers = [];
+  //   // for (let loc of locations) {
+  //     let latLng = new google.maps.LatLng(locations[0].lat, locations[0].lng);
+  //     this.map.setCenter(latLng);
+  //     this.map.setZoom(14);
+      
+  //     let marker = new google.maps.Marker({
+  //       map: this.map,
+  //       animation: google.maps.Animation.DROP,
+  //       position: latLng
+  //     });
+  //     this.markers.push(marker);
+  //     this.findloc();
+  //     setTimeout(()=>{this.findloc();},10000);
+  //   // }
+  // }
 }

@@ -118,8 +118,8 @@ let AddvehiclePage = class AddvehiclePage {
         this.vara = 0;
         this.storage.get('email').then((data) => {
             console.log(data);
-            //this.email=data; static because this page is hit only after registration
-            this.email = 'parmar.parth97531@gmail.com';
+            this.email = data; //static because this page is hit only after registration
+            //this.email='parmar.parth97531@gmail.com'
         });
     }
     ngOnInit() {
@@ -170,7 +170,8 @@ let AddvehiclePage = class AddvehiclePage {
         this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe((result) => {
             console.log(result);
             if (result.message == true) {
-                this.router.navigateByUrl('/tabs');
+                this.storage.set('activity', 'loggedin');
+                this.router.navigateByUrl('/tabs/tabs/dash');
             }
             else if (result.message == false) {
                 //alert and clear  relavent inputs

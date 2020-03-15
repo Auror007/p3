@@ -135,7 +135,7 @@ let LoginPage = class LoginPage {
                 console.log(result);
                 if (result.message == true) {
                     this.router.navigateByUrl('/registernew');
-                    this.storage.set('activity', 'loggedin').then((data) => {
+                    this.storage.set('activity', 'loggingin').then((data) => {
                         console.log(data);
                     });
                 }

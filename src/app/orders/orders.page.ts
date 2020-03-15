@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import {Storage} from '@ionic/storage';
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.page.html',
   styleUrls: ['./orders.page.scss'],
 })
 export class OrdersPage implements OnInit {
-
+  public em:string; 
   public resp:Array<
     {
         packageId:number,
@@ -21,13 +21,16 @@ export class OrdersPage implements OnInit {
 
     
   constructor(
-    private http:HttpClient
-  ) { }
+    private http:HttpClient,
+    private storage:Storage
+  ) { this.storage.get('email').then((result)=>{
+    this.em=result;
+  }); }
 
   ngOnInit() {
     
     this.http.post<Array<{package:Array<{packageId:number,name:string,price:number,duration:string}>,
-    customer:Array<{brandName:string,vehicleModel:string,number:string}>}>>('https://mywash.herokuapp.com/profile/history',{email:'parmar.parth97531@gmail.com'}).subscribe(
+    customer:Array<{brandName:string,vehicleModel:string,number:string}>}>>('https://mywash.herokuapp.com/profile/history',{email:this.em}).subscribe(
         (result) => 
           {
             for (const arr of result)    

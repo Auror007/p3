@@ -160,24 +160,36 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
     /*! @angular/common/http */
     "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
     var OrdersPage =
     /*#__PURE__*/
     function () {
-      function OrdersPage(http) {
+      function OrdersPage(http, storage) {
+        var _this = this;
+
         _classCallCheck(this, OrdersPage);
 
         this.http = http;
+        this.storage = storage;
         this.resp = [];
+        this.storage.get('email').then(function (result) {
+          _this.em = result;
+        });
       }
 
       _createClass(OrdersPage, [{
         key: "ngOnInit",
         value: function ngOnInit() {
-          var _this = this;
+          var _this2 = this;
 
           this.http.post('https://mywash.herokuapp.com/profile/history', {
-            email: 'parmar.parth97531@gmail.com'
+            email: this.em
           }).subscribe(function (result) {
             var _iteratorNormalCompletion = true;
             var _didIteratorError = false;
@@ -203,7 +215,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
                   number: number
                 };
 
-                _this.resp.push(it);
+                _this2.resp.push(it);
               }
             } catch (err) {
               _didIteratorError = true;
@@ -220,7 +232,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               }
             }
 
-            console.log(_this.resp);
+            console.log(_this2.resp);
           }, function (error) {
             console.log(error);
           });
@@ -233,6 +245,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     OrdersPage.ctorParameters = function () {
       return [{
         type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
       }];
     };
 
@@ -244,7 +258,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
       /*! ./orders.page.scss */
       "./src/app/orders/orders.page.scss")).default]
-    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])], OrdersPage);
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]])], OrdersPage);
     /***/
   }
 }]);

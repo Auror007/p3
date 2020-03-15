@@ -59,6 +59,7 @@ export class LoginPage implements OnInit, UserResponse {
       console.log(data);
       this.http.post('https://mywash.herokuapp.com/loginotp', data).subscribe(
         ( result: UserResponse) => 
+         
           {
           console.log(result);
           if (result.message == true) {

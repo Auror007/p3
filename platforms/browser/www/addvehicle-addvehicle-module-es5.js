@@ -217,9 +217,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
         this.vara = 0;
         this.storage.get('email').then(function (data) {
-          console.log(data); //this.email=data; static because this page is hit only after registration
-
-          _this.email = 'parmar.parth97531@gmail.com';
+          console.log(data);
+          _this.email = data; //static because this page is hit only after registration
+          //this.email='parmar.parth97531@gmail.com'
         });
       }
 
@@ -281,7 +281,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             console.log(result);
 
             if (result.message == true) {
-              _this3.router.navigateByUrl('/tabs');
+              _this3.storage.set('activity', 'loggedin');
+
+              _this3.router.navigateByUrl('/tabs/tabs/dash');
             } else if (result.message == false) {//alert and clear  relavent inputs
             }
           }, function (error) {

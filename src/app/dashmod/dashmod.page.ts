@@ -21,6 +21,7 @@ export class DashmodPage implements OnInit {
   public name:any;
   public time:any;
   public crt:Array<{vehicleModel:string,number:string}>;
+  public req:any;
   
   constructor(
     private modalCtrl:ModalController,
@@ -41,45 +42,41 @@ export class DashmodPage implements OnInit {
     this.time=navParams.get('duration');
     
 
-    this.storage.get('email').then((data)=>{
-       this.email=data;
-
-      });
+   
 
    }
 
   ngOnInit() {
-    let em='parmar.parth97531@gmail.com'
-    const req={
-                email:em,
-                vehicleCatagory:this.cat
-              }
-            console.log(req);
-            
-    this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',req ).subscribe(
-     async (result) => {
-       console.log(result);
-       
-       this.crt=result;
-       
-       
+    
+    this.storage.get('email').then((data)=>{
+      this.email=data;
+      console.log(this.email);
+       this.req={
+        email:this.email,
+        vehicleCatagory:this.cat
+      }
+      
+     }).then(()=>{
+      console.log(this.req);
+      this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',this.req ).subscribe(
+        async (result) => {
+          console.log(result);
+          
+          this.crt=result;
+          
+
+        });
      });
+
+     
+    
+            
+  
   }
 
   async presentPopover() {
    let ev:any;
-   
-    //  this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',req ).subscribe(
-    //  async (result) => {
-    //    console.log('GOT ANSWER',result)
-
-    //     this.crt=result;
-    //     let temp=this.cartService.getCart();
-    //   //  console.log(cardet);
-    //      this.crt.filter((item)=>{
-    //           if(cart's numbers != 
-    //      });
-
+  
     console.log(this.crt);
 
       

@@ -240,7 +240,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
               if (result.message == true) {
                 _this.router.navigateByUrl('/registernew');
 
-                _this.storage.set('activity', 'loggedin').then(function (data) {
+                _this.storage.set('activity', 'loggingin').then(function (data) {
                   console.log(data);
                 });
               } else {

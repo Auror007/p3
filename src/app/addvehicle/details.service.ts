@@ -15,7 +15,7 @@ export class DetailsService {
     parkingarea:String,
     longitude:String,
     latitude:String,
-    prefferedTime:String,
+    prefferedTime:Number,
     flag:0
 }
 

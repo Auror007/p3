@@ -27,7 +27,7 @@ export class AddvehiclePage implements OnInit {
   public email:any;
   public model:any;
   public number:any;
-  public time:any;
+  public time:number;
 
   public catagory:any;
   public lat:any;
@@ -88,7 +88,7 @@ export class AddvehiclePage implements OnInit {
             this.brand='';
             this.model='';
             this.number='';
-            this.time='';
+            this.time=0;
             this.catagory='';
             this.lat='';
             this.lng='';
@@ -123,6 +123,7 @@ finaldash(){
 
         console.log(result);
         if(result.message==true){
+          this.storage.set('activity','loggedin');
           this.router.navigateByUrl('/tabs/tabs/dash');
 
        }

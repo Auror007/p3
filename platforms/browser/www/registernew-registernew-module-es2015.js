@@ -113,22 +113,36 @@ let RegisternewPage = class RegisternewPage {
         const { otp } = this;
         this.regServ.setOtp(otp);
         const data = this.regServ.getJson();
+        const data1 = {
+            email: this.regServ.getEmail(),
+            otp: this.otp
+        };
         console.log(data);
         try {
-            this.http.post('https://mywash.herokuapp.com/verify', data).subscribe((result) => {
-                console.log(result);
-                if (result.message == true) {
-                    this.storage.get('activity').then((data) => {
-                        if (data == 'registered') {
+            this.storage.get('activity').then((result) => {
+                if (result == 'registered') {
+                    console.log(data);
+                    this.http.post('https://mywash.herokuapp.com/verifyregister', data).subscribe((result) => {
+                        console.log(result);
+                        if (result.message == true) {
                             this.router.navigateByUrl('/addvehicle');
                         }
-                        if (data == 'loggedin') {
-                            this.router.navigateByUrl('/tabs/tabs/dash');
-                        }
+                    }, error => {
+                        console.log(error);
                     });
                 }
-            }, error => {
-                console.log(error);
+                else if (result == 'loggingin') {
+                    console.log(data1);
+                    this.http.post('https://mywash.herokuapp.com/verifylogin', data1).subscribe((result) => {
+                        console.log(result);
+                        if (result.message == true) {
+                            this.storage.set('activity', 'loggedin');
+                            this.router.navigateByUrl('/tabs/tabs/dash');
+                        }
+                    }, error => {
+                        console.log(error);
+                    });
+                }
             });
         }
         catch (err) {

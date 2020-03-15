@@ -19,10 +19,11 @@ var map = {
 	],
 	"./carpop/carpop.module": [
 		"./src/app/carpop/carpop.module.ts",
-		"carpop-carpop-module"
+		"common"
 	],
 	"./cart/cart.module": [
 		"./src/app/cart/cart.module.ts",
+		"common",
 		"cart-cart-module"
 	],
 	"./checkout/checkout.module": [
@@ -35,7 +36,7 @@ var map = {
 	],
 	"./dashmod/dashmod.module": [
 		"./src/app/dashmod/dashmod.module.ts",
-		"default~dashmod-dashmod-module~tabs-tabs-module"
+		"common"
 	],
 	"./gps/gps.module": [
 		"./src/app/gps/gps.module.ts",
@@ -74,7 +75,7 @@ var map = {
 	],
 	"./tabs/tabs.module": [
 		"./src/app/tabs/tabs.module.ts",
-		"default~dashmod-dashmod-module~tabs-tabs-module",
+		"common",
 		"tabs-tabs-module"
 	]
 };

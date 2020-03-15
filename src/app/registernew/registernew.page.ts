@@ -34,13 +34,18 @@ export class RegisternewPage implements OnInit, UserResponse {
     const { otp } = this;
     this.regServ.setOtp(otp);
     const data = this.regServ.getJson();
+    const data1={
+      email:this.regServ.getEmail(),
+      otp:this.otp
+    }
     console.log(data);
     try {
       
       
-      this.storage.get('activity').then((data)=>{
-        if(data=='registered'){
-
+      this.storage.get('activity').then((result)=>{
+        if(result=='registered'){
+          console.log(data);
+          
           this.http.post('https://mywash.herokuapp.com/verifyregister', data).subscribe(
         (result: UserResponse) => {
            console.log(result);
@@ -53,8 +58,10 @@ export class RegisternewPage implements OnInit, UserResponse {
         });
 
         }
-        else if(data=='loggingin'){
-          this.http.post('https://mywash.herokuapp.com/verifylogin', data).subscribe(
+        else if(result=='loggingin'){
+          console.log(data1);
+          
+          this.http.post('https://mywash.herokuapp.com/verifylogin', data1).subscribe(
         (result: UserResponse) => {
            console.log(result);
           if (result.message == true) {

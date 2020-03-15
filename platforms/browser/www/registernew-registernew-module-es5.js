@@ -210,25 +210,41 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           var otp = this.otp;
           this.regServ.setOtp(otp);
           var data = this.regServ.getJson();
+          var data1 = {
+            email: this.regServ.getEmail(),
+            otp: this.otp
+          };
           console.log(data);
 
           try {
-            this.http.post('https://mywash.herokuapp.com/verify', data).subscribe(function (result) {
-              console.log(result);
+            this.storage.get('activity').then(function (result) {
+              if (result == 'registered') {
+                console.log(data);
 
-              if (result.message == true) {
-                _this.storage.get('activity').then(function (data) {
-                  if (data == 'registered') {
+                _this.http.post('https://mywash.herokuapp.com/verifyregister', data).subscribe(function (result) {
+                  console.log(result);
+
+                  if (result.message == true) {
                     _this.router.navigateByUrl('/addvehicle');
                   }
+                }, function (error) {
+                  console.log(error);
+                });
+              } else if (result == 'loggingin') {
+                console.log(data1);
 
-                  if (data == 'loggedin') {
+                _this.http.post('https://mywash.herokuapp.com/verifylogin', data1).subscribe(function (result) {
+                  console.log(result);
+
+                  if (result.message == true) {
+                    _this.storage.set('activity', 'loggedin');
+
                     _this.router.navigateByUrl('/tabs/tabs/dash');
                   }
+                }, function (error) {
+                  console.log(error);
                 });
               }
-            }, function (error) {
-              console.log(error);
             });
           } catch (err) {
             console.dir(err);
