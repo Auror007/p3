@@ -132,6 +132,13 @@ finaldash(){
         console.log(result);
         if(result.message==true){
           this.storage.set('activity','loggedin');
+          this.area='';
+            this.type='';
+            this.brand='';
+            this.model='';
+            this.number='';
+            this.time=0;
+            this.catagory='';
           this.router.navigateByUrl('/tabs/tabs/dash');
 
        }

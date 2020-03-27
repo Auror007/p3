@@ -10,6 +10,7 @@ import { LoadingController } from '@ionic/angular';
 })
 export class OrdersPage implements OnInit {
   public em:string; 
+  public flag=0;
   public resp:Array<
     {
         packageId:number,
@@ -32,7 +33,7 @@ export class OrdersPage implements OnInit {
     }
 
   ngOnInit() {
-    this.presentLoading();
+    this.presentLoading(1000);
     this.storage.get('email').then((data)=>{
       this.em=data;
     }).then(()=>{
@@ -43,9 +44,12 @@ export class OrdersPage implements OnInit {
     (result) => 
           {
             console.log(result);
+            if(result.length==0){
+              this.flag=1;
+            }
             
-
-            for (const arr of result)    
+            else{
+              for (const arr of result)    
                 {     
                     var packageId=arr.package[0].packageId;
                     var name=arr.package[0].name;
@@ -67,6 +71,8 @@ export class OrdersPage implements OnInit {
                   this.resp.push(it);
                 }
                 console.log(this.resp);
+            }
+            
           },
         error => {
           console.log(error);
@@ -76,10 +82,10 @@ export class OrdersPage implements OnInit {
     
   }
 
-  async presentLoading() {
+  async presentLoading(time) {
     const loading = await this.loadingController.create({
       message: 'Please wait...',
-      duration: 2000,
+      duration: time,
     });
     await loading.present();
     console.log('Loading dismissed!');

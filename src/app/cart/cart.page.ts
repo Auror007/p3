@@ -89,6 +89,8 @@ export class CartPage implements OnInit {
     this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
       (result) => {
         console.log('added');
+        this.cartserv.removeAll();
+        this.tot=0;
       });
     //this.router.navigateByUrl('/tabs/tabs/services'); 
   
@@ -124,6 +126,8 @@ export class CartPage implements OnInit {
 
     var successCallback = function (payment_id) {
       console.log(payment_id);
+      this.cartserv.removeAll();
+      this.tot=0;
     };
 
     var cancelCallback = function (error) {

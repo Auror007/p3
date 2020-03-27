@@ -4,7 +4,8 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import {map} from 'rxjs/operators';
 import { AngularFirestoreCollection, AngularFirestore } from '@angular/fire/firestore';
-
+import { HttpClient } from '@angular/common/http';
+import {Storage} from '@ionic/storage';
 
 const {Geolocation} =Plugins;
 
@@ -19,7 +20,7 @@ export class GpsPage {
   locations:Observable<any>;
   locationsCollection: AngularFirestoreCollection<any>;
   user=null;
-
+  public email:string;
   @ViewChild('map',{static:false}) mapElement:ElementRef;
   map:any;
   markers=[];
@@ -27,11 +28,21 @@ export class GpsPage {
   watch: string;
   constructor(
     private afAuth:AngularFireAuth,
-    private afs:AngularFirestore) {
+    private afs:AngularFirestore,
+    private http:HttpClient,
+    private storage:Storage
+    ) {
+      this.storage.get('email').then((res)=>{
+        this.email=res;
+      })
     this.anonLogin();
   }
 
   ionViewWillEnter(){
+    this.http.post('https://mywash.herokuapp.com/batch/track',{email:this.email}).subscribe((res)=>{
+      console.log(res);
+      
+    })
     this.loadMap();
   }
   loadMap(){

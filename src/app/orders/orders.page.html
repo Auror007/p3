@@ -9,10 +9,10 @@
   </ion-header>
 </ion-header>
 
-<ion-content>
+<ion-content >
   <ion-list *ngFor="let item of resp">
 
-    <ion-item >
+    <ion-item>
       <ion-card color="dark">
         
         <ion-grid>
@@ -47,5 +47,9 @@
     </ion-item>
     
   </ion-list>
+  
 
+<div class="ion-text-center" style="color: grey;" *ngIf="flag">
+  <h3>No order history found</h3>
+</div>
 </ion-content>

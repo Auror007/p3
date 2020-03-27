@@ -42,4 +42,7 @@ export interface Product {
         }
       }
     }
+    removeAll(){
+      this.cart=[];
+    }
   }
