@@ -18,15 +18,35 @@ export class RegisternewPage implements OnInit, UserResponse {
 
   otp: string = '';
   message: any;
+  address:string;
+  lat:string;
+  lng:string;
+
   constructor(
     private regServ: RegserviceService,
     private http: HttpClient,
     private router: Router,
     private nav:NavController,
     private storage:Storage
-  ) { }
+  ) {
+    this.storage.get('addr').then((data)=>{
+    console.log(data);
+    this.address=data; //static because this page is hit only after registration
+    //this.email='parmar.parth97531@gmail.com'
+    this.regServ.setAddress(this.address);
+  });
+  this.storage.get('cord').then((data)=>{
+    console.log(data);
+    this.lat=data.lat;
+    this.lng=data.lng; //static because this page is hit only after registration
+    //this.email='parmar.parth97531@gmail.com'
+    this.regServ.setLat(this.lat);
+    this.regServ.setLng(this.lng);
+  });
+ }
 
   ngOnInit() {
+    
   }
 
   verify() {
@@ -50,6 +70,7 @@ export class RegisternewPage implements OnInit, UserResponse {
         (result: UserResponse) => {
            console.log(result);
           if (result.message == true) {
+            this.storage.set('num',data.phone);
             this.router.navigateByUrl('/addvehicle');
           }
         },

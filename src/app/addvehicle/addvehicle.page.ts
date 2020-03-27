@@ -30,8 +30,7 @@ export class AddvehiclePage implements OnInit {
   public time:number;
 
   public catagory:any;
-  public lat:any;
-  public lng:any;
+  public address:any;
  resp={
     list:[]
  };
@@ -60,6 +59,16 @@ export class AddvehiclePage implements OnInit {
         this.email=data; //static because this page is hit only after registration
         //this.email='parmar.parth97531@gmail.com'
       });
+      this.storage.get('addr').then((data)=>{
+        console.log(data);
+        this.address=data; //static because this page is hit only after registration
+        //this.email='parmar.parth97531@gmail.com'
+      });
+      // this.storage.get('cord').then((data)=>{
+      //   console.log(data);
+      //   this.address=data; //static because this page is hit only after registration
+      //   //this.email='parmar.parth97531@gmail.com'
+      // });
       
     }
   
@@ -75,6 +84,7 @@ export class AddvehiclePage implements OnInit {
     this.detServ.setBrand(this.brand);
     this.detServ.setCategory(this.catagory);
     this.detServ.setType(this.type);
+    this.detServ.setAddress(this.address);
 
     const data=this.detServ.getDet();
     console.log(data);
@@ -90,8 +100,6 @@ export class AddvehiclePage implements OnInit {
             this.number='';
             this.time=0;
             this.catagory='';
-            this.lat='';
-            this.lng='';
             this.pageTop.scrollToTop();
 
           }
@@ -214,33 +222,33 @@ finaldash(){
   //     });
   // }
 
-  getLoc(){
+  // getLoc(){
 
-   const options= {maximumAge: 1000, timeout: 5000,
-      enableHighAccuracy: true }
-    this.geolocation.getCurrentPosition(options).then((resp) => {
-            this.lat=resp.coords.latitude
-            this.lng=resp.coords.longitude
-            const loc={
-              lat:this.lat,
-              long:this.lng
-            }
-            console.log(loc);
-            this.detServ.setLoc(loc);
+  //  const options= {maximumAge: 1000, timeout: 5000,
+  //     enableHighAccuracy: true }
+  //   this.geolocation.getCurrentPosition(options).then((resp) => {
+  //           this.lat=resp.coords.latitude
+  //           this.lng=resp.coords.longitude
+  //           const loc={
+  //             lat:this.lat,
+  //             long:this.lng
+  //           }
+  //           console.log(loc);
+  //           this.detServ.setLoc(loc);
             
-            },(er)=>{
-              console.log(er);
-              alert('Can not retrieve Location')
-            }).catch((error) => {
-            alert('Error getting location - '+JSON.stringify(error))
-            });
-            const loc={
-              lat:this.lat,
-              long:this.lng
-            }
-            console.log(loc);
-            this.detServ.setLoc(loc);
-            this.presentToast();
+  //           },(er)=>{
+  //             console.log(er);
+  //             alert('Can not retrieve Location')
+  //           }).catch((error) => {
+  //           alert('Error getting location - '+JSON.stringify(error))
+  //           });
+  //           const loc={
+  //             lat:this.lat,
+  //             long:this.lng
+  //           }
+  //           console.log(loc);
+  //           this.detServ.setLoc(loc);
+  //           this.presentToast();
            
-  }
+  // }
 }

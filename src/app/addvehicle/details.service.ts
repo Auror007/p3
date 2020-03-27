@@ -13,8 +13,7 @@ export class DetailsService {
     vehicleCatagory:String,
     number:String,
     parkingarea:String,
-    longitude:String,
-    latitude:String,
+    address:String,
     prefferedTime:Number,
     flag:0
 }
@@ -43,9 +42,8 @@ export class DetailsService {
   public setNumber(data){
     this.details.number=data;
   }
-  public setLoc(data){
-    this.details.latitude=data.lat;
-    this.details.longitude=data.long;
+  public setAddress(data){
+    this.details.address=data;
   }
   public setprefferedTime(data){
     this.details.prefferedTime=data;

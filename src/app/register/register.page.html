@@ -6,8 +6,8 @@
   
   <ion-content padding>
   
-  
     <div class="ion-list">
+      
         <ion-item>
         <br>
         <br>
@@ -23,8 +23,13 @@
         <ion-label position="floating">
           Email
         </ion-label>
-        <ion-input  type="email" [(ngModel)]="email"></ion-input>
+        <ion-input  type="email" [(ngModel)]="email" (change)="viewval()" [pattern]="emailPattern" #val="ngModel"></ion-input>
+        
       </ion-item>
+      <div style="font-size: small;color: red;margin-left:5%;" *ngIf="val.errors?.pattern" (change)="viewval()"> 
+        Email not valid
+      </div> 
+      
       <br>
       <br>
   
@@ -34,6 +39,14 @@
         </ion-label>
         <ion-input type="number" [(ngModel)]="phonenumber"></ion-input>
       </ion-item>
+      <br>
+      <br>
+      <ion-item>
+        <ion-label position="fixed">
+          Address
+        </ion-label>
+<ion-button slot="end"routerLink="/pickloc" routerDirection="forward">Select Location</ion-button>
+  </ion-item>
       <br>
       <br>
   

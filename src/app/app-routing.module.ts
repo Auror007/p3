@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'cart', loadChildren: './cart/cart.module#CartPageModule' },
   { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
   { path: 'chekout', loadChildren: './chekout/chekout.module#ChekoutPageModule' },
+  { path: 'pickloc', loadChildren: './pickloc/pickloc.module#PicklocPageModule' },
  ];
 
 @NgModule({

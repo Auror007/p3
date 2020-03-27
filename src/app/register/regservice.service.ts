@@ -8,7 +8,10 @@ export class RegserviceService {
     phone: String,
     otp: String,
     userName: String,
-    email: String
+    email: String,
+    address:String,
+    lat:Number,
+    lng:Number
   }
   result={
     message: Boolean,
@@ -20,27 +23,44 @@ export class RegserviceService {
   public setPhone(data){
     this.phn.phone = data;
   }
+
+  public setName(data){
+    this.phn.userName = data;
+  }
+
+  public setAddress(data){
+    this.phn.address = data;
+  }
+
+  public setEmail(data){
+    this.phn.email = data;
+  }
+  public setLat(data){
+    this.phn.lat = data;
+  }
+  public setLng(data){
+    this.phn.lng = data;
+  }
+
+  public getAddress(){
+    return this.phn.address;
+  }
   public getPhone()
   {
     return this.phn.phone;
   }
  
-  public setName(data){
-    this.phn.userName = data;
-  }
   public getName()
   {
     return this.phn.userName;
   }
-  public setEmail(data){
-    this.phn.email = data;
-  }
+ 
   public getEmail()
   {
     return this.phn.email;
   }
   
-  
+
   public getJson()
   {
     return this.phn;

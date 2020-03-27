@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>ADDRESS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-item>
+    <ion-searchbar showCancelButton="focus" [(ngModel)]="sear" ></ion-searchbar>
+    <ion-button (click)="loadMap()" >FIND</ion-button>  
+  </ion-item>
+  <ion-label [hidden]="flag"></ion-label>
+ <ion-item [hidden]="!flag">
+  <div #map id="map"  ></div>
+ </ion-item>
+<ion-item [hidden]="!flag">
+  <!-- <ion-button  (click)="conf()"></ion-button> -->
+  <ion-button  (click)="conf()" style="width:90%;" routerLink="/register" routerDirection="backward">CONFIRM</ion-button>
+
+</ion-item>
+
+</ion-content>
+
+

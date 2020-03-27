@@ -23,7 +23,8 @@
   Four-Wheeler
 </ion-label>
 </ion-item>
-<ion-slides >
+
+<ion-slides>
   <ng-container *ngFor='let det of array_serv'>
   <ion-slide  *ngIf='det.vehicleType === "car"'  >
     <ion-card  button style="border-radius: 25px;"  (click)="addCart(det.packageId)">

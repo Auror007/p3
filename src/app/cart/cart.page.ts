@@ -4,7 +4,7 @@ import { ItemsService } from '../items.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Storage} from '@ionic/storage';
-
+import { formatDate } from '@angular/common';
 declare var RazorpayCheckout:any;
 @Component({
   selector: 'app-cart',
@@ -17,7 +17,19 @@ export class CartPage implements OnInit {
   public tot:number;
   public num:string;
   public em:string;
-  
+  public date:string;
+  makeString(): string {
+    let outString: string = '';
+    let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < 8; i++) {
+
+      outString += inOptions.charAt(Math.floor(Math.random() * inOptions.length));
+
+    }
+
+    return outString;
+  }
   constructor(
     public cartserv:CartService,
     public http:HttpClient,
@@ -34,6 +46,9 @@ export class CartPage implements OnInit {
    }
 
   ngOnInit() {
+
+    
+    this.date=formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.tot=this.cartserv.getAmount();
     this.cart=this.cartserv.getCart();
     console.log(this.cart);
@@ -49,22 +64,39 @@ export class CartPage implements OnInit {
   subs(){
     const req=this.cart.map((item)=>{
 
+        var dte=new Date();
       
-        return {email:this.em,id: item.id, number:item.vehnumber}
+          // console.log(typeof item.time);
+          // console.log(typeof 1);
+          
+        dte.setDate(dte.getDate() + Number(item.time));
+        //console.log(dte);
+        const fexp=formatDate(dte, 'yyyy/MM/dd', 'en');
+        // console.log(fexp);
+        return {
+          email:this.em,
+          orderId:this.makeString(),
+          number:item.vehnumber,
+          id: item.id,
+          flag:0,
+          currentdate:this.date,
+          expiredate:fexp
+
+        }
     })
     console.log(req);
    
-    // this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
-    //   (result) => {
-    //     console.log('added');
-    //   });
-  //   this.router.navigateByUrl('/tabs/tabs/services'); 
+    this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
+      (result) => {
+        console.log('added');
+      });
+    //this.router.navigateByUrl('/tabs/tabs/services'); 
   
   
-  this.http.post('https://mywash.herokuapp.com/payment',{amount:this.tot} ).subscribe(
-    (result) => {
-      console.log(result);
-    });
+  // this.http.post('https://mywash.herokuapp.com/payment',{amount:this.tot} ).subscribe(
+  //   (result) => {
+  //     console.log(result);
+  //   });
     
 
     var options = {

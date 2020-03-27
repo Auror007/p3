@@ -6,107 +6,69 @@
   
   
   <ion-content>
-    <ion-item>
-        <ion-slides>
-          <ion-slide>
+    
+      <!-- <ion-slides>
+        <ion-slide>
+          <ion-card style="height:200px !important;">
+              <ion-card-header>
+                <ion-card-title>Vehicle 1</ion-card-title>
+                <ion-card-subtitle>1 month</ion-card-subtitle>
+                </ion-card-header>
+              
+                <ion-card-content style="text-align: left;">
+                  Vehicle type<br>
+                  Vehicle Number<br>
+                  Package Selected<br>
+                </ion-card-content>
+                <ion-label>Start - End Date</ion-label>
+               
+          </ion-card>
+      </ion-slide>
+       
+      </ion-slides> -->
+        <ion-slides > 
+          <ion-slide *ngFor='let veh of vehicle'>
               <ion-card style="height:200px !important;">
                   <ion-card-header>
-                    <ion-card-title>Vehicle 1</ion-card-title>
-                    <ion-card-subtitle>1 month</ion-card-subtitle>
+                    <ion-card-title >{{veh.brandName}}  {{veh.vehicleModel}}</ion-card-title>
+                    <ion-card-subtitle>{{veh.duration}}</ion-card-subtitle>
                     </ion-card-header>
                   
                     <ion-card-content style="text-align: left;">
-                      Vehicle type<br>
-                      Vehicle Number<br>
-                      Package Selected<br>
+                      Vehicle type:{{veh.vehicleType}}<br>
+                      Vehicle Number:{{veh.number}}<br>
+                      Package Selected:{{veh.id}}<br>
                     </ion-card-content>
-                    <ion-label>Start - End Date</ion-label>
+                    <ion-label>Date:{{veh.duration}}</ion-label>
                    
               </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card style="height:200px !important;">
-              <ion-card-header >
-                <ion-card-title>Vehicle 2</ion-card-title>
-                <ion-card-subtitle>3 months</ion-card-subtitle>
-                </ion-card-header>
-              
-                <ion-card-content>
-                  External Wash weekly + 2 Extra interior wash
-                </ion-card-content>
-          </ion-card>
-          </ion-slide>
-          <ion-slide>
-            <ion-card >
-              <ion-card-header>
-                <ion-card-title>Vehicle 3</ion-card-title>
-                <ion-card-subtitle>3 months</ion-card-subtitle>
-                </ion-card-header>
-              
-                <ion-card-content>
-                  External Wash daily + 2 Extra interior wash
-                </ion-card-content>
-          </ion-card>
-          </ion-slide>
-          
+          </ion-slide> 
         </ion-slides>
-  </ion-item>
+       
+
         <!-- <ion-item>
         <ion-label style="margin-left: 5%;">Boost Up (x1)</ion-label>
         <ion-toggle slot="end"> [value]="checked"  </ion-toggle> 
         </ion-item> -->
+<ion-grid>
 
-        <ion-item >
-          <ion-button style="margin:auto;" color="danger" size="medium" routerLink="/cart" routerDirection="forward" >View Cart</ion-button>
+  <ion-row>
+        <ion-button style="margin:auto;" color="danger" size="medium" expand="block" class="buttons" routerLink="/cart" routerDirection="forward">
+          <ion-icon name="cart-sharp" style="padding-right: 3%;"></ion-icon>  View Cart</ion-button>
+   
+        <ion-button style="margin:auto;" size="medium" class="buttons" (click)="presentActionSheet()"><ion-icon name="time-sharp" style="padding-right: 3%;"></ion-icon>Change Time</ion-button>
+        <!-- add cart and track job -->
 
-          <ion-button style="margin:auto;" size="medium" (click)="presentActionSheet()">Change Time</ion-button>
-          <!-- add cart and track job -->
-        </ion-item >
+  </ion-row>
+  <br>
+  
 
+  <ion-row>
 
-        <ion-item >
-          <ion-label>
-            Recommended Combos
-          </ion-label>
-         
-        </ion-item >
-         <ion-slides>
-          <ion-slide>
-            <ion-card style="border-radius: 25px;">
-                <ion-card-header>
-                  <ion-card-title>offer1</ion-card-title>
-                  <ion-card-subtitle>1 month</ion-card-subtitle>
-                  </ion-card-header>
-                
-                  <ion-card-content>
-                    External Wash Weekly + 1 Extra interior wash
-                  </ion-card-content>
-            </ion-card>
-        </ion-slide>
-        <ion-slide>
-          <ion-card style="border-radius: 25px;">
-            <ion-card-header>
-              <ion-card-title>offer2</ion-card-title>
-              <ion-card-subtitle>3 months</ion-card-subtitle>
-              </ion-card-header>
-            
-              <ion-card-content>
-                External Wash weekly + 2 Extra interior wash
-              </ion-card-content>
-        </ion-card>
-        </ion-slide>
-        <ion-slide>
-          <ion-card style="border-radius: 25px;">
-            <ion-card-header>
-              <ion-card-title>offer3</ion-card-title>
-              <ion-card-subtitle>3 months</ion-card-subtitle>
-              </ion-card-header>
-            
-              <ion-card-content>
-                External Wash daily + 2 Extra interior wash
-              </ion-card-content>
-        </ion-card>
-        </ion-slide>
-        
-      </ion-slides>
-  </ion-content>
+        <ion-button style="margin:auto;" color="warning" size="medium"   expand="block" class="buttons" routerLink="/gps" routerDirection="forward"><ion-icon name="analytics-sharp" style="padding-right: 3%;"></ion-icon>Track Job</ion-button>
+  
+        <ion-button style="margin:auto;" color="tertiary" size="medium"  expand="block" class="buttons" routerLink="/addvehicle" routerDirection="forward"><ion-icon name="car-sharp"  style="padding-right: 3%;"></ion-icon>Add vehicle</ion-button>
+  </ion-row>
+</ion-grid>
+       
+</ion-content>

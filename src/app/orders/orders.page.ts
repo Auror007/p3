@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Storage} from '@ionic/storage';
+import { LoadingController } from '@ionic/angular';
+
 @Component({
   selector: 'app-orders',
   templateUrl: './orders.page.html',
@@ -22,19 +24,29 @@ export class OrdersPage implements OnInit {
     
   constructor(
     private http:HttpClient,
-    private storage:Storage
-  ) { this.storage.get('email').then((result)=>{
-    this.em=result;
-  }); }
+    private storage:Storage,
+    public loadingController: LoadingController
+
+  ) {
+    
+    }
 
   ngOnInit() {
-    
+    this.presentLoading();
+    this.storage.get('email').then((data)=>{
+      this.em=data;
+    }).then(()=>{
+      console.log(this.em);
     this.http.post<Array<{package:Array<{packageId:number,name:string,price:number,duration:string}>,
     customer:Array<{brandName:string,vehicleModel:string,number:string}>}>>('https://mywash.herokuapp.com/profile/history',{email:this.em}).subscribe(
-        (result) => 
+       
+    (result) => 
           {
+            console.log(result);
+            
+
             for (const arr of result)    
-                {   
+                {     
                     var packageId=arr.package[0].packageId;
                     var name=arr.package[0].name;
                     var price=arr.package[0].price;
@@ -55,12 +67,22 @@ export class OrdersPage implements OnInit {
                   this.resp.push(it);
                 }
                 console.log(this.resp);
-
-            
           },
         error => {
           console.log(error);
         });
+
+    });
+    
+  }
+
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 2000,
+    });
+    await loading.present();
+    console.log('Loading dismissed!');
   }
 
 }

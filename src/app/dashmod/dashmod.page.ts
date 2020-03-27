@@ -4,6 +4,12 @@ import { CarpopPage } from '../carpop/carpop.page';
 import { HttpClient } from '@angular/common/http';
 import {Storage} from  '@ionic/storage';
 import {CartService} from '../services/cart.service';
+import { LoadingController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { ToastController } from '@ionic/angular';
+
+
+
 @Component({
   selector: 'app-dashmod',
   templateUrl: './dashmod.page.html',
@@ -19,7 +25,7 @@ export class DashmodPage implements OnInit {
   public selection:any;
   public id:number;
   public name:any;
-  public time:any;
+  public time:number;
   public crt:Array<{vehicleModel:string,number:string}>;
   public req:any;
   
@@ -30,7 +36,11 @@ export class DashmodPage implements OnInit {
     public popoverController: PopoverController,
     public http:HttpClient,
     public storage:Storage,
-    public cartService:CartService
+    public cartService:CartService,
+    public toastController: ToastController,
+    public loadingController: LoadingController,
+    public alerCtrl: AlertController,
+
 
   ) {
     this.desp=navParams.get('description');
@@ -40,14 +50,12 @@ export class DashmodPage implements OnInit {
     this.id=navParams.get('packageId');
     this.name=navParams.get('title');
     this.time=navParams.get('duration');
-    
-
-   
-
+ 
    }
 
   ngOnInit() {
-    
+    this.presentLoading();
+
     this.storage.get('email').then((data)=>{
       this.email=data;
       console.log(this.email);
@@ -60,10 +68,9 @@ export class DashmodPage implements OnInit {
       console.log(this.req);
       this.http.post<Array<{vehicleModel:string,number:string}>>('https://mywash.herokuapp.com/service/find',this.req ).subscribe(
         async (result) => {
+
           console.log(result);
-          
           this.crt=result;
-          
 
         });
      });
@@ -73,12 +80,47 @@ export class DashmodPage implements OnInit {
             
   
   }
+  async presentLoading() {
+    const loading = await this.loadingController.create({
+      message: 'Please wait...',
+      duration: 1000,
+    });
+    await loading.present();
+
+    //const { role, data } = await loading.onDidDismiss();
+    console.log('Loading dismissed!');
+  }
 
   async presentPopover() {
-   let ev:any;
-  
+
+
+   if(this.crt.length==0){
+
+     this.doAlert("No car of specified category available!","Okay");
+   }
+   else{
+    let ev:any;
     console.log(this.crt);
 
+      const rem=this.cartService.getCart();
+     
+      console.log(rem);
+   if(rem!=undefined){
+        //  console.log(rem.find((x)=>{ if(x.vehnumber==="GJ-13-CC-1"){
+        //     return x.vehnumber
+        //  }
+        // }) );
+rem.filter((item1)=>{
+ 
+  this.crt=this.crt.filter((item)=>{
+    return item.number!= item1.vehnumber
+
+  })
+})
+     
+   }
+  
+      console.log(this.crt);
       
         const popover = await this.popoverController.create({
           component: CarpopPage,
@@ -95,21 +137,19 @@ export class DashmodPage implements OnInit {
           this.dismiss();
         });
         return await popover.present();
-     // }
-      
-     // );
-
-
-    // console.log(result1);
-    // const popover = await this.popoverController.create({
-    //   component: CarpopPage,
-    //  componentProps:result1,
-    //   event: ev,
-    //   translucent: true
-    // });
-    // return await popover.present();
+   }
+   
+   
+    
   }
-
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'ADDED TO CART.',
+      duration: 1500,
+      position:'middle'
+    });
+    toast.present();
+  }
   dismiss() {
     const prod={
       id:this.id,
@@ -123,6 +163,8 @@ export class DashmodPage implements OnInit {
       this.fdismiss();
     }
     else{
+    
+    this.presentToast();
     console.log(prod);
     this.crt=this.crt.filter((item)=>{
       return item.number!=this.selection
@@ -139,6 +181,17 @@ export class DashmodPage implements OnInit {
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+  }
+
+  async doAlert(msg: string, btn: string) {
+    const alert = await this.alerCtrl.create({
+      header: 'Error',
+      message: msg,
+      buttons: [btn],
+    });
+    await alert.present();
+
+
   }
 
 }

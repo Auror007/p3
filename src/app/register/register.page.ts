@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { RegserviceService } from './regservice.service';
 import UserResponse from '../message';
 import {Storage} from '@ionic/storage';
+import { NgModel } from '@angular/forms';
 
 
 
@@ -15,11 +16,14 @@ import {Storage} from '@ionic/storage';
 })
 
 export class RegisterPage implements OnInit, UserResponse {
+  val='valid';
   phonenumber = '';
   username = '';
   email = '';
+  addr='';
   message: any;
-
+  emailPattern='^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$';
+ 	
   constructor(
     private storage: Storage,
     public alerCtrl: AlertController,
@@ -58,23 +62,49 @@ export class RegisterPage implements OnInit, UserResponse {
     this.router.navigateByUrl('/login');
 
   }
+  // pickloc(){
+  //   this.router.navigateByUrl('/pickloc');
 
-  sendotp() {
+  // }
 
+  async sendotp() {
+    var flag;
+   await this.storage.get('addr').then((res)=>{
+      console.log(res);
+      
+      flag=res;
+    })
+    
     const phone = '91' + this.phonenumber;
     const username = this.username;
     const email = this.email;
+    const  regexp = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$');
+   console.log(regexp.test(email));
+   
+
 
     if (username.length == 0) {
       this.doAlert('Enter Valid Username!', 'Okay');
       this.username = '';
-    } else if (email.length == 0) {
+
+    } else if (!regexp.test(email)) {
+      //regex email
       this.doAlert('Enter Valid Email!', 'Okay');
       this.email = '';
     } else if (phone.length < 12 || phone.length > 12) {
       this.doAlert('Enter Valid Phonenumber!', 'Okay');
       this.phonenumber = '';
-    } else {
+      console.log(this.val);
+      
+      
+    }
+     else if (flag==null ) {
+      console.log(flag);
+       this.doAlert('Select Address!', 'Okay');
+       }
+       
+    else {
+
       this.regServ.setPhone(phone);
       this.regServ.setName(username);
       this.regServ.setEmail(email);
@@ -127,5 +157,7 @@ export class RegisterPage implements OnInit, UserResponse {
 
     }
   }
-
+  viewval(){
+    
+  }
 }

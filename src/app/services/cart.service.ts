@@ -3,8 +3,8 @@ import { BehaviorSubject } from 'rxjs';
 export interface Product {
     id: number;
     name: string;
-    time:string;
-    vehnumber:number;
+    time:number;
+    vehnumber:string;
     price: number;
     
   }
@@ -25,6 +25,7 @@ export interface Product {
     getAmount() {
       return this.amount;
     }
+   
   
   
     addProduct(product){

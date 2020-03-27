@@ -15,7 +15,7 @@ export class DashPage implements OnInit{
   public slideData:Array<object>;
   slideOptsOne = {
     initialSlide: 0,
-    speed:2000
+    speed:100
    };
    
   public array_serv :Array<det>=[];

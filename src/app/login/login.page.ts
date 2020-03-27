@@ -30,9 +30,7 @@ export class LoginPage implements OnInit, UserResponse {
   ngOnInit() {
 
   }
-  dash() {
-    this.router.navigateByUrl('/addvehicle');
-  }
+  
   login() {
 
     const email =  this.email;
@@ -41,6 +39,11 @@ export class LoginPage implements OnInit, UserResponse {
     } else {
       this.regServ.setEmail(email);
       this.http.post<{name:string,phone:number}>('https://mywash.herokuapp.com/profile/userdetails',{email:email}).subscribe((result)=>{
+     
+      console.log(result);
+        
+     
+     
       console.log(result.phone);
       console.log(result.name);
       this.storage.set('num',result.phone);
@@ -53,7 +56,6 @@ export class LoginPage implements OnInit, UserResponse {
      const data = {
         email: this.regServ.getEmail()
       };
-
 
       //check is user already logged in then route directly to dash else to registration pages
       console.log(data);
