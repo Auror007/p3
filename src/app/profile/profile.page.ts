@@ -53,6 +53,10 @@ export class ProfilePage implements OnInit {
   });
  
   }
+  call() {
+    let tel_number = '9879178177  '
+    window.open(`tel:${tel_number}`, '_system')
+  }
 
   async presentAlertConfirm() {
     const alert = await this.alertController.create({

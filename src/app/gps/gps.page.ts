@@ -32,18 +32,22 @@ export class GpsPage {
     private http:HttpClient,
     private storage:Storage
     ) {
-      this.storage.get('email').then((res)=>{
-        this.email=res;
-      })
+      
     this.anonLogin();
   }
 
   ionViewWillEnter(){
-    this.http.post('https://mywash.herokuapp.com/batch/track',{email:this.email}).subscribe((res)=>{
-      console.log(res);
+    this.storage.get('email').then((res)=>{
+      this.email=res;
+      console.log(this.email);
       
+      this.http.post('https://mywash.herokuapp.com/batch/track',{email:this.email}).subscribe((res)=>{
+        console.log(res);
+        
+      })
+      this.loadMap();
     })
-    this.loadMap();
+    
   }
   loadMap(){
     let latlng=new google.maps.LatLng(51.9090902,7,6673267);

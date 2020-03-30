@@ -6,8 +6,9 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {RegserviceService} from '../register/regservice.service';
 import {Storage} from '@ionic/storage';
 import UserResponse from '../message';
-import { ToastController } from '@ionic/angular';
+import { ToastController,Events } from '@ionic/angular';
 import {IonContent} from '@ionic/angular';
+
 interface Cardetails{
   list: [],
 }
@@ -28,7 +29,8 @@ export class AddvehiclePage implements OnInit {
   public model:any;
   public number:any;
   public time:number;
-
+  public lat:number;
+  public lng:number;
   public catagory:any;
   public address:any;
  resp={
@@ -49,7 +51,8 @@ export class AddvehiclePage implements OnInit {
     private regServ: RegserviceService,
     private http: HttpClient,
     private geolocation: Geolocation,
-    public toastController: ToastController
+    public toastController: ToastController,
+    public events:Events
 
 
     ) { 
@@ -64,11 +67,12 @@ export class AddvehiclePage implements OnInit {
         this.address=data; //static because this page is hit only after registration
         //this.email='parmar.parth97531@gmail.com'
       });
-      // this.storage.get('cord').then((data)=>{
-      //   console.log(data);
-      //   this.address=data; //static because this page is hit only after registration
-      //   //this.email='parmar.parth97531@gmail.com'
-      // });
+      this.storage.get('cord').then((data)=>{
+        console.log(data);
+        this.lat=data.lat;
+        this.lng=data.lng; //static because this page is hit only after registration
+        //this.email='parmar.parth97531@gmail.com'
+      });
       
     }
   
@@ -85,6 +89,8 @@ export class AddvehiclePage implements OnInit {
     this.detServ.setCategory(this.catagory);
     this.detServ.setType(this.type);
     this.detServ.setAddress(this.address);
+    this.detServ.setLat(this.lat);
+    this.detServ.setLng(this.lng);
 
     const data=this.detServ.getDet();
     console.log(data);
@@ -123,6 +129,9 @@ finaldash(){
   this.detServ.setBrand(this.brand);
   this.detServ.setCategory(this.catagory);
   this.detServ.setType(this.type);
+  this.detServ.setLat(this.lat);
+  this.detServ.setLng(this.lng);
+  
   const data=this.detServ.getDet();
   console.log(data);
   this.http.post<UserResponse>('https://mywash.herokuapp.com/uservehicle/addvehicle',data).subscribe(
@@ -139,6 +148,7 @@ finaldash(){
             this.number='';
             this.time=0;
             this.catagory='';
+            this.events.publish('check1','update');
           this.router.navigateByUrl('/tabs/tabs/dash');
 
        }

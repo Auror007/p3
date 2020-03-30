@@ -2,8 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { IonSlides, ActionSheetController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import {HttpClient} from '@angular/common/http';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController ,Events} from '@ionic/angular';
 import {Storage} from '@ionic/storage';
+import { async } from '@angular/core/testing';
 
 @Component({
   selector: 'app-services',
@@ -29,10 +30,79 @@ export class ServicesPage implements OnInit {
     public router:Router,
     private http:HttpClient,
     public storage:Storage,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public events:Events
     ) { 
-     
-    }
+      this.events.subscribe('check1', (data)=>{
+        console.log(data);
+        if(data=='update')
+        { 
+          this.vehicle=[];
+          this.ngOnInit();
+        }
+      }
+        )
+       
+      }
+    
+        
+        //    console.log(this.ema);
+           
+        // await this.http.post<{
+        //    vehicle:Array<{vehicleType:string,brandName:string,vehicleModel:string,number:string,vehicleCatagory:string}>,
+        //    service:Array<{id:number,number:string}>,
+        //    package:Array<{name:string,duration:string,packageId:number}>
+        //  }>('https://mywash.herokuapp.com/uservehicle/getvehicle',{email:this.ema}).subscribe((result)=>{
+         
+        //  console.log(result);
+         
+         
+          
+        //  result.vehicle.forEach(element => {
+        //    const ans1=result.service.find(x => x.number===element.number)
+        //    let pac:any;
+        //    let a:any
+        //    if(ans1!=undefined){
+             
+        //       pac= result.package.find(x=>x.packageId===ans1.id)
+        //        a={
+        //        vehicleType:element.vehicleType,
+        //        brandName:element.brandName,
+        //        vehicleModel:element.vehicleModel,
+        //        number:element.number,
+        //        vehicleCatagory:element.vehicleCatagory,
+        //        id:ans1.id,
+        //        name:pac.name,
+        //        duration:pac.duration
+        //      }
+       
+        //    }
+       
+        //    else{
+        //      a={
+        //        vehicleType:element.vehicleType,
+        //        brandName:element.brandName,
+        //        vehicleModel:element.vehicleModel,
+        //        number:element.number,
+        //        vehicleCatagory:element.vehicleCatagory,
+        //        id:'0',
+        //        name:'None',
+        //        duration:'None'
+        //      }
+        //    }
+           
+           
+       
+        //    this.vehicle.push(a);
+        //  });
+         
+         
+        //  });
+       
+        //  console.log(this.vehicle);
+        // }
+        
+       
 
   async ngOnInit() {
     this.presentLoading();

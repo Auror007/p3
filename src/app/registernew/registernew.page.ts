@@ -82,11 +82,17 @@ export class RegisternewPage implements OnInit, UserResponse {
         else if(result=='loggingin'){
           console.log(data1);
           
-          this.http.post('https://mywash.herokuapp.com/verifylogin', data1).subscribe(
-        (result: UserResponse) => {
+          this.http.post<{message:boolean,
+          address:string,
+        lat:string,
+      lng:string}>('https://mywash.herokuapp.com/verifylogin', data1).subscribe(
+        (result) => {
            console.log(result);
           if (result.message == true) {
             this.storage.set('activity','loggedin');
+            this.storage.set('address',result.message);
+            this.storage.set('coords',{lat:result.lat,lng:result.lng});
+
             this.router.navigateByUrl('/tabs/tabs/dash');
           }
         },

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Storage} from '@ionic/storage';
 import { formatDate } from '@angular/common';
+import { Events } from '@ionic/angular';
 declare var RazorpayCheckout:any;
 @Component({
   selector: 'app-cart',
@@ -34,7 +35,8 @@ export class CartPage implements OnInit {
     public cartserv:CartService,
     public http:HttpClient,
     public router:Router,
-    private storage:Storage
+    private storage:Storage,
+    public events:Events
   ) {
     
     this.storage.get('email').then((data)=>{
@@ -87,10 +89,14 @@ export class CartPage implements OnInit {
     console.log(req);
    
     this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
-      (result) => {
+     async (result) => {
         console.log('added');
         this.cartserv.removeAll();
         this.tot=0;
+       await this.events.publish('check1','update');
+
+        this.router.navigateByUrl('/tabs/tabs/services');
+
       });
     //this.router.navigateByUrl('/tabs/tabs/services'); 
   

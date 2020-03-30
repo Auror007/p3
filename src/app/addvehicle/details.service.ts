@@ -14,6 +14,8 @@ export class DetailsService {
     number:String,
     parkingarea:String,
     address:String,
+    lat:Number,
+    lng:Number,
     prefferedTime:Number,
     flag:0
 }
@@ -44,6 +46,12 @@ export class DetailsService {
   }
   public setAddress(data){
     this.details.address=data;
+  }
+  public setLat(data){
+    this.details.lat = data;
+  }
+  public setLng(data){
+    this.details.lng = data;
   }
   public setprefferedTime(data){
     this.details.prefferedTime=data;
