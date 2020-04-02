@@ -9,7 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button routerLink=\"/tabs/tabs/services\" routerDirection=\"backward\"></ion-back-button>\n    </ion-buttons>\n    <ion-title>Cart</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-item>\n  <ion-label>Your Order Summary</ion-label>\n</ion-item>\n<ion-list>\n  <ion-item-sliding  *ngFor=\"let item of cart\" >\n    <ion-item>\n      <!-- <ion-label text-wrap>\n        {{item.name}}\n      </ion-label>\n      <br>\n      <ion-label text-wrap>\n        Vehicle number:{{item.vehnumber}}\n      </ion-label>\n      <ion-label text-wrap>\n        Validity:{{item.duration}}\n      </ion-label>\n      <ion-label slot=\"end\">\n        {{item.price}}\n      </ion-label> -->\n      <ion-grid>\n        <ion-row>\n          <ion-col>\n            {{item.name}}\n          </ion-col>\n          <ion-col>\n           Price: {{item.price}}\n          </ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col>\n           Vehicle Number:{{item.vehnumber}}\n          </ion-col>\n          <ion-col>\n          Validity:  {{item.time}}\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-item>\n\n    <ion-item-options side=\"start\" (click)=\"deleteItem(item)\">\n      <ion-item-option color=\"danger\" >\n        <ion-icon name=\"trash\" slot=\"icon-only\"></ion-icon>\n      </ion-item-option>\n    </ion-item-options>\n\n  </ion-item-sliding>\n</ion-list>\n\n</ion-content>\n\n<ion-footer>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n          <ion-title>Total : {{tot}}</ion-title>\n         \n\n      </ion-col>\n      <ion-col>\n\n        \n        <ion-button color=\"danger\"  (click)=\"subs()\"  expand=\"block\">Checkout</ion-button>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-footer>\n");
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar>\n    <ion-buttons slot=\"start\">\n      <ion-back-button routerLink=\"/tabs/tabs/services\" routerDirection=\"backward\"></ion-back-button>\n\n    </ion-buttons>\n    <ion-title>Cart</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n<ion-item>\n  <ion-label>Your Order Summary</ion-label>\n</ion-item>\n<ion-list>\n  <ion-item-sliding  *ngFor=\"let item of cart\" >\n    <ion-item>\n     \n      <ion-grid>\n        <ion-row>\n          <ion-col>\n            {{item.name}}\n          </ion-col>\n          <ion-col>\n           Price: {{item.price}}\n          </ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col>\n           Vehicle Number:{{item.vehnumber}}\n          </ion-col>\n          <ion-col>\n          Validity:  {{item.time}}\n          </ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-item>\n\n    <ion-item-options side=\"start\" (click)=\"deleteItem(item)\">\n      <ion-item-option color=\"danger\" >\n        <ion-icon name=\"trash\" slot=\"icon-only\"></ion-icon>\n      </ion-item-option>\n    </ion-item-options>\n\n  </ion-item-sliding>\n</ion-list>\n\n</ion-content>\n\n<ion-footer>\n  <ion-grid>\n    <ion-row>\n      <ion-col>\n        \n          <ion-title>Total : {{tot}}</ion-title>\n         \n\n      </ion-col>\n      <ion-col>\n\n        \n        <ion-button color=\"danger\"  (click)=\"subs()\"  expand=\"block\">Checkout</ion-button>\n\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-footer>\n");
 
 /***/ }),
 
@@ -145,8 +145,6 @@ let CartPage = class CartPage {
     subs() {
         const req = this.cart.map((item) => {
             var dte = new Date();
-            // console.log(typeof item.time);
-            // console.log(typeof 1);
             dte.setDate(dte.getDate() + Number(item.time));
             //console.log(dte);
             const fexp = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(dte, 'yyyy/MM/dd', 'en');
@@ -189,14 +187,12 @@ let CartPage = class CartPage {
                 }
             }
         };
-        var successCallback = function (payment_id) {
+        RazorpayCheckout.open(options, (payment_id) => {
             console.log(payment_id);
             this.add(req);
-        };
-        var cancelCallback = function (error) {
+        }, (error) => {
             alert(error.description + ' (Error ' + error.code + ')');
-        };
-        RazorpayCheckout.open(options, successCallback, cancelCallback);
+        });
         // this.router.navigateByUrl('/tabs/tabs/services');
     }
 };
@@ -266,6 +262,7 @@ let CartService = class CartService {
     }
     removeAll() {
         this.cart = [];
+        this.amount = 0;
     }
 };
 CartService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([

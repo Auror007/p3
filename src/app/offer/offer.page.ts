@@ -40,7 +40,8 @@ export class OfferPage implements OnInit {
                   result[key].description,
                   result[key].vehicleCatagory,
                   result[key].vehicleType,
-                  result[key].duration
+                  result[key].duration,
+                  result[key].flag
                      )
               );
             }

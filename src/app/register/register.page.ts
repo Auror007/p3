@@ -59,7 +59,7 @@ export class RegisterPage implements OnInit, UserResponse {
   }
   async gotoLogin() {
 
-    this.router.navigate(['/login'],{replaceUrl:true});
+    this.router.navigate(['/login']);
 
   }
   // pickloc(){

@@ -29,6 +29,7 @@ export class DashmodPage implements OnInit {
   public time:number;
   public crt:Array<{vehicleModel:string,number:string}>;
   public req:any;
+  public flag:number;
   
   constructor(
     private modalCtrl:ModalController,
@@ -52,6 +53,8 @@ export class DashmodPage implements OnInit {
     this.id=navParams.get('packageId');
     this.name=navParams.get('title');
     this.time=navParams.get('duration');
+    this.flag=navParams.get('flag');
+
  
    }
 
@@ -159,10 +162,13 @@ rem.filter((item1)=>{
       time:this.time,
       vehnumber:this.selection,
       price: this.price,
+      flag:this.flag
     }
     if(prod.vehnumber == undefined)
     {
-      this.fdismiss();
+      this.popoverController.dismiss({
+        'dismissed': true
+      })
     }
     else{
     
@@ -173,7 +179,6 @@ rem.filter((item1)=>{
 
     });
     console.log(this.crt);
-    
     this.cartService.addProduct(prod);
   }
   }
@@ -182,8 +187,10 @@ rem.filter((item1)=>{
   {
     this.modalCtrl.dismiss({
       'dismissed': true
+    }).then(()=>{
+      this.router.navigate(['/cart']);
+
     });
-    this.router.navigate(['/cart']);
   }
 
   async doAlert(msg: string, btn: string) {

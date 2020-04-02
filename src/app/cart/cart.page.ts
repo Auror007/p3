@@ -19,7 +19,8 @@ export class CartPage implements OnInit {
   public num:string;
   public em:string;
   public date:string;
-  makeString(): string {
+  public arr:Array<string>=[];
+    makeString(): string {
     let outString: string = '';
     let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
 
@@ -48,8 +49,6 @@ export class CartPage implements OnInit {
    }
 
   ngOnInit() {
-
-    
     this.date=formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.tot=this.cartserv.getAmount();
     this.cart=this.cartserv.getCart();
@@ -79,12 +78,18 @@ export class CartPage implements OnInit {
        });
   }
   subs(){
+
+    const x=this.cartserv.getCount();
+    for (let index = 0; index < x; index++) {
+      this.arr.push(this.makeString());
+    }
+    console.log(this.arr);
+    this.arr=[];
+    
     const req=this.cart.map((item)=>{
 
         var dte=new Date();
       
-          // console.log(typeof item.time);
-          // console.log(typeof 1);
           
         dte.setDate(dte.getDate() + Number(item.time));
         //console.log(dte);
@@ -135,17 +140,14 @@ export class CartPage implements OnInit {
       }
     };
 
-    var successCallback = function (payment_id) {
+
+    RazorpayCheckout.open(options, (payment_id) =>{
       console.log(payment_id);
    
       this.add(req);
-    };
-
-    var cancelCallback = function (error) {
+    }, (error) =>{
       alert(error.description + ' (Error ' + error.code + ')');
-    };
-
-    RazorpayCheckout.open(options, successCallback, cancelCallback);
+    });
     // this.router.navigateByUrl('/tabs/tabs/services');
 
    }

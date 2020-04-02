@@ -49,8 +49,8 @@ export class ProfilePage implements OnInit {
   logout(){
     this.storage.set('activity','logged out').then((successData)=>{
       console.log("Logging out!");
-     this.router.navigateByUrl('/register');
-  });
+      this.router.navigate(['/register'],{replaceUrl:true});
+    });
  
   }
   call() {
@@ -79,7 +79,7 @@ export class ProfilePage implements OnInit {
               
             })
             this.storage.clear();
-            this.router.navigateByUrl('/register');
+            this.router.navigate(['/register'],{replaceUrl:true});
           }
         }
       ]

@@ -35,7 +35,7 @@
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Details</ion-title>\n   \n    <ion-button color=\"danger\" slot=\"end\"  routerLink=\"/cart\" routerDirection=\"forward\" >View Cart\n     </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>{{title}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>{{desp}}</ion-label>\n    </ion-item>\n  </ion-list>\n  \n</ion-content>\n<ion-footer class=\"ion-no-border\">\n <ion-item>\n  <ion-toolbar style=\"font-size: medium;\">\n    <ion-label slot=\"start\">Price:</ion-label>\n    <ion-label>{{price}}</ion-label>\n    <ion-fab-button (click)=\"presentPopover()\"  color=\"danger\" size=\"small\" slot=\"end\">\n      <ion-icon name=\"add\"></ion-icon>\n\n    </ion-fab-button>\n  </ion-toolbar>\n</ion-item>\n</ion-footer>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar>\n    <ion-title>Details</ion-title>\n   \n    <ion-button color=\"danger\" slot=\"end\" (click)=\"fdismiss()\">View Cart\n     </ion-button>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <ion-list>\n    <ion-item>\n      <ion-label>{{title}}</ion-label>\n    </ion-item>\n    <ion-item>\n      <ion-label>{{desp}}</ion-label>\n    </ion-item>\n  </ion-list>\n  \n</ion-content>\n<ion-footer class=\"ion-no-border\">\n <ion-item>\n  <ion-toolbar style=\"font-size: medium;\">\n    <ion-label slot=\"start\">Price:</ion-label>\n    <ion-label>{{price}}</ion-label>\n    <ion-fab-button (click)=\"presentPopover()\"  color=\"danger\" size=\"small\" slot=\"end\">\n      <ion-icon name=\"add\"></ion-icon>\n\n    </ion-fab-button>\n  </ion-toolbar>\n</ion-item>\n</ion-footer>\n";
     /***/
   },
 
@@ -503,9 +503,7 @@
         this.modalCtrl.dismiss({
           'dismissed': true
         });
-        this.router.navigate(['/cart'], {
-          replaceUrl: true
-        });
+        this.router.navigate(['/cart']);
       }
 
       doAlert(msg, btn) {
@@ -626,6 +624,7 @@
 
       removeAll() {
         this.cart = [];
+        this.amount = 0;
       }
 
     };

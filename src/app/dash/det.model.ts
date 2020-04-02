@@ -7,6 +7,7 @@ export class det{
     public description:string,
     public vehicleCatagory:string,
     public vehicleType:string,
-    public duration:string
+    public duration:string,
+    public flag:number
     ){}
 }
