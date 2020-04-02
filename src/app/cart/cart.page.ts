@@ -63,6 +63,21 @@ export class CartPage implements OnInit {
     this.tot=this.cartserv.getAmount();
   }
 
+
+  add(req){
+       
+    console.log(req);
+    this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
+      async (result) => {
+         console.log(result);
+         this.cartserv.removeAll(); //working or not
+         this.tot=0;
+        await this.events.publish('check1','update');
+ 
+         this.router.navigateByUrl('/tabs/tabs/services');
+ 
+       });
+  }
   subs(){
     const req=this.cart.map((item)=>{
 
@@ -88,16 +103,6 @@ export class CartPage implements OnInit {
     })
     console.log(req);
    
-    this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
-     async (result) => {
-        console.log('added');
-        this.cartserv.removeAll();
-        this.tot=0;
-       await this.events.publish('check1','update');
-
-        this.router.navigateByUrl('/tabs/tabs/services');
-
-      });
     //this.router.navigateByUrl('/tabs/tabs/services'); 
   
   
@@ -132,8 +137,8 @@ export class CartPage implements OnInit {
 
     var successCallback = function (payment_id) {
       console.log(payment_id);
-      this.cartserv.removeAll();
-      this.tot=0;
+   
+      this.add(req);
     };
 
     var cancelCallback = function (error) {
@@ -141,7 +146,7 @@ export class CartPage implements OnInit {
     };
 
     RazorpayCheckout.open(options, successCallback, cancelCallback);
-    this.router.navigateByUrl('/tabs/tabs/services');
+    // this.router.navigateByUrl('/tabs/tabs/services');
 
    }
 }

@@ -26,7 +26,7 @@
       </ion-slide>
        
       </ion-slides> -->
-        <ion-slides > 
+        <ion-slides #slides (ionSlideDidChange)="slideChanged()" > 
           <ion-slide *ngFor='let veh of vehicle'>
               <ion-card style="height:200px !important;">
                   <ion-card-header>
@@ -38,6 +38,8 @@
                       Vehicle type:{{veh.vehicleType}}<br>
                       Vehicle Number:{{veh.number}}<br>
                       Package Selected:{{veh.id}}<br>
+                      Preferred Time:{{veh.time}} A.M<br>
+
                     </ion-card-content>
                     <ion-label>Date:{{veh.duration}}</ion-label>
                    
@@ -45,19 +47,18 @@
           </ion-slide> 
         </ion-slides>
        
-
-        <!-- <ion-item>
-        <ion-label style="margin-left: 5%;">Boost Up (x1)</ion-label>
-        <ion-toggle slot="end"> [value]="checked"  </ion-toggle> 
-        </ion-item> -->
 <ion-grid>
 
   <ion-row>
         <ion-button style="margin:auto;" color="danger" size="medium" expand="block" class="buttons" routerLink="/cart" routerDirection="forward">
           <ion-icon name="cart-sharp" style="padding-right: 3%;"></ion-icon>  View Cart</ion-button>
-   
-        <ion-button style="margin:auto;" size="medium" class="buttons" (click)="presentActionSheet()"><ion-icon name="time-sharp" style="padding-right: 3%;"></ion-icon>Change Time</ion-button>
-        <!-- add cart and track job -->
+          
+
+        <ion-button style="margin:auto;" size="medium" class="buttons" (click)="presentActionSheet()">
+          <ion-icon name="time-sharp" style="padding-right: 3%;">
+          </ion-icon>Change Time
+          <!-- <ion-datetime [hidden]=1 #picker  displayFormat="HH:mm" ></ion-datetime>  -->
+       </ion-button>
 
   </ion-row>
   <br>

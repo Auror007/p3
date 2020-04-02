@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import {DashmodPage} from '../dashmod/dashmod.page';
 import {service} from './det.interface';
 import {det} from './det.model';
-import { ThrowStmt } from '@angular/compiler';
+
 @Component({
   selector: 'app-dash',
   templateUrl: './dash.page.html',
@@ -44,7 +44,7 @@ export class DashPage implements OnInit{
         (result) => {
 
           console.log(result);
-
+          
           for (const key in result) {
             if(result.hasOwnProperty(key)){
               this.array_serv.push(
@@ -76,6 +76,5 @@ export class DashPage implements OnInit{
       componentProps: mod
     });
     return await modal.present();
-    console.log(this.iserv.getCart());
   }
 }

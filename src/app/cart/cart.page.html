@@ -2,6 +2,7 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button routerLink="/tabs/tabs/services" routerDirection="backward"></ion-back-button>
+
     </ion-buttons>
     <ion-title>Cart</ion-title>
   </ion-toolbar>
@@ -14,19 +15,7 @@
 <ion-list>
   <ion-item-sliding  *ngFor="let item of cart" >
     <ion-item>
-      <!-- <ion-label text-wrap>
-        {{item.name}}
-      </ion-label>
-      <br>
-      <ion-label text-wrap>
-        Vehicle number:{{item.vehnumber}}
-      </ion-label>
-      <ion-label text-wrap>
-        Validity:{{item.duration}}
-      </ion-label>
-      <ion-label slot="end">
-        {{item.price}}
-      </ion-label> -->
+     
       <ion-grid>
         <ion-row>
           <ion-col>

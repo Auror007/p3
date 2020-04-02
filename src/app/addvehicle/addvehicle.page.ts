@@ -131,13 +131,13 @@ finaldash(){
   this.detServ.setType(this.type);
   this.detServ.setLat(this.lat);
   this.detServ.setLng(this.lng);
-  
+  this.detServ.setAddress(this.address);
+
   const data=this.detServ.getDet();
   console.log(data);
   this.http.post<UserResponse>('https://mywash.herokuapp.com/uservehicle/addvehicle',data).subscribe(
     (result:UserResponse) => 
       {
-
         console.log(result);
         if(result.message==true){
           this.storage.set('activity','loggedin');

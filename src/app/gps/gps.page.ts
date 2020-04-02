@@ -20,6 +20,7 @@ export class GpsPage {
   locations:Observable<any>;
   locationsCollection: AngularFirestoreCollection<any>;
   user=null;
+  public phone:number;
   public email:string;
   @ViewChild('map',{static:false}) mapElement:ElementRef;
   map:any;
@@ -41,8 +42,19 @@ export class GpsPage {
       this.email=res;
       console.log(this.email);
       
-      this.http.post('https://mywash.herokuapp.com/batch/track',{email:this.email}).subscribe((res)=>{
+      this.http.post<{data:{cleaner_name:string,cleaner_phone:number}}>('https://mywash.herokuapp.com/batch/track',{email:this.email}).subscribe((res)=>{
         console.log(res);
+        if(res.data!=null)
+        {
+          
+        this.user=res.data.cleaner_name;
+        this.phone=res.data.cleaner_phone;
+        }
+        else{
+          console.log('null');
+         
+
+        }
         
       })
       this.loadMap();
@@ -59,12 +71,15 @@ export class GpsPage {
     };
     this.map=new google.maps.Map(this.mapElement.nativeElement,mapOptions);
   }
-  
+  call() {
+    let tel_number = this.phone;
+    window.open(`tel:${tel_number}`, '_system')
+  }
   anonLogin(){
     //email auth
     this.afAuth.auth.signInAnonymously().then(user=>{
       console.log(user);
-      this.user=user;
+      
     }).then(()=>{
       this.findloc();
     });

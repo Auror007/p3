@@ -7,6 +7,7 @@ import {CartService} from '../services/cart.service';
 import { LoadingController } from '@ionic/angular';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 
 
@@ -40,6 +41,7 @@ export class DashmodPage implements OnInit {
     public toastController: ToastController,
     public loadingController: LoadingController,
     public alerCtrl: AlertController,
+    public router:Router
 
 
   ) {
@@ -181,6 +183,7 @@ rem.filter((item1)=>{
     this.modalCtrl.dismiss({
       'dismissed': true
     });
+    this.router.navigate(['/cart']);
   }
 
   async doAlert(msg: string, btn: string) {

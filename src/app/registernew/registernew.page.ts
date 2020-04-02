@@ -71,7 +71,7 @@ export class RegisternewPage implements OnInit, UserResponse {
            console.log(result);
           if (result.message == true) {
             this.storage.set('num',data.phone);
-            this.router.navigateByUrl('/addvehicle');
+            this.router.navigate(['/addvehicle'],{replaceUrl:true});
           }
         },
         error => {
@@ -93,7 +93,7 @@ export class RegisternewPage implements OnInit, UserResponse {
             this.storage.set('address',result.message);
             this.storage.set('coords',{lat:result.lat,lng:result.lng});
 
-            this.router.navigateByUrl('/tabs/tabs/dash');
+            this.router.navigate(['/tabs/tabs/dash'],{replaceUrl:true});
           }
         },
         error => {

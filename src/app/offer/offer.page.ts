@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ItemsService} from '../items.service';
 import { HttpClient } from '@angular/common/http';
+import { ModalController } from '@ionic/angular';
+import {det} from '../dash/det.model';
+import {DashmodPage} from '../dashmod/dashmod.page';
+
+
 
 
 @Component({
@@ -10,37 +15,51 @@ import { HttpClient } from '@angular/common/http';
 })
 export class OfferPage implements OnInit {
 
+  public array_serv :Array<det>=[];
+
   constructor(
-    private iserv:ItemsService,
-    private http:HttpClient
+    private http:HttpClient,
+    private modal:ModalController
     ) { }
 
   ngOnInit() {
-  }
-
-  addCart(){
-    const dat={
-      number:123,
-      serviceName:'Offer1',
-      timeCost:'10min',
-      vehicleType:'Sedan + Bike',
-      details:'1 Exterior wash + 2 Weekly Interior Wash',
-      price:750,
-      validTime:'2.5 Months',
-
-    }
     
-    this.iserv.addtoCart(dat);
-    console.log(this.iserv.getCart());
-    const data=this.iserv.getCart();
-    this.http.post('https://mywash.herokuapp.com/service/add', data).subscribe(
-        (result) => 
-          {
+    this.http.get<{[key:number]:det}>('https://mywash.herokuapp.com/package/offer', {}).subscribe(
+        (result) => {
+
           console.log(result);
-        },
-        error => {
-          console.log(error);
-        });
+          
+          for (const key in result) {
+            if(result.hasOwnProperty(key)){
+              this.array_serv.push(
+                new det(
+                  result[key].packageId,
+                  result[key].name,
+                  result[key].price,
+                  result[key].details,
+                  result[key].description,
+                  result[key].vehicleCatagory,
+                  result[key].vehicleType,
+                  result[key].duration
+                     )
+              );
+            }
+          }
+          console.log(this.array_serv);
+        }
+    );
   }
+  async addCart(packageId){
+    
+    
+    const mod=this.array_serv.find(item => item.packageId==packageId);
+    console.log(mod);
+    const modal = await this.modal.create({
+      component: DashmodPage,
+      componentProps: mod
+    });
+    return await modal.present();
+  }
+
 
 }

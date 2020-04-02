@@ -36,13 +36,13 @@ export class RegisterPage implements OnInit, UserResponse {
     this.storage.get('activity').then((data)=>{
       console.log(data);
       if(data=='loggedin'){
-        this.router.navigateByUrl('/tabs/tabs/dash')
+        this.router.navigate(['/tabs/tabs/dash'],{replaceUrl:true});
       }
       else if(data=='loggingin'){
-        this.router.navigateByUrl('/login')
+        this.router.navigate(['/login'],{replaceUrl:true});
       }
       else if(data=='registered'){
-        this.router.navigateByUrl('/login')
+        this.router.navigate(['/login'],{replaceUrl:true});
       }
     });
   }
@@ -59,7 +59,7 @@ export class RegisterPage implements OnInit, UserResponse {
   }
   async gotoLogin() {
 
-    this.router.navigateByUrl('/login');
+    this.router.navigate(['/login'],{replaceUrl:true});
 
   }
   // pickloc(){
@@ -133,7 +133,7 @@ export class RegisterPage implements OnInit, UserResponse {
             });
            
             
-            this.router.navigateByUrl('/registernew');
+            this.router.navigate(['/registernew'],{replaceUrl:true});
           }
           else if (result.message == '1') {
             this.doAlert('Phonenumber Already Registered!', 'Okay');

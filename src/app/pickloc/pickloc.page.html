@@ -5,10 +5,8 @@
 </ion-header>
 
 <ion-content>
-
-
   <ion-item>
-    <ion-searchbar showCancelButton="focus" [(ngModel)]="sear" ></ion-searchbar>
+    <ion-searchbar showCancelButton="focus" cancelButtonIcon="arrow-back-sharp" [(ngModel)]="sear" ></ion-searchbar>
     <ion-button (click)="loadMap()" >FIND</ion-button>  
   </ion-item>
   <ion-label [hidden]="flag"></ion-label>
