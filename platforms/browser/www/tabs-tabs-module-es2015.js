@@ -127,7 +127,7 @@ let DashPage = class DashPage {
             console.log(result);
             for (const key in result) {
                 if (result.hasOwnProperty(key)) {
-                    this.array_serv.push(new _det_model__WEBPACK_IMPORTED_MODULE_6__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration));
+                    this.array_serv.push(new _det_model__WEBPACK_IMPORTED_MODULE_6__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration, result[key].flag));
                 }
             }
             console.log(this.array_serv);
@@ -178,7 +178,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
 
 class det {
-    constructor(packageId, name, price, details, description, vehicleCatagory, vehicleType, duration) {
+    constructor(packageId, name, price, details, description, vehicleCatagory, vehicleType, duration, flag) {
         this.packageId = packageId;
         this.name = name;
         this.price = price;
@@ -187,6 +187,7 @@ class det {
         this.vehicleCatagory = vehicleCatagory;
         this.vehicleType = vehicleType;
         this.duration = duration;
+        this.flag = flag;
     }
 }
 
@@ -281,7 +282,7 @@ let OfferPage = class OfferPage {
             console.log(result);
             for (const key in result) {
                 if (result.hasOwnProperty(key)) {
-                    this.array_serv.push(new _dash_det_model__WEBPACK_IMPORTED_MODULE_4__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration));
+                    this.array_serv.push(new _dash_det_model__WEBPACK_IMPORTED_MODULE_4__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration, result[key].flag));
                 }
             }
             console.log(this.array_serv);
@@ -377,7 +378,7 @@ let ProfilePage = class ProfilePage {
     logout() {
         this.storage.set('activity', 'logged out').then((successData) => {
             console.log("Logging out!");
-            this.router.navigateByUrl('/register');
+            this.router.navigate(['/register'], { replaceUrl: true });
         });
     }
     call() {
@@ -405,7 +406,7 @@ let ProfilePage = class ProfilePage {
                                 console.log(res);
                             });
                             this.storage.clear();
-                            this.router.navigateByUrl('/register');
+                            this.router.navigate(['/register'], { replaceUrl: true });
                         }
                     }
                 ]

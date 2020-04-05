@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 })
 export class DashmodPage implements OnInit {
 
-  public desp:any;
+  public desp:string;
   public title:any;
   public price:any;
   public cat :any;
@@ -46,7 +46,6 @@ export class DashmodPage implements OnInit {
 
 
   ) {
-    this.desp=navParams.get('description');
     this.title=navParams.get('details');
     this.price=navParams.get('price');
     this.cat=navParams.get('vehicleCatagory');
@@ -55,8 +54,14 @@ export class DashmodPage implements OnInit {
     this.time=navParams.get('duration');
     this.flag=navParams.get('flag');
 
- 
-   }
+    this.desp=String(navParams.get('description'));
+  //console.log(typeof this.desp,this.desp);
+    // this.desp="ITEM\nITEM2";
+   // console.log(typeof this.desp,this.desp);
+
+
+    
+    }
 
   ngOnInit() {
     this.presentLoading();
@@ -85,6 +90,15 @@ export class DashmodPage implements OnInit {
             
   
   }
+
+  goback(){
+    this.modalCtrl.dismiss({
+      'dismissed': true
+    })
+  }
+
+  
+
   async presentLoading() {
     const loading = await this.loadingController.create({
       message: 'Please wait...',

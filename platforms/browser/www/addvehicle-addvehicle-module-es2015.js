@@ -195,7 +195,7 @@ let AddvehiclePage = class AddvehiclePage {
                 this.time = 0;
                 this.catagory = '';
                 this.events.publish('check1', 'update');
-                this.router.navigateByUrl('/tabs/tabs/dash');
+                this.router.navigate(['/tabs/tabs/dash'], { replaceUrl: true });
             }
             else if (result.message == false) {
                 //alert and clear  relavent inputs

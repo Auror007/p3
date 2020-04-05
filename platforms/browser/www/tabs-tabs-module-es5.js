@@ -211,7 +211,7 @@
 
           for (const key in result) {
             if (result.hasOwnProperty(key)) {
-              this.array_serv.push(new _det_model__WEBPACK_IMPORTED_MODULE_6__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration));
+              this.array_serv.push(new _det_model__WEBPACK_IMPORTED_MODULE_6__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration, result[key].flag));
             }
           }
 
@@ -280,7 +280,7 @@
     "./node_modules/tslib/tslib.es6.js");
 
     class det {
-      constructor(packageId, name, price, details, description, vehicleCatagory, vehicleType, duration) {
+      constructor(packageId, name, price, details, description, vehicleCatagory, vehicleType, duration, flag) {
         this.packageId = packageId;
         this.name = name;
         this.price = price;
@@ -289,6 +289,7 @@
         this.vehicleCatagory = vehicleCatagory;
         this.vehicleType = vehicleType;
         this.duration = duration;
+        this.flag = flag;
       }
 
     }
@@ -443,7 +444,7 @@
 
           for (const key in result) {
             if (result.hasOwnProperty(key)) {
-              this.array_serv.push(new _dash_det_model__WEBPACK_IMPORTED_MODULE_4__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration));
+              this.array_serv.push(new _dash_det_model__WEBPACK_IMPORTED_MODULE_4__["det"](result[key].packageId, result[key].name, result[key].price, result[key].details, result[key].description, result[key].vehicleCatagory, result[key].vehicleType, result[key].duration, result[key].flag));
             }
           }
 
@@ -584,7 +585,9 @@
       logout() {
         this.storage.set('activity', 'logged out').then(successData => {
           console.log("Logging out!");
-          this.router.navigateByUrl('/register');
+          this.router.navigate(['/register'], {
+            replaceUrl: true
+          });
         });
       }
 
@@ -615,7 +618,9 @@
                   console.log(res);
                 });
                 this.storage.clear();
-                this.router.navigateByUrl('/register');
+                this.router.navigate(['/register'], {
+                  replaceUrl: true
+                });
               }
             }]
           });

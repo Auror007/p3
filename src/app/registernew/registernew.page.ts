@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RegserviceService } from '../register/regservice.service';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { setIonicClasses } from '@ionic/angular/dist/directives/control-value-accessors/value-accessor';
 import UserResponse from '../message';
 import { NavController } from '@ionic/angular';
@@ -25,6 +26,7 @@ export class RegisternewPage implements OnInit, UserResponse {
   constructor(
     private regServ: RegserviceService,
     private http: HttpClient,
+    public alerCtrl: AlertController,
     private router: Router,
     private nav:NavController,
     private storage:Storage
@@ -48,8 +50,22 @@ export class RegisternewPage implements OnInit, UserResponse {
   ngOnInit() {
     
   }
+  async doAlert(msg: string, btn: string) {
+    const alert = await this.alerCtrl.create({
+      header: 'Error',
+      message: msg,
+      buttons: [btn],
+    });
+    await alert.present();
 
+
+  }
   verify() {
+    if(this.otp=='')
+    {
+      this.doAlert("Enter Otp","Okay");
+    }
+    else{
 
     const { otp } = this;
     this.regServ.setOtp(otp);
@@ -95,6 +111,11 @@ export class RegisternewPage implements OnInit, UserResponse {
 
             this.router.navigate(['/tabs/tabs/dash'],{replaceUrl:true});
           }
+          else{
+            this.doAlert("Invalid Otp","Re-enter");
+            this.otp='';
+
+          }
         },
         error => {
           console.log(error);
@@ -108,4 +129,5 @@ export class RegisternewPage implements OnInit, UserResponse {
       console.dir(err);
     }
   }
+}
 }

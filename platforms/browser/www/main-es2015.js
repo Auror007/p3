@@ -33,6 +33,10 @@ var map = {
 		"./src/app/chekout/chekout.module.ts",
 		"chekout-chekout-module"
 	],
+	"./coupon/coupon.module": [
+		"./src/app/coupon/coupon.module.ts",
+		"coupon-coupon-module"
+	],
 	"./dashmod/dashmod.module": [
 		"./src/app/dashmod/dashmod.module.ts",
 		"default~dashmod-dashmod-module~tabs-tabs-module"
@@ -793,6 +797,7 @@ const routes = [
     { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
     { path: 'chekout', loadChildren: './chekout/chekout.module#ChekoutPageModule' },
     { path: 'pickloc', loadChildren: './pickloc/pickloc.module#PicklocPageModule' },
+    { path: 'coupon', loadChildren: './coupon/coupon.module#CouponPageModule' },
 ];
 let AppRoutingModule = class AppRoutingModule {
 };

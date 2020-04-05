@@ -1,9 +1,3 @@
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["login-login-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/login/login.page.html":
@@ -21,7 +15,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-title>Login</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div class=\"ion-list\">\n        <br>\n        <br>\n      <ion-item>\n        <ion-label  position=\"floating\">\n         Enter E-mail\n        </ion-label>\n        <ion-input type=\"email\" [(ngModel)]=\"email\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n      <!-- <ion-item>\n          <ion-label  position=\"floating\">\n              Password\n             </ion-label>\n             <ion-input type=\"password\" [(ngModel)]=\"pass\"></ion-input>\n      </ion-item> -->\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n  <ion-button  shape=round class=\"buttons\" size=large  fill=\"solid\" expand=\"block\" color=\"dark\" (click)=login()  style=\"width: 50%;margin-right:25%;margin-left:25%\" >Login</ion-button>\n  <br>\n    <br>\n    <br>\n    <br>\n</ion-content>\n  ";
+    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-toolbar>\n        <ion-buttons slot=\"start\">\n          <ion-back-button routerLink=\"/register\" routerDirection=\"backward\"></ion-back-button>\n        </ion-buttons>\n        <ion-title>Login</ion-title>\n      </ion-toolbar>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding>\n    <div class=\"ion-list\">\n        <br>\n        <br>\n      <ion-item>\n        <ion-label  position=\"floating\">\n         Enter E-mail\n        </ion-label>\n        <ion-input type=\"email\" [(ngModel)]=\"email\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n      <!-- <ion-item>\n          <ion-label  position=\"floating\">\n              Password\n             </ion-label>\n             <ion-input type=\"password\" [(ngModel)]=\"pass\"></ion-input>\n      </ion-item> -->\n    </div>\n    <br>\n    <br>\n    <br>\n    <br>\n  <ion-button  shape=round class=\"buttons\" size=large  fill=\"solid\" expand=\"block\" color=\"dark\" (click)=login()  style=\"width: 50%;margin-right:25%;margin-left:25%\" >Login</ion-button>\n  <br>\n    <br>\n    <br>\n    <br>\n</ion-content>\n  ";
     /***/
   },
 
@@ -87,15 +81,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./login.page */
     "./src/app/login/login.page.ts");
 
-    var routes = [{
+    const routes = [{
       path: '',
       component: _login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"]
     }];
-
-    var LoginPageModule = function LoginPageModule() {
-      _classCallCheck(this, LoginPageModule);
-    };
-
+    let LoginPageModule = class LoginPageModule {};
     LoginPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
       declarations: [_login_page__WEBPACK_IMPORTED_MODULE_6__["LoginPage"]]
@@ -185,10 +175,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
-    var LoginPage = /*#__PURE__*/function () {
-      function LoginPage(router, http, alerCtrl, regServ, storage) {
-        _classCallCheck(this, LoginPage);
-
+    let LoginPage = class LoginPage {
+      constructor(router, http, alerCtrl, regServ, storage) {
         this.router = router;
         this.http = http;
         this.alerCtrl = alerCtrl;
@@ -197,137 +185,105 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.email = '';
       }
 
-      _createClass(LoginPage, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
-      }, {
-        key: "login",
-        value: function login() {
-          var _this = this;
+      ngOnInit() {}
 
-          var email = this.email;
+      login() {
+        const email = this.email;
 
-          if (email.length == 0) {
-            this.doAlert('Enter Valid Email!', 'Okay');
-          } else {
-            this.regServ.setEmail(email);
-            this.http.post('https://mywash.herokuapp.com/profile/userdetails', {
-              email: email
-            }).subscribe(function (result) {
-              console.log(result);
-              console.log(result.phone);
-              console.log(result.name);
+        if (email.length == 0) {
+          this.doAlert('Enter Valid Email!', 'Okay');
+        } else {
+          this.regServ.setEmail(email);
+          this.http.post('https://mywash.herokuapp.com/profile/userdetails', {
+            email: email
+          }).subscribe(result => {
+            console.log(result);
+            console.log(result.phone);
+            console.log(result.name);
+            this.storage.set('num', result.phone);
+            this.storage.set('name', result.name);
+          });
+          this.storage.set('email', this.email);
+          const data = {
+            email: this.regServ.getEmail()
+          }; //check is user already logged in then route directly to dash else to registration pages
 
-              _this.storage.set('num', result.phone);
+          console.log(data);
+          this.http.post('https://mywash.herokuapp.com/loginotp', data).subscribe(result => {
+            console.log(result);
 
-              _this.storage.set('name', result.name);
-            });
-            this.storage.set('email', this.email);
-            var data = {
-              email: this.regServ.getEmail()
-            }; //check is user already logged in then route directly to dash else to registration pages
+            if (result.message == true) {
+              this.router.navigate(['/registernew'], {
+                replaceUrl: true
+              });
+              this.storage.set('activity', 'loggingin').then(data => {
+                console.log(data);
+              });
+            } else {
+              this.doAlert('Not Registered', 'Register Now');
+              this.router.navigate(['/register'], {
+                replaceUrl: true
+              });
+            }
+          }, error => {
+            console.log(error);
+          });
+        }
+      }
+      /*async login()
+       {
+         const options={
+           email: this.username,
+           password: this.pass
+         };
+             try {
+           this.http.post('https://mywash.herokuapp.com/auth', options).subscribe(
+             result => {
+                 if (result == "user doesn't exist") {
+               this.doAlert( "Username Incorrect" , "Retype" );
+       } else if(result == 'wrong password') {
+               this.doAlert( 'Password Incorrect' , 'Retype' );
+        } else {
+         this.router.navigateByUrl('/dash');
+         }
+               },
+           error => {
+             this.doAlert('HELLO ERROR','OKAY');
+           });
+             } catch (err) {
+           console.dir(err)
+         }
+       }*/
 
-            console.log(data);
-            this.http.post('https://mywash.herokuapp.com/loginotp', data).subscribe(function (result) {
-              console.log(result);
 
-              if (result.message == true) {
-                _this.router.navigate(['/registernew'], {
-                  replaceUrl: true
-                });
+      doAlert(msg, btn) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          const alert = yield this.alerCtrl.create({
+            header: 'Error',
+            message: msg,
+            buttons: [btn]
+          });
+          yield alert.present();
 
-                _this.storage.set('activity', 'loggingin').then(function (data) {
-                  console.log(data);
-                });
-              } else {
-                _this.doAlert('Not Registered', 'Register Now');
-
-                _this.router.navigate(['/register'], {
-                  replaceUrl: true
-                });
-              }
-            }, function (error) {
-              console.log(error);
-            });
+          if (alert.message == 'Enter valid Number') {
+            this.email = '';
           }
-        }
-        /*async login()
-         {
-           const options={
-             email: this.username,
-             password: this.pass
-           };
-               try {
-             this.http.post('https://mywash.herokuapp.com/auth', options).subscribe(
-               result => {
-                   if (result == "user doesn't exist") {
-                 this.doAlert( "Username Incorrect" , "Retype" );
-         } else if(result == 'wrong password') {
-                 this.doAlert( 'Password Incorrect' , 'Retype' );
-          } else {
-           this.router.navigateByUrl('/dash');
-           }
-                 },
-             error => {
-               this.doAlert('HELLO ERROR','OKAY');
-             });
-               } catch (err) {
-             console.dir(err)
-           }
-         }*/
+        });
+      }
 
-      }, {
-        key: "doAlert",
-        value: function doAlert(msg, btn) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var alert;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return this.alerCtrl.create({
-                      header: 'Error',
-                      message: msg,
-                      buttons: [btn]
-                    });
-
-                  case 2:
-                    alert = _context.sent;
-                    _context.next = 5;
-                    return alert.present();
-
-                  case 5:
-                    if (alert.message == 'Enter valid Number') {
-                      this.email = '';
-                    }
-
-                  case 6:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-        }
-      }]);
-
-      return LoginPage;
-    }();
-
-    LoginPage.ctorParameters = function () {
-      return [{
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-      }, {
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
-      }, {
-        type: _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"]
-      }, {
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
-      }];
     };
+
+    LoginPage.ctorParameters = () => [{
+      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+    }, {
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_3__["HttpClient"]
+    }, {
+      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"]
+    }, {
+      type: _register_regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"]
+    }, {
+      type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
+    }];
 
     LoginPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-login',

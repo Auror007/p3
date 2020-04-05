@@ -1,9 +1,3 @@
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["register-register-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/register/register.page.html":
@@ -21,7 +15,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-title align-title=\"center\">Register</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding>\n  \n    <div class=\"ion-list\">\n      \n        <ion-item>\n        <br>\n        <br>\n        <ion-label position=\"floating\">\n          Name\n        </ion-label>\n        <ion-input type=\"text\" [(ngModel)]=\"username\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-item class=\"input-cover\">\n        <ion-label position=\"floating\">\n          Email\n        </ion-label>\n        <ion-input  type=\"email\" [(ngModel)]=\"email\" (change)=\"viewval()\" [pattern]=\"emailPattern\" #val=\"ngModel\"></ion-input>\n        \n      </ion-item>\n      <div style=\"font-size: small;color: red;margin-left:5%;\" *ngIf=\"val.errors?.pattern\" (change)=\"viewval()\"> \n        Email not valid\n      </div> \n      \n      <br>\n      <br>\n  \n      <ion-item>\n        <ion-label position=\"floating\">\n          Phonenumber\n        </ion-label>\n        <ion-input type=\"number\" [(ngModel)]=\"phonenumber\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n      <ion-item>\n        <ion-label position=\"fixed\">\n          Address\n        </ion-label>\n<ion-button slot=\"end\"routerLink=\"/pickloc\" routerDirection=\"forward\">Select Location</ion-button>\n  </ion-item>\n      <br>\n      <br>\n  \n      <ion-row>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"dark\" expand=\"block\" class=\"buttons\" size=\"large\"\n           (click)=sendotp()>Register</ion-button>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"danger\" expand=\"block\" class=\"buttons\" size=\"large\"\n          (click)=gotoLogin()>Login</ion-button>\n      </ion-row>\n      <br>\n      <!-- <ion-title>Or Sign Up using</ion-title>\n      <br>\n      <ion-button fill=\"solid\" color=\"primary\" expand=\"full\" class=\"buttons1\" size=\"large\">Facebook</ion-button>\n      <br>\n      \n      <ion-button fill=\"solid\" color=\"danger\" expand=\"block\" class=\"buttons1\" size=\"large\">Google</ion-button> -->\n    </div>\n    \n  \n  </ion-content>";
+    __webpack_exports__["default"] = "<ion-header>\n    <ion-toolbar>\n      <ion-title align-title=\"center\">Register</ion-title>\n    </ion-toolbar>\n  </ion-header>\n  \n  <ion-content padding>\n  \n    <div class=\"ion-list\">\n      \n        <ion-item>\n        <br>\n        <br>\n        <ion-label position=\"floating\">\n          Name\n        </ion-label>\n        <ion-input type=\"text\" [(ngModel)]=\"username\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n  \n      <ion-item class=\"input-cover\">\n        <ion-label position=\"floating\">\n          Email\n        </ion-label>\n        <ion-input  type=\"email\" [(ngModel)]=\"email\" (change)=\"viewval()\" [pattern]=\"emailPattern\" #val=\"ngModel\"></ion-input>\n        \n      </ion-item>\n      <div style=\"font-size: small;color: red;margin-left:5%;\" *ngIf=\"val.errors?.pattern\" (change)=\"viewval()\"> \n        Email not valid\n      </div> \n      \n      <br>\n      <br>\n  \n      <ion-item>\n        <ion-label position=\"floating\">\n          Phonenumber\n        </ion-label>\n        <ion-input type=\"number\" [(ngModel)]=\"phonenumber\"></ion-input>\n      </ion-item>\n      <br>\n      <br>\n      <ion-item>\n        <ion-label position=\"fixed\">\n          Address\n        </ion-label>\n<ion-button slot=\"end\"routerLink=\"/pickloc\" routerDirection=\"forward\">Select Location</ion-button>\n  </ion-item>\n      <br>\n      <br>\n  \n      <ion-row>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"dark\" expand=\"block\" class=\"buttons\" size=\"large\"\n           (click)=sendotp()>Register</ion-button>\n        <ion-button fill=\"solid\" shape=\"round\" color=\"danger\" expand=\"block\" class=\"buttons\" size=\"large\"\n        routerLink=\"/login\" routerDirection=\"forward\">Login</ion-button>\n      </ion-row>\n      <br>\n      <!-- <ion-title>Or Sign Up using</ion-title>\n      <br>\n      <ion-button fill=\"solid\" color=\"primary\" expand=\"full\" class=\"buttons1\" size=\"large\">Facebook</ion-button>\n      <br>\n      \n      <ion-button fill=\"solid\" color=\"danger\" expand=\"block\" class=\"buttons1\" size=\"large\">Google</ion-button> -->\n    </div>\n    \n  \n  </ion-content>";
     /***/
   },
 
@@ -87,15 +81,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./register.page */
     "./src/app/register/register.page.ts");
 
-    var routes = [{
+    const routes = [{
       path: '',
       component: _register_page__WEBPACK_IMPORTED_MODULE_6__["RegisterPage"]
     }];
-
-    var RegisterPageModule = function RegisterPageModule() {
-      _classCallCheck(this, RegisterPageModule);
-    };
-
+    let RegisterPageModule = class RegisterPageModule {};
     RegisterPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
       declarations: [_register_page__WEBPACK_IMPORTED_MODULE_6__["RegisterPage"]]
@@ -185,10 +175,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic/storage */
     "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
 
-    var RegisterPage = /*#__PURE__*/function () {
-      function RegisterPage(storage, alerCtrl, router, http, regServ) {
-        _classCallCheck(this, RegisterPage);
-
+    let RegisterPage = class RegisterPage {
+      constructor(storage, alerCtrl, router, http, regServ) {
         this.storage = storage;
         this.alerCtrl = alerCtrl;
         this.router = router;
@@ -202,197 +190,132 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.emailPattern = '^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$';
       }
 
-      _createClass(RegisterPage, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {
-          var _this = this;
+      ngOnInit() {
+        this.storage.get('activity').then(data => {
+          console.log(data);
 
-          this.storage.get('activity').then(function (data) {
-            console.log(data);
+          if (data == 'loggedin') {
+            this.router.navigate(['/tabs/tabs/dash'], {
+              replaceUrl: true
+            });
+          } else if (data == 'loggingin') {
+            this.router.navigate(['/login'], {
+              replaceUrl: true
+            });
+          } else if (data == 'registered') {
+            this.router.navigate(['/login'], {
+              replaceUrl: true
+            });
+          }
+        });
+      }
 
-            if (data == 'loggedin') {
-              _this.router.navigate(['/tabs/tabs/dash'], {
-                replaceUrl: true
-              });
-            } else if (data == 'loggingin') {
-              _this.router.navigate(['/login'], {
-                replaceUrl: true
-              });
-            } else if (data == 'registered') {
-              _this.router.navigate(['/login'], {
-                replaceUrl: true
-              });
-            }
+      doAlert(msg, btn) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          const alert = yield this.alerCtrl.create({
+            header: 'Error',
+            message: msg,
+            buttons: [btn]
           });
-        }
-      }, {
-        key: "doAlert",
-        value: function doAlert(msg, btn) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var alert;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return this.alerCtrl.create({
-                      header: 'Error',
-                      message: msg,
-                      buttons: [btn]
-                    });
+          yield alert.present();
+        });
+      }
 
-                  case 2:
-                    alert = _context.sent;
-                    _context.next = 5;
-                    return alert.present();
+      gotoLogin() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          this.router.navigate(['/login']);
+        });
+      } // pickloc(){
+      //   this.router.navigateByUrl('/pickloc');
+      // }
 
-                  case 5:
-                  case "end":
-                    return _context.stop();
-                }
+
+      sendotp() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          var flag;
+          yield this.storage.get('addr').then(res => {
+            console.log(res);
+            flag = res;
+          });
+          const phone = '91' + this.phonenumber;
+          const username = this.username;
+          const email = this.email;
+          const regexp = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$');
+          console.log(regexp.test(email));
+
+          if (username.length == 0) {
+            this.doAlert('Enter Valid Username!', 'Okay');
+            this.username = '';
+          } else if (!regexp.test(email)) {
+            //regex email
+            this.doAlert('Enter Valid Email!', 'Okay');
+            this.email = '';
+          } else if (phone.length < 12 || phone.length > 12) {
+            this.doAlert('Enter Valid Phonenumber!', 'Okay');
+            this.phonenumber = '';
+            console.log(this.val);
+          } else if (flag == null) {
+            console.log(flag);
+            this.doAlert('Select Address!', 'Okay');
+          } else {
+            this.regServ.setPhone(phone);
+            this.regServ.setName(username);
+            this.regServ.setEmail(email);
+            const data = {
+              userName: this.regServ.getName(),
+              email: this.regServ.getEmail(),
+              phone: this.regServ.getPhone()
+            };
+            console.log(data);
+            this.http.post('https://mywash.herokuapp.com/registerotp', data).subscribe(result => {
+              console.log(result.message);
+
+              if (result.message == '2') {
+                this.storage.set('email', this.email).then(successData => {
+                  console.log('email stored');
+                });
+                this.storage.set('name', this.username).then(successData => {
+                  console.log('name stored');
+                });
+                this.storage.set('activity', 'registered').then(successData => {
+                  console.log('activity :stored');
+                });
+                this.router.navigate(['/registernew'], {
+                  replaceUrl: true
+                });
+              } else if (result.message == '1') {
+                this.doAlert('Phonenumber Already Registered!', 'Okay');
+                this.phonenumber = '';
+              } else if (result.message == '0') {
+                this.doAlert('Email Already Registered!', 'Okay');
+                this.email = '';
+              } else {
+                console.log('hello');
+                this.doAlert('User exists', 'Okay');
+                this.phonenumber = '';
               }
-            }, _callee, this);
-          }));
-        }
-      }, {
-        key: "gotoLogin",
-        value: function gotoLogin() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
-            return regeneratorRuntime.wrap(function _callee2$(_context2) {
-              while (1) {
-                switch (_context2.prev = _context2.next) {
-                  case 0:
-                    this.router.navigate(['/login'], {
-                      replaceUrl: true
-                    });
+            }, error => {
+              console.log(error);
+            });
+          }
+        });
+      }
 
-                  case 1:
-                  case "end":
-                    return _context2.stop();
-                }
-              }
-            }, _callee2, this);
-          }));
-        } // pickloc(){
-        //   this.router.navigateByUrl('/pickloc');
-        // }
+      viewval() {}
 
-      }, {
-        key: "sendotp",
-        value: function sendotp() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
-            var _this2 = this;
-
-            var flag, phone, username, email, regexp, data;
-            return regeneratorRuntime.wrap(function _callee3$(_context3) {
-              while (1) {
-                switch (_context3.prev = _context3.next) {
-                  case 0:
-                    _context3.next = 2;
-                    return this.storage.get('addr').then(function (res) {
-                      console.log(res);
-                      flag = res;
-                    });
-
-                  case 2:
-                    phone = '91' + this.phonenumber;
-                    username = this.username;
-                    email = this.email;
-                    regexp = new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$');
-                    console.log(regexp.test(email));
-
-                    if (username.length == 0) {
-                      this.doAlert('Enter Valid Username!', 'Okay');
-                      this.username = '';
-                    } else if (!regexp.test(email)) {
-                      //regex email
-                      this.doAlert('Enter Valid Email!', 'Okay');
-                      this.email = '';
-                    } else if (phone.length < 12 || phone.length > 12) {
-                      this.doAlert('Enter Valid Phonenumber!', 'Okay');
-                      this.phonenumber = '';
-                      console.log(this.val);
-                    } else if (flag == null) {
-                      console.log(flag);
-                      this.doAlert('Select Address!', 'Okay');
-                    } else {
-                      this.regServ.setPhone(phone);
-                      this.regServ.setName(username);
-                      this.regServ.setEmail(email);
-                      data = {
-                        userName: this.regServ.getName(),
-                        email: this.regServ.getEmail(),
-                        phone: this.regServ.getPhone()
-                      };
-                      console.log(data);
-                      this.http.post('https://mywash.herokuapp.com/registerotp', data).subscribe(function (result) {
-                        console.log(result.message);
-
-                        if (result.message == '2') {
-                          _this2.storage.set('email', _this2.email).then(function (successData) {
-                            console.log('email stored');
-                          });
-
-                          _this2.storage.set('name', _this2.username).then(function (successData) {
-                            console.log('name stored');
-                          });
-
-                          _this2.storage.set('activity', 'registered').then(function (successData) {
-                            console.log('activity :stored');
-                          });
-
-                          _this2.router.navigate(['/registernew'], {
-                            replaceUrl: true
-                          });
-                        } else if (result.message == '1') {
-                          _this2.doAlert('Phonenumber Already Registered!', 'Okay');
-
-                          _this2.phonenumber = '';
-                        } else if (result.message == '0') {
-                          _this2.doAlert('Email Already Registered!', 'Okay');
-
-                          _this2.email = '';
-                        } else {
-                          console.log('hello');
-
-                          _this2.doAlert('User exists', 'Okay');
-
-                          _this2.phonenumber = '';
-                        }
-                      }, function (error) {
-                        console.log(error);
-                      });
-                    }
-
-                  case 8:
-                  case "end":
-                    return _context3.stop();
-                }
-              }
-            }, _callee3, this);
-          }));
-        }
-      }, {
-        key: "viewval",
-        value: function viewval() {}
-      }]);
-
-      return RegisterPage;
-    }();
-
-    RegisterPage.ctorParameters = function () {
-      return [{
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"]
-      }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
-      }, {
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
-      }, {
-        type: _regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"]
-      }];
     };
+
+    RegisterPage.ctorParameters = () => [{
+      type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
+    }, {
+      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["AlertController"]
+    }, {
+      type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+    }, {
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
+    }, {
+      type: _regservice_service__WEBPACK_IMPORTED_MODULE_5__["RegserviceService"]
+    }];
 
     RegisterPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-register',

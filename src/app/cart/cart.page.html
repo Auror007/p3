@@ -59,7 +59,7 @@
       <ion-col>
 
         
-        <ion-button color="danger"  (click)="subs()"  expand="block">Checkout</ion-button>
+        <ion-button color="danger" [hidden]="!tot" (click)="subs()"  expand="block">Checkout</ion-button>
 
       </ion-col>
     </ion-row>

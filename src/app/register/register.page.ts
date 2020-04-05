@@ -126,14 +126,13 @@ export class RegisterPage implements OnInit, UserResponse {
 
               this.storage.set('name',this.username).then((successData)=>{
                 console.log('name stored')});
-  
-
+           
               this.storage.set('activity','registered').then((successData)=>{
                 console.log('activity :stored');
             });
            
             
-            this.router.navigate(['/registernew'],{replaceUrl:true});
+            this.router.navigate(['/registernew']);
           }
           else if (result.message == '1') {
             this.doAlert('Phonenumber Already Registered!', 'Okay');

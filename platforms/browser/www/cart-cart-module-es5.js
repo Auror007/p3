@@ -188,6 +188,7 @@
         this.router = router;
         this.storage = storage;
         this.events = events;
+        this.arr = [];
         this.storage.get('email').then(data => {
           this.em = data;
         });
@@ -220,8 +221,12 @@
       }
 
       add(req) {
-        console.log(req);
-        this.http.post('https://mywash.herokuapp.com/service/add', req).subscribe(result => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+        const reqmod = {
+          service: req,
+          code: this.arr
+        };
+        console.log(reqmod);
+        this.http.post('https://mywash.herokuapp.com/service/add', reqmod).subscribe(result => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
           console.log(result);
           this.cartserv.removeAll(); //working or not
 
@@ -232,8 +237,22 @@
       }
 
       subs() {
+        // const x=this.cartserv.getCount();
+        // for (let index = 0; index < x; index++) {
+        //   this.arr.push({code:this.makeString()});
+        // }
+        // console.log(this.arr);
         const req = this.cart.map(item => {
           var dte = new Date();
+
+          if (item.flag == 1) {
+            this.arr.push({
+              code: this.makeString(),
+              id: item.id,
+              email: this.em
+            });
+          }
+
           dte.setDate(dte.getDate() + Number(item.time)); //console.log(dte);
 
           const fexp = Object(_angular_common__WEBPACK_IMPORTED_MODULE_6__["formatDate"])(dte, 'yyyy/MM/dd', 'en'); // console.log(fexp);
@@ -353,6 +372,7 @@
         this.cart = [];
         this.amount = 0;
         this.cartItemCount = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](0);
+        this.count = 0;
       }
 
       getCart() {
@@ -363,8 +383,25 @@
         return this.amount;
       }
 
+      incrementCount() {
+        this.count = this.count + 1;
+      }
+
+      decrementCount() {
+        this.count = this.count - 1;
+      }
+
+      getCount() {
+        return this.count;
+      }
+
       addProduct(product) {
         this.cart.push(product);
+
+        if (product.flag == 1) {
+          this.incrementCount();
+        }
+
         this.amount = this.amount + product.price;
       }
 
@@ -372,6 +409,11 @@
         for (let [index, p] of this.cart.entries()) {
           if (p.vehnumber === product.vehnumber) {
             this.amount = this.amount - p.price;
+
+            if (product.flag == 1) {
+              this.decrementCount();
+            }
+
             this.cart.splice(index, 1);
           }
         }
@@ -380,6 +422,7 @@
       removeAll() {
         this.cart = [];
         this.amount = 0;
+        this.count = 0;
       }
 
     };

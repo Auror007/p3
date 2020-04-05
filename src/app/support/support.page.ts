@@ -15,6 +15,7 @@ export class SupportPage implements OnInit {
   public order:string='not-applicable';
   public comp:string;
   public type:string;
+  public flag=0;
 
  constructor(
     private http:HttpClient,
@@ -33,11 +34,11 @@ export class SupportPage implements OnInit {
   @ViewChild(IonContent,{static:false}) content:IonContent 
   ngOnInit() {
   
-  
+  this.flag=0;
   }
 
   sendMessage(){
-
+    this.flag=1;
     this.messages.push({
       user:'You',
       createdAt:new Date().getTime(),

@@ -21,6 +21,7 @@ const routes: Routes = [
   { path: 'checkout', loadChildren: './checkout/checkout.module#CheckoutPageModule' },
   { path: 'chekout', loadChildren: './chekout/chekout.module#ChekoutPageModule' },
   { path: 'pickloc', loadChildren: './pickloc/pickloc.module#PicklocPageModule' },
+  { path: 'coupon', loadChildren: './coupon/coupon.module#CouponPageModule' },
  ];
 
 @NgModule({

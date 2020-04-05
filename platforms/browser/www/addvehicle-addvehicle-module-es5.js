@@ -1,9 +1,3 @@
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["addvehicle-addvehicle-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/addvehicle/addvehicle.page.html":
@@ -87,15 +81,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./addvehicle.page */
     "./src/app/addvehicle/addvehicle.page.ts");
 
-    var routes = [{
+    const routes = [{
       path: '',
       component: _addvehicle_page__WEBPACK_IMPORTED_MODULE_6__["AddvehiclePage"]
     }];
-
-    var AddvehiclePageModule = function AddvehiclePageModule() {
-      _classCallCheck(this, AddvehiclePageModule);
-    };
-
+    let AddvehiclePageModule = class AddvehiclePageModule {};
     AddvehiclePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
       declarations: [_addvehicle_page__WEBPACK_IMPORTED_MODULE_6__["AddvehiclePage"]]
@@ -197,12 +187,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
 
-    var AddvehiclePage = /*#__PURE__*/function () {
-      function AddvehiclePage(storage, router, detServ, regServ, http, geolocation, toastController, events) {
-        var _this = this;
-
-        _classCallCheck(this, AddvehiclePage);
-
+    let AddvehiclePage = class AddvehiclePage {
+      constructor(storage, router, detServ, regServ, http, geolocation, toastController, events) {
         this.storage = storage;
         this.router = router;
         this.detServ = detServ;
@@ -215,206 +201,168 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           list: []
         };
         this.vara = 0;
-        this.storage.get('email').then(function (data) {
+        this.storage.get('email').then(data => {
           console.log(data);
-          _this.email = data; //static because this page is hit only after registration
+          this.email = data; //static because this page is hit only after registration
           //this.email='parmar.parth97531@gmail.com'
         });
-        this.storage.get('addr').then(function (data) {
+        this.storage.get('addr').then(data => {
           console.log(data);
-          _this.address = data; //static because this page is hit only after registration
+          this.address = data; //static because this page is hit only after registration
           //this.email='parmar.parth97531@gmail.com'
         });
-        this.storage.get('cord').then(function (data) {
+        this.storage.get('cord').then(data => {
           console.log(data);
-          _this.lat = data.lat;
-          _this.lng = data.lng; //static because this page is hit only after registration
+          this.lat = data.lat;
+          this.lng = data.lng; //static because this page is hit only after registration
           //this.email='parmar.parth97531@gmail.com'
         });
       }
 
-      _createClass(AddvehiclePage, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {}
-      }, {
-        key: "dash",
-        value: function dash() {
-          var _this2 = this;
+      ngOnInit() {}
 
-          this.detServ.setEmail(this.email);
-          this.detServ.setModel(this.model);
-          this.detServ.setNumber(this.number);
-          this.detServ.setParkingarea(this.area);
-          this.detServ.setprefferedTime(this.time);
-          this.detServ.setBrand(this.brand);
-          this.detServ.setCategory(this.catagory);
-          this.detServ.setType(this.type);
-          this.detServ.setAddress(this.address);
-          this.detServ.setLat(this.lat);
-          this.detServ.setLng(this.lng);
-          var data = this.detServ.getDet();
-          console.log(data);
-          this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(function (result) {
-            console.log(result);
+      dash() {
+        this.detServ.setEmail(this.email);
+        this.detServ.setModel(this.model);
+        this.detServ.setNumber(this.number);
+        this.detServ.setParkingarea(this.area);
+        this.detServ.setprefferedTime(this.time);
+        this.detServ.setBrand(this.brand);
+        this.detServ.setCategory(this.catagory);
+        this.detServ.setType(this.type);
+        this.detServ.setAddress(this.address);
+        this.detServ.setLat(this.lat);
+        this.detServ.setLng(this.lng);
+        const data = this.detServ.getDet();
+        console.log(data);
+        this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(result => {
+          console.log(result);
 
-            if (result.message == true) {
-              _this2.area = '';
-              _this2.type = '';
-              _this2.brand = '';
-              _this2.model = '';
-              _this2.number = '';
-              _this2.time = 0;
-              _this2.catagory = '';
-
-              _this2.pageTop.scrollToTop();
-            } else if (result.message == false) {//alert and clear  relavent inputs
-            }
-          }, function (error) {
-            console.log(error);
-          });
-        }
-      }, {
-        key: "finaldash",
-        value: function finaldash() {
-          var _this3 = this;
-
-          this.detServ.setEmail(this.email);
-          this.detServ.setModel(this.model);
-          this.detServ.setNumber(this.number);
-          this.detServ.setParkingarea(this.area);
-          this.detServ.setprefferedTime(this.time);
-          this.detServ.setBrand(this.brand);
-          this.detServ.setCategory(this.catagory);
-          this.detServ.setType(this.type);
-          this.detServ.setLat(this.lat);
-          this.detServ.setLng(this.lng);
-          this.detServ.setAddress(this.address);
-          var data = this.detServ.getDet();
-          console.log(data);
-          this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(function (result) {
-            console.log(result);
-
-            if (result.message == true) {
-              _this3.storage.set('activity', 'loggedin');
-
-              _this3.area = '';
-              _this3.type = '';
-              _this3.brand = '';
-              _this3.model = '';
-              _this3.number = '';
-              _this3.time = 0;
-              _this3.catagory = '';
-
-              _this3.events.publish('check1', 'update');
-
-              _this3.router.navigateByUrl('/tabs/tabs/dash');
-            } else if (result.message == false) {//alert and clear  relavent inputs
-            }
-          }, function (error) {
-            console.log(error);
-          });
-        }
-      }, {
-        key: "onChange",
-        value: function onChange() {
-          if (this.area == '4') {
-            this.vara = 4;
-            this.area = undefined;
-          } else {//this.vara=this.area;
+          if (result.message == true) {
+            this.area = '';
+            this.type = '';
+            this.brand = '';
+            this.model = '';
+            this.number = '';
+            this.time = 0;
+            this.catagory = '';
+            this.pageTop.scrollToTop();
+          } else if (result.message == false) {//alert and clear  relavent inputs
           }
-        }
-      }, {
-        key: "addArea",
-        value: function addArea(data) {
-          this.area = data;
-        }
-      }, {
-        key: "onChange1",
-        value: function onChange1(type) {
-          console.log(this.type);
-          this.detServ.setType(this.type);
+        }, error => {
+          console.log(error);
+        });
+      }
 
-          if (this.type == "Car") {
-            this.car = 1;
-            this.bike = 0;
-          } else {
-            this.bike = 1;
-            this.car = 0;
+      finaldash() {
+        this.detServ.setEmail(this.email);
+        this.detServ.setModel(this.model);
+        this.detServ.setNumber(this.number);
+        this.detServ.setParkingarea(this.area);
+        this.detServ.setprefferedTime(this.time);
+        this.detServ.setBrand(this.brand);
+        this.detServ.setCategory(this.catagory);
+        this.detServ.setType(this.type);
+        this.detServ.setLat(this.lat);
+        this.detServ.setLng(this.lng);
+        this.detServ.setAddress(this.address);
+        const data = this.detServ.getDet();
+        console.log(data);
+        this.http.post('https://mywash.herokuapp.com/uservehicle/addvehicle', data).subscribe(result => {
+          console.log(result);
+
+          if (result.message == true) {
+            this.storage.set('activity', 'loggedin');
+            this.area = '';
+            this.type = '';
+            this.brand = '';
+            this.model = '';
+            this.number = '';
+            this.time = 0;
+            this.catagory = '';
+            this.events.publish('check1', 'update');
+            this.router.navigate(['/tabs/tabs/dash'], {
+              replaceUrl: true
+            });
+          } else if (result.message == false) {//alert and clear  relavent inputs
           }
-        }
-      }, {
-        key: "onChange2",
-        value: function onChange2() {
-          this.brand = '';
-          this.model = '';
-        }
-      }, {
-        key: "presentToast",
-        value: function presentToast() {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var toast;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return this.toastController.create({
-                      message: 'Your location has been saved!',
-                      duration: 2000
-                    });
+        }, error => {
+          console.log(error);
+        });
+      }
 
-                  case 2:
-                    toast = _context.sent;
-                    toast.present();
-
-                  case 4:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
+      onChange() {
+        if (this.area == '4') {
+          this.vara = 4;
+          this.area = undefined;
+        } else {//this.vara=this.area;
         }
-      }, {
-        key: "sendCardet",
-        value: function sendCardet() {
-          var _this4 = this;
+      }
 
-          this.detServ.setCategory(this.catagory);
-          this.detServ.setBrand(this.brand);
-          var data = this.detServ.getCardet();
-          console.log(this.detServ.getCardet());
-          this.http.post('https://mywash.herokuapp.com/uservehicle/findModel', data).subscribe(function (result) {
-            console.log(result.list);
-            _this4.resp.list = result.list;
-          }, function (error) {
-            console.log(error);
+      addArea(data) {
+        this.area = data;
+      }
+
+      onChange1(type) {
+        console.log(this.type);
+        this.detServ.setType(this.type);
+
+        if (this.type == "Car") {
+          this.car = 1;
+          this.bike = 0;
+        } else {
+          this.bike = 1;
+          this.car = 0;
+        }
+      }
+
+      onChange2() {
+        this.brand = '';
+        this.model = '';
+      }
+
+      presentToast() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          const toast = yield this.toastController.create({
+            message: 'Your location has been saved!',
+            duration: 2000
           });
-        }
-      }]);
+          toast.present();
+        });
+      }
 
-      return AddvehiclePage;
-    }();
+      sendCardet() {
+        this.detServ.setCategory(this.catagory);
+        this.detServ.setBrand(this.brand);
+        const data = this.detServ.getCardet();
+        console.log(this.detServ.getCardet());
+        this.http.post('https://mywash.herokuapp.com/uservehicle/findModel', data).subscribe(result => {
+          console.log(result.list);
+          this.resp.list = result.list;
+        }, error => {
+          console.log(error);
+        });
+      }
 
-    AddvehiclePage.ctorParameters = function () {
-      return [{
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"]
-      }, {
-        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
-      }, {
-        type: _details_service__WEBPACK_IMPORTED_MODULE_3__["DetailsService"]
-      }, {
-        type: _register_regservice_service__WEBPACK_IMPORTED_MODULE_6__["RegserviceService"]
-      }, {
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
-      }, {
-        type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ToastController"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Events"]
-      }];
     };
+
+    AddvehiclePage.ctorParameters = () => [{
+      type: _ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"]
+    }, {
+      type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+    }, {
+      type: _details_service__WEBPACK_IMPORTED_MODULE_3__["DetailsService"]
+    }, {
+      type: _register_regservice_service__WEBPACK_IMPORTED_MODULE_6__["RegserviceService"]
+    }, {
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_4__["HttpClient"]
+    }, {
+      type: _ionic_native_geolocation_ngx__WEBPACK_IMPORTED_MODULE_5__["Geolocation"]
+    }, {
+      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["ToastController"]
+    }, {
+      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_8__["Events"]
+    }];
 
     tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('pageTop', {
       static: false
@@ -463,10 +411,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @angular/core */
     "./node_modules/@angular/core/fesm2015/core.js");
 
-    var DetailsService = /*#__PURE__*/function () {
-      function DetailsService() {
-        _classCallCheck(this, DetailsService);
-
+    let DetailsService = class DetailsService {
+      constructor() {
         this.details = {
           email: String,
           vehicleType: String,
@@ -483,80 +429,63 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         };
       }
 
-      _createClass(DetailsService, [{
-        key: "setEmail",
-        value: function setEmail(data) {
-          this.details.email = data;
-        }
-      }, {
-        key: "setType",
-        value: function setType(data) {
-          this.details.vehicleType = data;
-        }
-      }, {
-        key: "setBrand",
-        value: function setBrand(data) {
-          this.details.brandName = data;
-        }
-      }, {
-        key: "setModel",
-        value: function setModel(data) {
-          this.details.vehicleModel = data;
-        }
-      }, {
-        key: "setCategory",
-        value: function setCategory(data) {
-          this.details.vehicleCatagory = data;
-        }
-      }, {
-        key: "setParkingarea",
-        value: function setParkingarea(data) {
-          this.details.parkingarea = data;
-        }
-      }, {
-        key: "setNumber",
-        value: function setNumber(data) {
-          this.details.number = data;
-        }
-      }, {
-        key: "setAddress",
-        value: function setAddress(data) {
-          this.details.address = data;
-        }
-      }, {
-        key: "setLat",
-        value: function setLat(data) {
-          this.details.lat = data;
-        }
-      }, {
-        key: "setLng",
-        value: function setLng(data) {
-          this.details.lng = data;
-        }
-      }, {
-        key: "setprefferedTime",
-        value: function setprefferedTime(data) {
-          this.details.prefferedTime = data;
-        }
-      }, {
-        key: "getCardet",
-        value: function getCardet() {
-          var cardet = {
-            brand: this.details.brandName,
-            catagory: this.details.vehicleCatagory
-          };
-          return cardet;
-        }
-      }, {
-        key: "getDet",
-        value: function getDet() {
-          return this.details;
-        }
-      }]);
+      setEmail(data) {
+        this.details.email = data;
+      }
 
-      return DetailsService;
-    }();
+      setType(data) {
+        this.details.vehicleType = data;
+      }
 
+      setBrand(data) {
+        this.details.brandName = data;
+      }
+
+      setModel(data) {
+        this.details.vehicleModel = data;
+      }
+
+      setCategory(data) {
+        this.details.vehicleCatagory = data;
+      }
+
+      setParkingarea(data) {
+        this.details.parkingarea = data;
+      }
+
+      setNumber(data) {
+        this.details.number = data;
+      }
+
+      setAddress(data) {
+        this.details.address = data;
+      }
+
+      setLat(data) {
+        this.details.lat = data;
+      }
+
+      setLng(data) {
+        this.details.lng = data;
+      }
+
+      setprefferedTime(data) {
+        this.details.prefferedTime = data;
+      }
+
+      getCardet() {
+        const cardet = {
+          brand: this.details.brandName,
+          catagory: this.details.vehicleCatagory
+        };
+        return cardet;
+      }
+
+      getDet() {
+        return this.details;
+      }
+
+    };
     DetailsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
       providedIn: 'root'
     }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], DetailsService);

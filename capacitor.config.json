@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "p3",
+  "appName": "Carwash",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
@@ -14,7 +14,7 @@
       "androidSpinnerStyle": "large",
       "iosSpinnerStyle": "small",
       "spinnerColor": "#999999",
-      "showSpinner": true
+      "showSpinner": false
     }
   },
   "cordova": {

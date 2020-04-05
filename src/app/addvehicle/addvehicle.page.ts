@@ -6,6 +6,7 @@ import {Geolocation} from '@ionic-native/geolocation/ngx';
 import {RegserviceService} from '../register/regservice.service';
 import {Storage} from '@ionic/storage';
 import UserResponse from '../message';
+import { AlertController } from '@ionic/angular';
 import { ToastController,Events } from '@ionic/angular';
 import {IonContent} from '@ionic/angular';
 
@@ -28,7 +29,7 @@ export class AddvehiclePage implements OnInit {
   public email:any;
   public model:any;
   public number:any;
-  public time:number;
+  public time=-1;
   public lat:number;
   public lng:number;
   public catagory:any;
@@ -48,6 +49,8 @@ export class AddvehiclePage implements OnInit {
     private storage: Storage,
     private router: Router,
     private detServ: DetailsService,
+    public alerCtrl: AlertController,
+
     private regServ: RegserviceService,
     private http: HttpClient,
     private geolocation: Geolocation,
@@ -79,7 +82,46 @@ export class AddvehiclePage implements OnInit {
   ngOnInit() {
     
   }
+
+validate(){
+  if(this.model=='' ||this.number=='' || this.area=='' || this.time==-1|| this.brand=='' || this.catagory==''
+  || this.type==''){
+    this.doAlert("Please fill all values!","Okay");
+
+
+  }
+  else{
+    this.dash();
+
+  }
+
+}
+validat(){
+  if(this.model=='' ||this.number=='' || this.area=='' || this.time==-1|| this.brand=='' || this.catagory==''
+  || this.type==''){
+    this.doAlert("Please fill all values!","Okay");
+
+  }
+  else{
+
+    this.finaldash();
+  }
+
+}
+ 
+async doAlert(msg: string, btn: string) {
+  const alert = await this.alerCtrl.create({
+    header: 'Error',
+    message: msg,
+    buttons: [btn],
+  });
+  await alert.present();
+
+
+}
+
   dash(){
+
     this.detServ.setEmail(this.email);
     this.detServ.setModel(this.model);
     this.detServ.setNumber(this.number);
@@ -149,7 +191,7 @@ finaldash(){
             this.time=0;
             this.catagory='';
             this.events.publish('check1','update');
-          this.router.navigateByUrl('/tabs/tabs/dash');
+          this.router.navigate(['/tabs/tabs/dash'],{replaceUrl:true});
 
        }
        else if(result.message==false){
@@ -222,50 +264,5 @@ finaldash(){
       });
   }
 
-  // sendCardet()
-  // {
-  //   this.detServ.setCategory(this.catagory);
-  //   this.detServ.setBrand(this.brand);
-  //   const data=this.detServ.getCardet();
-  //   console.log(this.detServ.getCardet());
-  //   this.http.post<Cardetails>('https://mywash.herokuapp.com/uservehicle/findModel',data).subscribe(
-  //     (result) => 
-  //       {
-  //         console.log(result.list);
-  //         this.resp.list=result.list;
-  //       },
-  //     error => {
-  //       console.log(error);
-  //     });
-  // }
-
-  // getLoc(){
-
-  //  const options= {maximumAge: 1000, timeout: 5000,
-  //     enableHighAccuracy: true }
-  //   this.geolocation.getCurrentPosition(options).then((resp) => {
-  //           this.lat=resp.coords.latitude
-  //           this.lng=resp.coords.longitude
-  //           const loc={
-  //             lat:this.lat,
-  //             long:this.lng
-  //           }
-  //           console.log(loc);
-  //           this.detServ.setLoc(loc);
-            
-  //           },(er)=>{
-  //             console.log(er);
-  //             alert('Can not retrieve Location')
-  //           }).catch((error) => {
-  //           alert('Error getting location - '+JSON.stringify(error))
-  //           });
-  //           const loc={
-  //             lat:this.lat,
-  //             long:this.lng
-  //           }
-  //           console.log(loc);
-  //           this.detServ.setLoc(loc);
-  //           this.presentToast();
-           
-  // }
+ 
 }

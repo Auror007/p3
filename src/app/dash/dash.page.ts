@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import {DashmodPage} from '../dashmod/dashmod.page';
 import {service} from './det.interface';
 import {det} from './det.model';
-
+import {Platform} from '@ionic/angular';
 @Component({
   selector: 'app-dash',
   templateUrl: './dash.page.html',
@@ -17,14 +17,23 @@ export class DashPage implements OnInit{
     initialSlide: 0,
     speed:100
    };
+   subscribe:any;
    
   public array_serv :Array<det>=[];
   
   constructor(
     private iserv:ItemsService,
     private http:HttpClient,
-    private modal:ModalController
+    private modal:ModalController,
+    private platform:Platform
     ){
+
+
+      this.subscribe=this.platform.backButton.subscribeWithPriority(6666666,()=>{
+        if(this.constructor.name=="DashPage"){
+              navigator['app'].exitApp();
+          }
+      })
       this.http.post<Array<string>>('https://mywash.herokuapp.com/image/get',{}).subscribe((img)=>{
       const str1="https://mywash.herokuapp.com/image/";
       this.slideData=img.map((item)=>{
@@ -47,6 +56,7 @@ export class DashPage implements OnInit{
           
           for (const key in result) {
             if(result.hasOwnProperty(key)){
+              
               this.array_serv.push(
                 new det(
                   result[key].packageId,

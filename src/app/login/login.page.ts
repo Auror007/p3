@@ -65,7 +65,7 @@ export class LoginPage implements OnInit, UserResponse {
           {
           console.log(result);
           if (result.message == true) {
-            this.router.navigate(['/registernew'],{replaceUrl:true});
+            this.router.navigate(['/registernew'],{replaceUrl:false});
             this.storage.set('activity','loggingin').then((data)=>{
             console.log(data);
 

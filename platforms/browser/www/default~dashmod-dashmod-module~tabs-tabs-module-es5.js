@@ -394,6 +394,7 @@
         this.id = navParams.get('packageId');
         this.name = navParams.get('title');
         this.time = navParams.get('duration');
+        this.flag = navParams.get('flag');
       }
 
       ngOnInit() {
@@ -483,11 +484,14 @@
           name: this.name,
           time: this.time,
           vehnumber: this.selection,
-          price: this.price
+          price: this.price,
+          flag: this.flag
         };
 
         if (prod.vehnumber == undefined) {
-          this.fdismiss();
+          this.popoverController.dismiss({
+            'dismissed': true
+          });
         } else {
           this.presentToast();
           console.log(prod);
@@ -502,8 +506,9 @@
       fdismiss() {
         this.modalCtrl.dismiss({
           'dismissed': true
+        }).then(() => {
+          this.router.navigate(['/cart']);
         });
-        this.router.navigate(['/cart']);
       }
 
       doAlert(msg, btn) {
@@ -598,6 +603,7 @@
         this.cart = [];
         this.amount = 0;
         this.cartItemCount = new rxjs__WEBPACK_IMPORTED_MODULE_2__["BehaviorSubject"](0);
+        this.count = 0;
       }
 
       getCart() {
@@ -608,8 +614,25 @@
         return this.amount;
       }
 
+      incrementCount() {
+        this.count = this.count + 1;
+      }
+
+      decrementCount() {
+        this.count = this.count - 1;
+      }
+
+      getCount() {
+        return this.count;
+      }
+
       addProduct(product) {
         this.cart.push(product);
+
+        if (product.flag == 1) {
+          this.incrementCount();
+        }
+
         this.amount = this.amount + product.price;
       }
 
@@ -617,6 +640,11 @@
         for (let [index, p] of this.cart.entries()) {
           if (p.vehnumber === product.vehnumber) {
             this.amount = this.amount - p.price;
+
+            if (product.flag == 1) {
+              this.decrementCount();
+            }
+
             this.cart.splice(index, 1);
           }
         }
@@ -625,6 +653,7 @@
       removeAll() {
         this.cart = [];
         this.amount = 0;
+        this.count = 0;
       }
 
     };

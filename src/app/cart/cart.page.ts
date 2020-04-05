@@ -19,7 +19,7 @@ export class CartPage implements OnInit {
   public num:string;
   public em:string;
   public date:string;
-  public arr:Array<string>=[];
+  public arr:Array<{code:string,id:number,number:string}>=[];
     makeString(): string {
     let outString: string = '';
     let inOptions: string = 'abcdefghijklmnopqrstuvwxyz0123456789';
@@ -51,6 +51,7 @@ export class CartPage implements OnInit {
   ngOnInit() {
     this.date=formatDate(new Date(), 'yyyy/MM/dd', 'en');
     this.tot=this.cartserv.getAmount();
+    
     this.cart=this.cartserv.getCart();
     console.log(this.cart);
   }
@@ -65,8 +66,10 @@ export class CartPage implements OnInit {
 
   add(req){
        
-    console.log(req);
-    this.http.post('https://mywash.herokuapp.com/service/add',req ).subscribe(
+    const reqmod={service:req,code:this.arr};
+    console.log(reqmod);
+
+    this.http.post('https://mywash.herokuapp.com/service/add',reqmod).subscribe(
       async (result) => {
          console.log(result);
          this.cartserv.removeAll(); //working or not
@@ -76,35 +79,36 @@ export class CartPage implements OnInit {
          this.router.navigateByUrl('/tabs/tabs/services');
  
        });
+
+    
   }
   subs(){
-
-    const x=this.cartserv.getCount();
-    for (let index = 0; index < x; index++) {
-      this.arr.push(this.makeString());
-    }
-    console.log(this.arr);
-    this.arr=[];
     
     const req=this.cart.map((item)=>{
 
-        var dte=new Date();
+        var dte=new Date(); 
       
-          
+        if(item.flag==1){
+          this.arr.push({code:this.makeString(),id:item.id,number:item.vehnumber})
+        }
         dte.setDate(dte.getDate() + Number(item.time));
         //console.log(dte);
         const fexp=formatDate(dte, 'yyyy/MM/dd', 'en');
         // console.log(fexp);
-        return {
-          email:this.em,
-          orderId:this.makeString(),
-          number:item.vehnumber,
-          id: item.id,
-          flag:0,
-          currentdate:this.date,
-          expiredate:fexp
+       
+          return {
+            
+            email:this.em,
+            orderId:this.makeString(),
+            number:item.vehnumber,
+            id: item.id,
+            flag:0,
+            currentdate:this.date,
+            expiredate:fexp
+            
+          }
 
-        }
+        
     })
     console.log(req);
    

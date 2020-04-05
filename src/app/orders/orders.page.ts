@@ -17,9 +17,12 @@ export class OrdersPage implements OnInit {
         name:string,
         price:number,
         duration:string,
+        details:string,
+        description:string,
         brandName:string,
         vehicleModel:string,
-        number:string
+        number:string,
+        code:string
       }>=[];
 
     
@@ -27,7 +30,6 @@ export class OrdersPage implements OnInit {
     private http:HttpClient,
     private storage:Storage,
     public loadingController: LoadingController
-
   ) {
     
     }
@@ -38,8 +40,14 @@ export class OrdersPage implements OnInit {
       this.em=data;
     }).then(()=>{
       console.log(this.em);
-    this.http.post<Array<{package:Array<{packageId:number,name:string,price:number,duration:string}>,
-    customer:Array<{brandName:string,vehicleModel:string,number:string}>}>>('https://mywash.herokuapp.com/profile/history',{email:this.em}).subscribe(
+    this.http.post<Array<
+    {
+      package:Array<{packageId:number,name:string,price:number,details:string,description:string,duration:string}>,
+      customer:Array<{brandName:string,vehicleModel:string,number:string}>,  
+      code:Array<{code:string}>
+    }
+  >
+  >('https://mywash.herokuapp.com/profile/history',{email:this.em}).subscribe(
        
     (result) => 
           {
@@ -55,19 +63,31 @@ export class OrdersPage implements OnInit {
                     var name=arr.package[0].name;
                     var price=arr.package[0].price;
                     var duration=arr.package[0].duration;
+                    var details=arr.package[0].details;
+                    var description=arr.package[0].description;
                     var brandName=arr.customer[0].brandName;
                     var vehicleModel=arr.customer[0].vehicleModel;
                     var number=arr.customer[0].number;
+                    var code;
+                    if(arr.code.length==0){
+                       code=0;
+                    }
+                    else{
+                       code=arr.code[0].code;
+
+                    }
                    const it={
                     packageId:packageId,
                     name:name,
                     price:price,
                     duration:duration,
+                    details:details,
+                    description:description,
                     brandName:brandName,
                     vehicleModel:vehicleModel,
-                    number:number
+                    number:number,
+                    code:code
                   }
-                    
                   this.resp.push(it);
                 }
                 console.log(this.resp);

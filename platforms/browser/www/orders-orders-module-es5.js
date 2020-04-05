@@ -1,15 +1,3 @@
-function _createForOfIteratorHelper(o) { if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (o = _unsupportedIterableToArray(o))) { var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var it, normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(n); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["orders-orders-module"], {
   /***/
   "./node_modules/raw-loader/dist/cjs.js!./src/app/orders/orders.page.html":
@@ -27,7 +15,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "<ion-header>\n  <ion-header translucent>\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-back-button routerLink=\"/tabs/tabs/profile\" routerDirection=\"backward\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>Orders</ion-title>\n    </ion-toolbar>\n  </ion-header>\n</ion-header>\n\n<ion-content >\n  <ion-list *ngFor=\"let item of resp\">\n\n    <ion-item>\n      <ion-card color=\"dark\">\n        \n        <ion-grid>\n       \n            <ion-row>\n              <ion-col>\n               Service {{item.name}}\n              </ion-col>\n              <ion-col>\n              PackageID:  {{item.packageId}}\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n               Duration: {{item.duration}}\n              </ion-col>\n              <ion-col>\n               Price : {{item.price}}\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n               Vehicle: {{item.brandName}} {{item.vehicleModel}}\n              </ion-col>\n             \n              <ion-col>\n               Number: {{item.number}}\n              </ion-col>\n            </ion-row>\n          </ion-grid>\n      </ion-card>\n    </ion-item>\n    \n  </ion-list>\n  \n\n<div class=\"ion-text-center\" style=\"color: grey;\" *ngIf=\"flag\">\n  <h3>No order history found</h3>\n</div>\n</ion-content>\n";
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-header translucent>\n    <ion-toolbar>\n      <ion-buttons slot=\"start\">\n        <ion-back-button routerLink=\"/tabs/tabs/profile\" routerDirection=\"backward\"></ion-back-button>\n      </ion-buttons>\n      <ion-title>Orders</ion-title>\n    </ion-toolbar>\n  </ion-header>\n</ion-header>\n\n<ion-content >\n  <ion-list *ngFor=\"let item of resp\">\n\n    <ion-item>\n      <ion-card color=\"dark\">\n        \n        <ion-grid>\n       \n            <ion-row>\n              <ion-col>\n               Service: {{item.name}}\n              </ion-col>\n              <ion-col>\n              PackageID:  {{item.packageId}}\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n               Duration: {{item.duration}}\n              </ion-col>\n              <ion-col>\n               Price : {{item.price}}\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col>\n               Vehicle: {{item.brandName}} {{item.vehicleModel}}\n              </ion-col>\n             \n              <ion-col>\n               Number: {{item.number}}\n              </ion-col>\n            </ion-row>\n            <br>\n            <ion-row>\n              <ion-col class=\"ion-text-wrap\">\n                  Details:{{item.details}}\n              </ion-col>\n            </ion-row>\n            <ion-row>\n              <ion-col class=\"ion-text-wrap\">\n               description:{{item.description}}\n              </ion-col>\n            </ion-row>\n          <br>\n\n            <ion-row [hidden]=\"!item.code\" style=\"background-color: brown;\">\n              <ion-col >\n               \n                  <ion-label size=\"12\">Coupon Code:  <b>{{item.code}}</b></ion-label>\n              \n              </ion-col>\n            </ion-row>\n          </ion-grid>\n      </ion-card>\n    </ion-item>\n    \n  </ion-list>\n  \n\n<div class=\"ion-text-center\" style=\"color: grey;\" *ngIf=\"flag\">\n  <h3>No order history found</h3>\n</div>\n</ion-content>\n";
     /***/
   },
 
@@ -93,15 +81,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! ./orders.page */
     "./src/app/orders/orders.page.ts");
 
-    var routes = [{
+    const routes = [{
       path: '',
       component: _orders_page__WEBPACK_IMPORTED_MODULE_6__["OrdersPage"]
     }];
-
-    var OrdersPageModule = function OrdersPageModule() {
-      _classCallCheck(this, OrdersPageModule);
-    };
-
+    let OrdersPageModule = class OrdersPageModule {};
     OrdersPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
       imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
       declarations: [_orders_page__WEBPACK_IMPORTED_MODULE_6__["OrdersPage"]]
@@ -125,7 +109,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /* harmony default export */
 
 
-    __webpack_exports__["default"] = "ion-card {\n  width: 100%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3JkZXJzL0Q6XFxTRU04XFxwMy9zcmNcXGFwcFxcb3JkZXJzXFxvcmRlcnMucGFnZS5zY3NzIiwic3JjL2FwcC9vcmRlcnMvb3JkZXJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL29yZGVycy9vcmRlcnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNhcmR7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuIiwiaW9uLWNhcmQge1xuICB3aWR0aDogMTAwJTtcbn0iXX0= */";
+    __webpack_exports__["default"] = "ion-card {\n  width: 100%;\n}\n\nion-col {\n  font-size: 18px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvb3JkZXJzL0Q6XFxTRU04XFxwMy9zcmNcXGFwcFxcb3JkZXJzXFxvcmRlcnMucGFnZS5zY3NzIiwic3JjL2FwcC9vcmRlcnMvb3JkZXJzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL29yZGVycy9vcmRlcnMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiaW9uLWNhcmR7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuaW9uLWNvbHtcclxuICAgIGZvbnQtc2l6ZToxOHB4O1xyXG59IiwiaW9uLWNhcmQge1xuICB3aWR0aDogMTAwJTtcbn1cblxuaW9uLWNvbCB7XG4gIGZvbnQtc2l6ZTogMThweDtcbn0iXX0= */";
     /***/
   },
 
@@ -179,10 +163,8 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     /*! @ionic/angular */
     "./node_modules/@ionic/angular/dist/fesm5.js");
 
-    var OrdersPage = /*#__PURE__*/function () {
-      function OrdersPage(http, storage, loadingController) {
-        _classCallCheck(this, OrdersPage);
-
+    let OrdersPage = class OrdersPage {
+      constructor(http, storage, loadingController) {
         this.http = http;
         this.storage = storage;
         this.loadingController = loadingController;
@@ -190,108 +172,81 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         this.resp = [];
       }
 
-      _createClass(OrdersPage, [{
-        key: "ngOnInit",
-        value: function ngOnInit() {
-          var _this = this;
+      ngOnInit() {
+        this.presentLoading(1000);
+        this.storage.get('email').then(data => {
+          this.em = data;
+        }).then(() => {
+          console.log(this.em);
+          this.http.post('https://mywash.herokuapp.com/profile/history', {
+            email: this.em
+          }).subscribe(result => {
+            console.log(result);
 
-          this.presentLoading(1000);
-          this.storage.get('email').then(function (data) {
-            _this.em = data;
-          }).then(function () {
-            console.log(_this.em);
+            if (result.length == 0) {
+              this.flag = 1;
+            } else {
+              for (const arr of result) {
+                var packageId = arr.package[0].packageId;
+                var name = arr.package[0].name;
+                var price = arr.package[0].price;
+                var duration = arr.package[0].duration;
+                var details = arr.package[0].details;
+                var description = arr.package[0].description;
+                var brandName = arr.customer[0].brandName;
+                var vehicleModel = arr.customer[0].vehicleModel;
+                var number = arr.customer[0].number;
+                var code;
 
-            _this.http.post('https://mywash.herokuapp.com/profile/history', {
-              email: _this.em
-            }).subscribe(function (result) {
-              console.log(result);
-
-              if (result.length == 0) {
-                _this.flag = 1;
-              } else {
-                var _iterator = _createForOfIteratorHelper(result),
-                    _step;
-
-                try {
-                  for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                    var arr = _step.value;
-                    var packageId = arr.package[0].packageId;
-                    var name = arr.package[0].name;
-                    var price = arr.package[0].price;
-                    var duration = arr.package[0].duration;
-                    var brandName = arr.customer[0].brandName;
-                    var vehicleModel = arr.customer[0].vehicleModel;
-                    var number = arr.customer[0].number;
-                    var it = {
-                      packageId: packageId,
-                      name: name,
-                      price: price,
-                      duration: duration,
-                      brandName: brandName,
-                      vehicleModel: vehicleModel,
-                      number: number
-                    };
-
-                    _this.resp.push(it);
-                  }
-                } catch (err) {
-                  _iterator.e(err);
-                } finally {
-                  _iterator.f();
+                if (arr.code.length == 0) {
+                  code = 0;
+                } else {
+                  code = arr.code[0].code;
                 }
 
-                console.log(_this.resp);
+                const it = {
+                  packageId: packageId,
+                  name: name,
+                  price: price,
+                  duration: duration,
+                  details: details,
+                  description: description,
+                  brandName: brandName,
+                  vehicleModel: vehicleModel,
+                  number: number,
+                  code: code
+                };
+                this.resp.push(it);
               }
-            }, function (error) {
-              console.log(error);
-            });
+
+              console.log(this.resp);
+            }
+          }, error => {
+            console.log(error);
           });
-        }
-      }, {
-        key: "presentLoading",
-        value: function presentLoading(time) {
-          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
-            var loading;
-            return regeneratorRuntime.wrap(function _callee$(_context) {
-              while (1) {
-                switch (_context.prev = _context.next) {
-                  case 0:
-                    _context.next = 2;
-                    return this.loadingController.create({
-                      message: 'Please wait...',
-                      duration: time
-                    });
+        });
+      }
 
-                  case 2:
-                    loading = _context.sent;
-                    _context.next = 5;
-                    return loading.present();
+      presentLoading(time) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+          const loading = yield this.loadingController.create({
+            message: 'Please wait...',
+            duration: time
+          });
+          yield loading.present();
+          console.log('Loading dismissed!');
+        });
+      }
 
-                  case 5:
-                    console.log('Loading dismissed!');
-
-                  case 6:
-                  case "end":
-                    return _context.stop();
-                }
-              }
-            }, _callee, this);
-          }));
-        }
-      }]);
-
-      return OrdersPage;
-    }();
-
-    OrdersPage.ctorParameters = function () {
-      return [{
-        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
-      }, {
-        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
-      }, {
-        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"]
-      }];
     };
+
+    OrdersPage.ctorParameters = () => [{
+      type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+    }, {
+      type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
+    }, {
+      type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["LoadingController"]
+    }];
 
     OrdersPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
       selector: 'app-orders',

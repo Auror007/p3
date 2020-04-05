@@ -28,8 +28,7 @@
       </ion-item>
       <div style="font-size: small;color: red;margin-left:5%;" *ngIf="val.errors?.pattern" (change)="viewval()"> 
         Email not valid
-      </div> 
-      
+      </div>
       <br>
       <br>
   
@@ -45,7 +44,7 @@
         <ion-label position="fixed">
           Address
         </ion-label>
-<ion-button slot="end"routerLink="/pickloc" routerDirection="forward">Select Location</ion-button>
+      <ion-button slot="end" routerLink="/pickloc" routerDirection="forward">Select Location</ion-button>
   </ion-item>
       <br>
       <br>
@@ -54,7 +53,7 @@
         <ion-button fill="solid" shape="round" color="dark" expand="block" class="buttons" size="large"
            (click)=sendotp()>Register</ion-button>
         <ion-button fill="solid" shape="round" color="danger" expand="block" class="buttons" size="large"
-          (click)=gotoLogin()>Login</ion-button>
+        routerLink="/login" routerDirection="forward">Login</ion-button>
       </ion-row>
       <br>
       <!-- <ion-title>Or Sign Up using</ion-title>
