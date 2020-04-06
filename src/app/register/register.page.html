@@ -41,10 +41,10 @@
       <br>
       <br>
       <ion-item>
-        <ion-label position="fixed">
-          Address
+        <ion-label text-wrap (click)="clearaddr()" style="white-space:pre-line;" >
+          Address: {{addr}}
         </ion-label>
-      <ion-button slot="end" routerLink="/pickloc" routerDirection="forward">Select Location</ion-button>
+      <ion-button slot="end" routerLink="/pickloc" [hidden]="addr" routerDirection="forward">Select Location</ion-button>
   </ion-item>
       <br>
       <br>

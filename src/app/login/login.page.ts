@@ -65,7 +65,7 @@ export class LoginPage implements OnInit, UserResponse {
           {
           console.log(result);
           if (result.message == true) {
-            this.router.navigate(['/registernew'],{replaceUrl:false});
+            this.router.navigate(['/registernew']);
             this.storage.set('activity','loggingin').then((data)=>{
             console.log(data);
 
@@ -73,7 +73,7 @@ export class LoginPage implements OnInit, UserResponse {
             
           } else {
             this.doAlert('Not Registered', 'Register Now');
-            this.router.navigate(['/register'],{replaceUrl:true});
+            this.router.navigate(['/register']);
           }
         },
         error => {

@@ -15,6 +15,17 @@ ion-slides{
 ion-card{
     display: flex;
     flex-direction: column;
-    background-color: lightblue;
-    width: 85%;
+    background-color: black;
+    width: 90%;
   }
+
+ion-card-content{
+    font-size: 20px;
+    color: white;
+}
+ion-card-subtitle{
+    
+    font-size: 17px;
+    color: white;
+
+}

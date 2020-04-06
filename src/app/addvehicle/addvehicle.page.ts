@@ -9,6 +9,8 @@ import UserResponse from '../message';
 import { AlertController } from '@ionic/angular';
 import { ToastController,Events } from '@ionic/angular';
 import {IonContent} from '@ionic/angular';
+import {Platform} from '@ionic/angular';
+
 
 interface Cardetails{
   list: [],
@@ -41,6 +43,7 @@ export class AddvehiclePage implements OnInit {
   bike: any;
   // value: number;
   vara:any;
+  subscribe:any;
 
   
 
@@ -55,11 +58,19 @@ export class AddvehiclePage implements OnInit {
     private http: HttpClient,
     private geolocation: Geolocation,
     public toastController: ToastController,
-    public events:Events
+    public events:Events,
+    private platform:Platform
+
 
 
     ) { 
       this.vara=0;
+      
+      this.subscribe=this.platform.backButton.subscribeWithPriority(6666666,()=>{
+        if(this.constructor.name=="DashPage"){
+              navigator['app'].exitApp();
+          }
+      })
       this.storage.get('email').then((data)=>{
         console.log(data);
         this.email=data; //static because this page is hit only after registration

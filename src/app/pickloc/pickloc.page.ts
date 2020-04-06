@@ -3,6 +3,7 @@ import {map} from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {Storage} from '@ionic/storage';
+import { Events } from '@ionic/angular';
 
 
 declare var google;
@@ -26,6 +27,7 @@ export class PicklocPage implements OnInit {
     public router:Router,
     public http:HttpClient,
     public storage:Storage,
+    private events:Events
   ) {    
   }
 
@@ -78,6 +80,7 @@ export class PicklocPage implements OnInit {
    });
    this.storage.set('addr',this.sear).then((res)=>{
      console.log(res);
+     this.events.publish('addr',this.sear);
      
    })
     

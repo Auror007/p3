@@ -5,20 +5,20 @@
 </ion-header>
 
 <ion-content>
-    <ion-slides>
+  
         
+<ng-container *ngFor='let det of array_serv'>
 
-        <ion-slide  *ngFor='let det of array_serv'>
             <ion-card style="border-radius: 25px;" button (click)="addCart(det.packageId)">
               <ion-card-header>
  
-              <ion-card-title>{{det.name}}</ion-card-title>
+              <ion-card-title style="color: brown;font-size: 25px;">{{det.name}}</ion-card-title>
               <ion-card-subtitle>{{det.duration}} Months</ion-card-subtitle>
               </ion-card-header>
             
-              <ion-card-content>{{det.description}}</ion-card-content>
+              <ion-card-content>{{det.details}}<br>
+              {{det.vehicleCatagory}}</ion-card-content>
             </ion-card>
-        </ion-slide>
-      
-      </ion-slides>
+      </ng-container>
+
 </ion-content>

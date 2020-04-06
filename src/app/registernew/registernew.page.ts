@@ -22,6 +22,7 @@ export class RegisternewPage implements OnInit, UserResponse {
   address:string;
   lat:string;
   lng:string;
+  flag:number=0;
 
   constructor(
     private regServ: RegserviceService,
@@ -48,7 +49,39 @@ export class RegisternewPage implements OnInit, UserResponse {
  }
 
   ngOnInit() {
+    this.storage.get('activity').then((result)=>{
+      if(result=="registered")
+      {
+        this.flag=0;
+      }
+      else{
+        this.flag=1;
+      }
+    })
+    this.storage.get('email').then((result)=>{
+      if(result=="registered")
+      {
+        this.flag=0;
+      }
+      else{
+        this.flag=1;
+      }
+    })
+  }
+  goback(p){
+    console.log(this.regServ.getEmail());
     
+    this.http.post('https://mywash.herokuapp.com/deltemp',{email:this.regServ.getEmail()}).subscribe((res)=>{
+      console.log(res);
+    })
+    if(p=='l'){
+      this.router.navigate(['/login'],{replaceUrl:true});
+    }
+    if(p=='r'){
+      this.router.navigate(['/register'],{replaceUrl:true});
+
+    }
+
   }
   async doAlert(msg: string, btn: string) {
     const alert = await this.alerCtrl.create({
@@ -97,7 +130,6 @@ export class RegisternewPage implements OnInit, UserResponse {
         }
         else if(result=='loggingin'){
           console.log(data1);
-          
           this.http.post<{message:boolean,
           address:string,
         lat:string,

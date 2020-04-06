@@ -1,6 +1,9 @@
 
 <ion-header>
     <ion-toolbar>
+      <ion-icon slot="start" [hidden]="flag" name="arrow-back-outline" size="3" (click)="goback('r')"></ion-icon>
+      <ion-icon slot="start" [hidden]="!flag" name="arrow-back-outline" size="3" (click)="goback('l')"></ion-icon>
+
       <ion-title align-title="center">Verify OTP</ion-title>
     </ion-toolbar>
   </ion-header>

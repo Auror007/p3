@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AlertController } from '@ionic/angular';
+import { AlertController, Events } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { RegserviceService } from './regservice.service';
@@ -29,22 +29,34 @@ export class RegisterPage implements OnInit, UserResponse {
     public alerCtrl: AlertController,
     private router: Router,
     private http: HttpClient,
-    private regServ: RegserviceService
+    private regServ: RegserviceService,
+    private events:Events
   ) { }
 
   ngOnInit() {
+    this.events.subscribe('addr',(res)=>{
+      this.addr=res;
+    })
     this.storage.get('activity').then((data)=>{
       console.log(data);
       if(data=='loggedin'){
+        this.phonenumber='';
+        this.email='';
+        this.addr='';
+        this.username='';
         this.router.navigate(['/tabs/tabs/dash'],{replaceUrl:true});
       }
       else if(data=='loggingin'){
-        this.router.navigate(['/login'],{replaceUrl:true});
+        this.router.navigate(['/login']);
       }
       else if(data=='registered'){
-        this.router.navigate(['/login'],{replaceUrl:true});
+        this.router.navigate(['/login']);
       }
     });
+  }
+
+  clearaddr(){
+    this.addr='';
   }
  
   async doAlert(msg: string, btn: string) {
@@ -131,7 +143,10 @@ export class RegisterPage implements OnInit, UserResponse {
                 console.log('activity :stored');
             });
            
-            
+            this.phonenumber='';
+        this.email='';
+        this.addr='';
+        this.username='';
             this.router.navigate(['/registernew']);
           }
           else if (result.message == '1') {

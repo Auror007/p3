@@ -10,13 +10,12 @@
 
 <ion-content>
   <ion-list>
-    <ion-item>
+    <!-- <ion-item>
       <ion-label>{{title}}</ion-label>
-    </ion-item>
+    </ion-item> -->
     <ion-item >
       <ion-label text-wrap >  
-        <div style="white-space:pre-line">
-          <pre>{{desp}}</pre>
+        <div [innerHTML]="desp" style="white-space:pre-line">
         </div>
       </ion-label>
     </ion-item>

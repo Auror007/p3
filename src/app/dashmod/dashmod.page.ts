@@ -53,14 +53,8 @@ export class DashmodPage implements OnInit {
     this.name=navParams.get('title');
     this.time=navParams.get('duration');
     this.flag=navParams.get('flag');
-
-    this.desp=String(navParams.get('description'));
-  //console.log(typeof this.desp,this.desp);
-    // this.desp="ITEM\nITEM2";
-   // console.log(typeof this.desp,this.desp);
-
-
-    
+    this.desp=navParams.get('description');
+ 
     }
 
   ngOnInit() {
