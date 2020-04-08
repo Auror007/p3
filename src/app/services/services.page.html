@@ -31,32 +31,34 @@
               <ion-card style="height:200px !important;">
                   <ion-card-header>
                     <ion-card-title >{{veh.brandName}}  {{veh.vehicleModel}}</ion-card-title>
-                    <ion-card-subtitle>{{veh.duration}}</ion-card-subtitle>
+                    <ion-card-subtitle>{{veh.details}}</ion-card-subtitle>
                     </ion-card-header>
                   
                     <ion-card-content style="text-align: left;">
                       Vehicle type:{{veh.vehicleType}}<br>
                       Vehicle Number:{{veh.number}}<br>
-                      Package Selected:{{veh.id}}<br>
                       Preferred Time:{{veh.time}} A.M<br>
-
+                      <ion-label [hidden]="!veh.expiredate">Expiry Date:{{veh.expiredate}}</ion-label><br>
                     </ion-card-content>
-                    <ion-label>Date:{{veh.duration}}</ion-label>
                    
               </ion-card>
           </ion-slide> 
         </ion-slides>
+        <br>
+        <br>
+        <br>
+        
        
 <ion-grid>
 
   <ion-row>
-        <ion-button style="margin:auto;" color="danger" size="medium" expand="block" class="buttons" routerLink="/cart" routerDirection="forward">
-          <ion-icon name="cart-sharp" style="padding-right: 3%;"></ion-icon>  View Cart</ion-button>
+        <ion-button style="margin:auto;" color="danger" size="large" expand="block" class="buttons" routerLink="/cart" routerDirection="forward">
+          <ion-icon name="cart-sharp" style="padding-right: 3%;"></ion-icon>   Cart</ion-button>
           
 
-        <ion-button style="margin:auto;" size="medium" class="buttons" (click)="presentActionSheet()">
+        <ion-button style="margin:auto;" color="danger" size="large" class="buttons" (click)="presentActionSheet()">
           <ion-icon name="time-sharp" style="padding-right: 3%;">
-          </ion-icon>Change Time
+          </ion-icon>Time
           <!-- <ion-datetime [hidden]=1 #picker  displayFormat="HH:mm" ></ion-datetime>  -->
        </ion-button>
 
@@ -66,9 +68,9 @@
 
   <ion-row>
 
-        <ion-button style="margin:auto;" color="warning" size="medium"   expand="block" class="buttons" routerLink="/gps" routerDirection="forward"><ion-icon name="analytics-sharp" style="padding-right: 3%;"></ion-icon>Track Job</ion-button>
+        <ion-button style="margin:auto;" color="danger" size="large"   expand="block" class="buttons" routerLink="/gps" routerDirection="forward"><ion-icon name="analytics-sharp" style="padding-right: 3%;"></ion-icon>Track</ion-button>
   
-        <ion-button style="margin:auto;" color="tertiary" size="medium"  expand="block" class="buttons" routerLink="/addvehicle" routerDirection="forward"><ion-icon name="car-sharp"  style="padding-right: 3%;"></ion-icon>Add vehicle</ion-button>
+        <ion-button style="margin:auto;" color="danger" size="large"  expand="block" class="buttons" routerLink="/addvehicle" routerDirection="forward"><ion-icon name="car-sharp"  style="padding-right: 3%;"></ion-icon>Add</ion-button>
   </ion-row>
 </ion-grid>
        

@@ -17,17 +17,22 @@
         
         <ion-grid>
        
-            <ion-row>
+            <!-- <ion-row>
               <ion-col>
                Service: {{item.name}}
               </ion-col>
               <ion-col>
               PackageID:  {{item.packageId}}
               </ion-col>
+            </ion-row> -->
+            <ion-row>
+              <ion-col class="ion-text-wrap">
+                  Details:{{item.details}}
+              </ion-col>
             </ion-row>
             <ion-row>
               <ion-col>
-               Duration: {{item.duration}}
+               Duration: {{item.duration}} Months
               </ion-col>
               <ion-col>
                Price : {{item.price}}
@@ -35,24 +40,17 @@
             </ion-row>
             <ion-row>
               <ion-col>
-               Vehicle: {{item.brandName}} {{item.vehicleModel}}
+               Vehicle: <br>{{item.brandName}} {{item.vehicleModel}}
               </ion-col>
              
               <ion-col>
-               Number: {{item.number}}
+               Number: <br>
+               {{item.number}}
               </ion-col>
             </ion-row>
             <br>
-            <ion-row>
-              <ion-col class="ion-text-wrap">
-                  Details:{{item.details}}
-              </ion-col>
-            </ion-row>
-            <ion-row>
-              <ion-col class="ion-text-wrap">
-               description:{{item.description}}
-              </ion-col>
-            </ion-row>
+           
+           
           <br>
 
             <ion-row [hidden]="!item.code" style="background-color: brown;">

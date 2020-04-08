@@ -22,7 +22,9 @@ export class ServicesPage implements OnInit {
         time:number,
         id:number,
         name:string,
-        duration:string
+        duration:string,
+        expiredate:string,
+        details:string
       }>=[];
   public ema:any;
   public index:number=0;
@@ -64,7 +66,7 @@ export class ServicesPage implements OnInit {
     
    await this.http.post<{
     vehicle:Array<{vehicleType:string,brandName:string,vehicleModel:string,number:string,vehicleCatagory:string,prefferedTime:number}>,
-    service:Array<{id:number,number:string}>,
+    service:Array<{id:number,number:string,expiredate:string}>,
     package:Array<{name:string,duration:string,packageId:number}>
   }>('https://mywash.herokuapp.com/uservehicle/getvehicle',{email:this.ema}).subscribe((result)=>{
   
@@ -88,7 +90,9 @@ export class ServicesPage implements OnInit {
         time:element.prefferedTime,
         id:ans1.id,
         name:pac.name,
-        duration:pac.duration
+        duration:pac.duration,
+        expiredate:ans1.expiredate,
+        details:pac.details
       }
 
     }
@@ -103,7 +107,7 @@ export class ServicesPage implements OnInit {
         vehicleCatagory:element.vehicleCatagory,
         id:'0',
         name:'None',
-        duration:'None'
+        expiredate0:'0'
       }
     }
     
