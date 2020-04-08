@@ -19,19 +19,23 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            {{item.name}}
-          </ion-col>
-          <ion-col>
-           Price: {{item.price}}
+           Service: {{item.details}}
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-           Vehicle Number:{{item.vehnumber}}
-          </ion-col>
+          Validity:{{item.time}} Months
+        </ion-col>
+        </ion-row>
+        <ion-row>
           <ion-col>
-          Validity:  {{item.time}}
+           Vehicle:{{item.vehname}}  {{item.vehnumber}}
           </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            Price:{{item.price}}
+           </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>

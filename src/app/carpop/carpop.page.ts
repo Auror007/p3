@@ -23,7 +23,7 @@ export class CarpopPage implements OnInit {
 
     onClick(val)
     {
-      this.popoverController.dismiss(val.number);
+      this.popoverController.dismiss(val);
       console.log("dismissed");
       
     }

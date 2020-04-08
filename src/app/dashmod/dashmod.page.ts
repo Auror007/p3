@@ -91,7 +91,6 @@ export class DashmodPage implements OnInit {
     })
   }
 
-  
 
   async presentLoading() {
     const loading = await this.loadingController.create({
@@ -168,9 +167,12 @@ rem.filter((item1)=>{
       id:this.id,
       name: this.name,
       time:this.time,
-      vehnumber:this.selection,
+      vehnumber:this.selection.number,
+      vehname:this.selection.vehicleModel,
       price: this.price,
-      flag:this.flag
+      flag:this.flag,
+      details:this.title,
+
     }
     if(prod.vehnumber == undefined)
     {
@@ -183,7 +185,7 @@ rem.filter((item1)=>{
     this.presentToast();
     console.log(prod);
     this.crt=this.crt.filter((item)=>{
-      return item.number!=this.selection
+      return item.number!=this.selection.number;
 
     });
     console.log(this.crt);
