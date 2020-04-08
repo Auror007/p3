@@ -19,18 +19,17 @@
                   
         <ion-label>Car type</ion-label>
         <ion-select interface="popover" [(ngModel)]="catagory" (ionChange)="onChange2()">
-          <ion-select-option value="sedan">Sedan</ion-select-option>
-          <ion-select-option value="hatchback">Hatchback</ion-select-option>
-          <ion-select-option value="suv">SUV</ion-select-option>
+          <ion-select-option value="SEDAN">Sedan</ion-select-option>
+          <ion-select-option value="HATCHBACK">Hatchback</ion-select-option>
+          <ion-select-option value="SUV">SUV</ion-select-option>
           </ion-select>
       </ion-item>
       <ion-item [hidden]="!bike">
-          
           <ion-label>Bike type</ion-label>
           <ion-select interface="popover" [(ngModel)]="catagory">
-          <ion-select-option value="sports">sports bike</ion-select-option>
-          <ion-select-option value="moped">moped</ion-select-option>
-          <ion-select-option value="bike">bike</ion-select-option>
+          <ion-select-option value="SPORTS">sports bike</ion-select-option>
+          <ion-select-option value="MOPED">moped</ion-select-option>
+          <ion-select-option value="BIKE">bike</ion-select-option>
           </ion-select> 
           <br>
           <br>     
@@ -41,15 +40,15 @@
           <ion-label >Select Brand</ion-label>
             
           <ion-select interface="popover" [(ngModel)]="brand" [hidden]="!car" (ionChange)="sendCardet()">
-            <ion-select-option value="hyundai">Hyundai</ion-select-option>
-            <ion-select-option value="suzuki">Maruti Suzuki</ion-select-option>
-            <ion-select-option value="honda">Honda</ion-select-option>
+            <ion-select-option value="HYUNDAI">Hyundai</ion-select-option>
+            <ion-select-option value="SUZUKI">Maruti Suzuki</ion-select-option>
+            <ion-select-option value="HONDA">Honda</ion-select-option>
             </ion-select>
 
             <ion-select interface="popover" [(ngModel)]="brand" [hidden]="!bike" >
-                <ion-select-option value="Honda">Honda</ion-select-option>
-                <ion-select-option value="Bajaj">bajaj</ion-select-option>
-                <ion-select-option value="Hero">hero</ion-select-option>
+                <ion-select-option value="HONDA">Honda</ion-select-option>
+                <ion-select-option value="BAJAJ">bajaj</ion-select-option>
+                <ion-select-option value="HERO">hero</ion-select-option>
                 </ion-select>
         </ion-item>
         <br>

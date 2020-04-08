@@ -41,7 +41,6 @@ export class AddvehiclePage implements OnInit {
  };
   car: number;
   bike: any;
-  // value: number;
   vara:any;
   subscribe:any;
 

@@ -7,6 +7,8 @@ import { setIonicClasses } from '@ionic/angular/dist/directives/control-value-ac
 import UserResponse from '../message';
 import { NavController } from '@ionic/angular';
 import {Storage}from '@ionic/storage';
+import {Platform} from '@ionic/angular';
+
 
 @Component({
   selector: 'app-registernew',
@@ -23,15 +25,22 @@ export class RegisternewPage implements OnInit, UserResponse {
   lat:string;
   lng:string;
   flag:number=0;
-
+  subscribe:any;
   constructor(
     private regServ: RegserviceService,
     private http: HttpClient,
     public alerCtrl: AlertController,
     private router: Router,
     private nav:NavController,
-    private storage:Storage
+    private storage:Storage,
+    private platform:Platform
+
   ) {
+    this.subscribe=this.platform.backButton.subscribeWithPriority(6666666,()=>{
+      if(this.constructor.name=="DashPage"){
+            navigator['app'].exitApp();
+        }
+    })
     this.storage.get('addr').then((data)=>{
     console.log(data);
     this.address=data; //static because this page is hit only after registration
